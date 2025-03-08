@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const PlanetarySystem = () => {
   return (
-    <div className="absolute top-0 right-0 w-60 h-60 pointer-events-none z-20">
+    <div className="absolute top-10 right-10 md:right-20 w-60 h-60 pointer-events-none z-20">
       {/* Saturn-like planet */}
       <Planet
         size={60}
