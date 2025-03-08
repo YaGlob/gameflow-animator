@@ -1,6 +1,5 @@
 
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -9,6 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import GameScreen from "./pages/GameScreen";
 import AlphabetsPage from "./pages/AlphabetsPage";
 import VisualAidPage from "./pages/VisualAidPage";
+import ListeningPage from "./pages/ListeningPage";
 import NotFound from "./pages/NotFound";
 
 // Empty placeholder pages for activities
@@ -30,19 +30,12 @@ const SpeakingPage = () => (
   </div>
 );
 
-const ListeningPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Listening Activity</h1>
-  </div>
-);
-
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      <Sonner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SplashScreen />} />
