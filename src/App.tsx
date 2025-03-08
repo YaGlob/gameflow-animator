@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SplashScreen from "./pages/SplashScreen";
 import LandingPage from "./pages/LandingPage";
 import GameScreen from "./pages/GameScreen";
+import AlphabetsPage from "./pages/AlphabetsPage";
 import NotFound from "./pages/NotFound";
 
 // Empty placeholder pages for activities
@@ -37,12 +38,6 @@ const ListeningPage = () => (
 const VisualAidPage = () => (
   <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
     <h1 className="text-4xl font-bold">Visual Aid Activity</h1>
-  </div>
-);
-
-const AlphabetsPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Alphabets Activity</h1>
   </div>
 );
 

@@ -5,6 +5,7 @@ import RobotScene from "@/components/RobotScene";
 import RocketButton from "@/components/RocketButton";
 import SpeechBubble from "@/components/SpeechBubble";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const GameScreen = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
@@ -49,50 +50,54 @@ const GameScreen = () => {
                 stiffness: 50
               }}
             >
-              {/* Main rocket body */}
-              <motion.div 
-                className="absolute inset-0 bg-white rounded-t-full rounded-b-lg flex flex-col items-center justify-center"
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 3,
-                  ease: "easeInOut" 
-                }}
-              >
-                {/* Rocket nose */}
-                <div className="absolute -top-8 w-0 h-0 border-l-[18px] border-r-[18px] border-b-[24px] border-l-transparent border-r-transparent border-b-red-600"></div>
-                
-                {/* Letters stacked vertically */}
-                <div className="flex flex-col items-center justify-center h-full">
-                  {['A', 'L', 'P', 'H', 'A', 'B', 'E', 'T', 'S'].map((letter, index) => (
-                    <motion.div 
-                      key={index}
-                      className="text-2xl font-bold text-black"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 + (index * 0.1) }}
-                    >
-                      {letter}
-                    </motion.div>
-                  ))}
-                </div>
-                
-                {/* Rocket engine flame */}
+              {/* Main rocket body - make this a Link to the alphabets page */}
+              <Link to="/alphabets">
                 <motion.div 
-                  className="absolute -bottom-8 w-10 h-12 bg-gradient-to-t from-orange-500 via-yellow-400 to-red-500 rounded-b-full"
+                  className="absolute inset-0 bg-white rounded-t-full rounded-b-lg flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors"
                   animate={{ 
-                    height: [12, 16, 12],
-                    opacity: [0.8, 1, 0.8]
+                    y: [0, -10, 0],
                   }}
                   transition={{ 
                     repeat: Infinity, 
-                    duration: 0.5,
+                    duration: 3,
                     ease: "easeInOut" 
                   }}
-                />
-              </motion.div>
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Rocket nose */}
+                  <div className="absolute -top-8 w-0 h-0 border-l-[18px] border-r-[18px] border-b-[24px] border-l-transparent border-r-transparent border-b-red-600"></div>
+                  
+                  {/* Letters stacked vertically */}
+                  <div className="flex flex-col items-center justify-center h-full">
+                    {['A', 'L', 'P', 'H', 'A', 'B', 'E', 'T', 'S'].map((letter, index) => (
+                      <motion.div 
+                        key={index}
+                        className="text-2xl font-bold text-black"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 + (index * 0.1) }}
+                      >
+                        {letter}
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* Rocket engine flame */}
+                  <motion.div 
+                    className="absolute -bottom-8 w-10 h-12 bg-gradient-to-t from-orange-500 via-yellow-400 to-red-500 rounded-b-full"
+                    animate={{ 
+                      height: [12, 16, 12],
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{ 
+                      repeat: Infinity, 
+                      duration: 0.5,
+                      ease: "easeInOut" 
+                    }}
+                  />
+                </motion.div>
+              </Link>
             </motion.div>
           </div>
           
