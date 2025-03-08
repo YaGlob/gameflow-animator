@@ -64,8 +64,8 @@ const LandingPage = () => {
             </div>
           </div>
           
-          {/* 3D Robot in the bottom right corner */}
-          <div className="absolute bottom-6 right-6 z-50 w-32 h-32">
+          {/* Robot in the bottom right corner */}
+          <div className="absolute bottom-6 right-6 z-50">
             <Robot />
           </div>
         </div>

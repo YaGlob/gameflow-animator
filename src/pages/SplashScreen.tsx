@@ -23,8 +23,8 @@ const SplashScreen = () => {
           {/* Logo or title */}
           <div className="text-white text-6xl font-bold mb-8">Letter Venture</div>
           
-          {/* 3D Robot in the bottom right corner */}
-          <div className="absolute bottom-6 right-6 z-50 w-32 h-32">
+          {/* Robot in the bottom right corner */}
+          <div className="absolute bottom-6 right-6 z-50">
             <Robot />
           </div>
         </div>
