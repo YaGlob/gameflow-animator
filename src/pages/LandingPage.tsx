@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import { useEffect } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
+import PlanetarySystem from "@/components/PlanetarySystem";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -24,6 +25,9 @@ const LandingPage = () => {
           speed={0.8}
         />
       </div>
+
+      {/* Planetary System in top right */}
+      <PlanetarySystem />
 
       {/* Content container */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
