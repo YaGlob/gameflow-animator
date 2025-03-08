@@ -23,10 +23,10 @@ const RobotScene = ({ className = "", variant = "normal" }: RobotSceneProps) => 
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
     >
-      <div className="w-24 h-24 sm:w-32 sm:h-32 relative">
+      <div className="w-36 h-36 sm:w-44 sm:h-44 relative">
         <SplineScene 
           scene={getSceneUrl()}
-          className="w-full h-full"
+          className="w-full h-full filter brightness-200 saturate-0"
         />
       </div>
       
