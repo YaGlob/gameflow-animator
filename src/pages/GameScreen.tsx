@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import GameLayout from "@/components/GameLayout";
-import Robot from "@/components/Robot";
+import RobotScene from "@/components/RobotScene";
 import RocketButton from "@/components/RocketButton";
 import SpeechBubble from "@/components/SpeechBubble";
 import { motion } from "framer-motion";
@@ -113,7 +113,7 @@ const GameScreen = () => {
             <SpeechBubble text={pixelSpeech} delay={0.2} />
           </div>
         )}
-        <Robot variant="normal" />
+        <RobotScene variant="normal" />
       </div>
     </GameLayout>
   );
