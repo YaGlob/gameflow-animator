@@ -32,7 +32,9 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
       <div 
         className="absolute inset-0 z-1 opacity-30"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/7b4da54a-2563-4645-a06c-f750d7bbe916.png')", 
+          backgroundImage: "url('/lovable-uploads/d5427a2d-db99-40dc-98f1-1ce26f183ab3.png')", 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           backgroundBlendMode: "overlay",
         }}
       />
