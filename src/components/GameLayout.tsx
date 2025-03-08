@@ -30,18 +30,18 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
       <div className="absolute bottom-80 left-40 w-1.5 h-1.5 rounded-full bg-white animate-star-twinkle" style={{animationDelay: "2s"}}></div>
       <div className="absolute top-60 right-20 w-2 h-2 rounded-full bg-white animate-star-twinkle" style={{animationDelay: "0.8s"}}></div>
 
-      {/* Back button */}
+      {/* Back button - larger touch target for mobile */}
       {showBackButton && (
         <Link 
           to={backTo} 
-          className="absolute top-4 left-4 z-50 text-white hover:text-game-blue transition-colors"
+          className="absolute top-4 left-4 z-50 text-white hover:text-game-blue transition-colors p-2 touch-manipulation"
         >
           <ArrowLeft className="h-8 w-8" />
         </Link>
       )}
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
         {children}
       </div>
     </div>

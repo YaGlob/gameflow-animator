@@ -30,15 +30,15 @@ const LandingPage = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900">
       {/* Grid floor effect with enhanced 3D perspective */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 perspective-[1000px]">
+      <div className="absolute bottom-0 left-0 right-0 h-1/4 sm:h-1/3 perspective-[1000px]">
         <div 
           ref={gridRef}
           className="w-full h-full bg-[linear-gradient(to_right,rgba(0,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.4)_1px,transparent_1px)]" 
           style={{ 
-            backgroundSize: "60px 60px",
+            backgroundSize: "30px 30px",
             transform: "rotateX(60deg)",
             transformOrigin: "bottom",
-            animation: "gridPulse 8s infinite linear",
+            animation: "gridPulse 8s infinite linear"
           }}
         >
           {/* Add distant vanishing lines for more depth */}
@@ -59,32 +59,6 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Add CSS animation keyframes in a style tag */}
-      <style jsx>{`
-        @keyframes gridPulse {
-          0%, 100% { 
-            background-color: rgba(0, 20, 40, 0.1);
-          }
-          50% { 
-            background-color: rgba(0, 30, 60, 0.2);
-          }
-        }
-        
-        @keyframes gridLineFlow {
-          0% {
-            transform: translateZ(0) scaleX(0);
-            opacity: 0;
-          }
-          50% {
-            opacity: 0.7;
-          }
-          100% {
-            transform: translateZ(400px) scaleX(2);
-            opacity: 0;
-          }
-        }
-      `}</style>
-
       {/* Stars background */}
       <div className="absolute inset-0">
         {[...Array(50)].map((_, i) => (
@@ -104,7 +78,7 @@ const LandingPage = () => {
       </div>
 
       {/* Glowing star in top left */}
-      <div className="absolute top-24 left-48">
+      <div className="absolute top-12 left-12 md:top-24 md:left-48 scale-75 md:scale-100">
         <div className="relative w-10 h-10">
           <div className="absolute inset-0 bg-white rounded-full blur-md opacity-50"></div>
           <div className="absolute inset-2 bg-white rounded-full"></div>
@@ -115,9 +89,9 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Planets in top right */}
-      <div className="absolute top-10 right-10">
-        <div className="relative w-16 h-16 rounded-full bg-yellow-300 flex items-center justify-center animate-float" style={{animationDelay: "1.5s"}}>
+      {/* Planets in top right - smaller on mobile */}
+      <div className="absolute top-6 right-6 md:top-10 md:right-10 scale-75 md:scale-100">
+        <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-yellow-300 flex items-center justify-center animate-float" style={{animationDelay: "1.5s"}}>
           <div className="absolute w-full h-full rounded-full border-4 border-yellow-500 opacity-30"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500 absolute top-2 right-3"></div>
           <div className="w-2 h-2 rounded-full bg-yellow-500 absolute bottom-4 left-3"></div>
@@ -125,8 +99,8 @@ const LandingPage = () => {
         </div>
       </div>
       
-      <div className="absolute top-32 right-32">
-        <div className="relative w-24 h-24 rounded-full bg-blue-400 animate-float" style={{animationDelay: "0.7s"}}>
+      <div className="absolute top-20 right-6 md:top-32 md:right-32 scale-75 md:scale-100">
+        <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-blue-400 animate-float" style={{animationDelay: "0.7s"}}>
           <div className="absolute w-full h-full rounded-full bg-gradient-to-br from-blue-300 to-transparent opacity-60"></div>
           <div className="flex justify-center pt-6 space-x-6">
             <div className="w-3 h-3 rounded-full bg-black"></div>
@@ -136,8 +110,8 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Floating silhouettes on left */}
-      <div className="absolute bottom-32 left-16">
+      {/* Floating silhouettes on left - smaller on mobile */}
+      <div className="absolute bottom-20 left-4 md:bottom-32 md:left-16 scale-75 md:scale-100">
         <div className="relative">
           <div className="absolute bottom-0 w-24 h-1 bg-cyan-400 rounded-full blur-sm opacity-70 animate-pulse"></div>
           <div className="flex items-end">
@@ -147,8 +121,8 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Floating letters */}
-      <div className="absolute bottom-56 left-12">
+      {/* Floating letters - hidden on small mobile, visible on larger screens */}
+      <div className="absolute bottom-40 left-4 md:bottom-56 md:left-12 hidden sm:block">
         <div className="flex space-x-2">
           {['w', 'j', 'o', 'E', 'b'].map((letter, index) => (
             <div 
@@ -166,10 +140,10 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Astronaut on rocket */}
-      <div className="absolute bottom-56 left-48">
-        <div className="relative w-16 h-24 animate-float" style={{animationDelay: "1.2s"}}>
-          <div className="absolute bottom-0 w-16 h-12 bg-gradient-to-b from-red-500 to-red-700 rounded-b-lg">
+      {/* Astronaut on rocket - hidden on mobile, visible on larger screens */}
+      <div className="absolute bottom-40 left-20 md:bottom-56 md:left-48 hidden sm:block">
+        <div className="relative w-12 h-20 md:w-16 md:h-24 animate-float" style={{animationDelay: "1.2s"}}>
+          <div className="absolute bottom-0 w-full h-12 bg-gradient-to-b from-red-500 to-red-700 rounded-b-lg">
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-orange-500 rounded-t-full">
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-8 bg-yellow-500 rounded-t-full">
                 <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-5 bg-red-500 rounded-t-full"></div>
@@ -182,24 +156,24 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Rocket on right */}
-      <div className="absolute top-1/3 right-24 animate-float" style={{animationDelay: "0.5s"}}>
-        <div className="relative w-12 h-20">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gray-200 rounded-t-full"></div>
-          <div className="absolute top-5 left-0 right-0 h-12 bg-white rounded-lg"></div>
-          <div className="absolute bottom-0 left-0 w-3 h-6 bg-red-500 rounded-b-lg"></div>
-          <div className="absolute bottom-0 right-0 w-3 h-6 bg-red-500 rounded-b-lg"></div>
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-3 bg-red-600 rounded"></div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-8 bg-orange-500 rounded-b-lg">
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2 h-4 bg-yellow-400 rounded-b-lg"></div>
+      {/* Rocket on right - hidden on small mobile, visible on larger screens */}
+      <div className="absolute top-1/3 right-8 md:right-24 animate-float hidden sm:block" style={{animationDelay: "0.5s"}}>
+        <div className="relative w-10 h-16 md:w-12 md:h-20">
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded-t-full"></div>
+          <div className="absolute top-4 md:top-5 left-0 right-0 h-10 md:h-12 bg-white rounded-lg"></div>
+          <div className="absolute bottom-0 left-0 w-2 md:w-3 h-5 md:h-6 bg-red-500 rounded-b-lg"></div>
+          <div className="absolute bottom-0 right-0 w-2 md:w-3 h-5 md:h-6 bg-red-500 rounded-b-lg"></div>
+          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-5 md:w-6 h-2 md:h-3 bg-red-600 rounded"></div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-6 md:h-8 bg-orange-500 rounded-b-lg">
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 md:w-2 h-3 md:h-4 bg-yellow-400 rounded-b-lg"></div>
           </div>
         </div>
       </div>
 
       {/* Content container */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-screen">
-        {/* Curved neon title */}
-        <div className="mb-24 relative">
+      <div className="relative z-10 flex flex-col items-center justify-center h-screen p-4">
+        {/* Curved neon title - smaller on mobile */}
+        <div className="mb-16 md:mb-24 relative scale-75 md:scale-100">
           {/* Arc path for text - this is invisible but used for the text path */}
           <svg className="absolute" width="480" height="150" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
@@ -234,24 +208,24 @@ const LandingPage = () => {
           </div>
         </div>
 
-        {/* Play button */}
+        {/* Play button - slightly smaller on mobile */}
         <button 
           onClick={() => navigate("/game")}
-          className="relative bg-blue-400 hover:bg-blue-500 text-white rounded-full w-28 h-28 flex items-center justify-center transition-all hover:scale-105 focus:outline-none"
+          className="relative bg-blue-400 hover:bg-blue-500 text-white rounded-full w-20 h-20 md:w-28 md:h-28 flex items-center justify-center transition-all hover:scale-105 focus:outline-none"
           aria-label="Play game"
         >
           {/* Glow effect */}
           <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
           
           {/* Button content */}
-          <div className="relative bg-blue-400 hover:bg-blue-500 rounded-full w-28 h-28 flex items-center justify-center z-10">
-            <Play size={50} fill="white" className="ml-3" />
+          <div className="relative bg-blue-400 hover:bg-blue-500 rounded-full w-20 h-20 md:w-28 md:h-28 flex items-center justify-center z-10">
+            <Play size={30} fill="white" className="ml-2 md:ml-3 md:size-[50px]" />
           </div>
         </button>
       </div>
       
-      {/* Robot character in bottom right */}
-      <div className="absolute bottom-5 right-10 z-50 transform scale-90">
+      {/* Robot character in bottom right - smaller on mobile */}
+      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-10 z-50 transform scale-75 md:scale-90">
         <Robot />
       </div>
     </div>
