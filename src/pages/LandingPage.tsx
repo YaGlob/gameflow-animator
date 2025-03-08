@@ -1,9 +1,10 @@
 
 import { useNavigate } from "react-router-dom";
-import GameLayout from "@/components/GameLayout";
 import Robot from "@/components/Robot";
 import { Play } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { motion } from "framer-motion";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -28,9 +29,23 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900">
+    <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
+      {/* Particles background */}
+      <div className="absolute inset-0 z-0">
+        <SparklesCore
+          id="tsparticlesfullpage"
+          background="transparent"
+          minSize={0.6}
+          maxSize={1.4}
+          particleDensity={70}
+          className="w-full h-full"
+          particleColor="#FFFFFF"
+          speed={0.8}
+        />
+      </div>
+
       {/* Grid floor effect with enhanced 3D perspective */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/4 sm:h-1/3 perspective-[1000px]">
+      <div className="absolute bottom-0 left-0 right-0 h-1/4 sm:h-1/3 perspective-[1000px] z-10">
         <div 
           ref={gridRef}
           className="w-full h-full bg-[linear-gradient(to_right,rgba(0,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.4)_1px,transparent_1px)]" 
@@ -59,142 +74,40 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Stars background */}
-      <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
-          <div 
-            key={i}
-            className="absolute rounded-full bg-white animate-star-twinkle"
-            style={{
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-              top: `${Math.random() * 70}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              opacity: Math.random() * 0.7 + 0.3,
-            }}
-          ></div>
-        ))}
-      </div>
-
-      {/* Glowing star in top left */}
-      <div className="absolute top-12 left-12 md:top-24 md:left-48 scale-75 md:scale-100">
-        <div className="relative w-10 h-10">
-          <div className="absolute inset-0 bg-white rounded-full blur-md opacity-50"></div>
-          <div className="absolute inset-2 bg-white rounded-full"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-10 h-px bg-white transform rotate-45"></div>
-            <div className="w-10 h-px bg-white transform -rotate-45"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Planets in top right - smaller on mobile */}
-      <div className="absolute top-6 right-6 md:top-10 md:right-10 scale-75 md:scale-100">
-        <div className="relative w-12 h-12 md:w-16 md:h-16 rounded-full bg-yellow-300 flex items-center justify-center animate-float" style={{animationDelay: "1.5s"}}>
-          <div className="absolute w-full h-full rounded-full border-4 border-yellow-500 opacity-30"></div>
-          <div className="w-3 h-3 rounded-full bg-yellow-500 absolute top-2 right-3"></div>
-          <div className="w-2 h-2 rounded-full bg-yellow-500 absolute bottom-4 left-3"></div>
-          <div className="absolute -top-1 -left-1 w-full h-full rounded-full bg-gradient-to-br from-yellow-200 to-transparent opacity-40"></div>
-        </div>
-      </div>
-      
-      <div className="absolute top-20 right-6 md:top-32 md:right-32 scale-75 md:scale-100">
-        <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-blue-400 animate-float" style={{animationDelay: "0.7s"}}>
-          <div className="absolute w-full h-full rounded-full bg-gradient-to-br from-blue-300 to-transparent opacity-60"></div>
-          <div className="flex justify-center pt-6 space-x-6">
-            <div className="w-3 h-3 rounded-full bg-black"></div>
-            <div className="w-3 h-3 rounded-full bg-black"></div>
-          </div>
-          <div className="mx-auto mt-2 w-6 h-2 rounded-full bg-blue-600"></div>
-        </div>
-      </div>
-
-      {/* Floating silhouettes on left - smaller on mobile */}
-      <div className="absolute bottom-20 left-4 md:bottom-32 md:left-16 scale-75 md:scale-100">
-        <div className="relative">
-          <div className="absolute bottom-0 w-24 h-1 bg-cyan-400 rounded-full blur-sm opacity-70 animate-pulse"></div>
-          <div className="flex items-end">
-            <div className="h-16 w-6 bg-black rounded-t-md"></div>
-            <div className="h-12 w-4 bg-black rounded-t-md ml-2"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating letters - hidden on small mobile, visible on larger screens */}
-      <div className="absolute bottom-40 left-4 md:bottom-56 md:left-12 hidden sm:block">
-        <div className="flex space-x-2">
-          {['w', 'j', 'o', 'E', 'b'].map((letter, index) => (
-            <div 
-              key={index}
-              className="text-2xl font-bold" 
-              style={{
-                color: index % 2 === 0 ? '#FF6B6B' : '#4ECDC4',
-                transform: `translateY(${Math.sin(index) * 10}px)`,
-                textShadow: '0 0 10px rgba(255,255,255,0.7)'
-              }}
-            >
-              {letter}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Astronaut on rocket - hidden on mobile, visible on larger screens */}
-      <div className="absolute bottom-40 left-20 md:bottom-56 md:left-48 hidden sm:block">
-        <div className="relative w-12 h-20 md:w-16 md:h-24 animate-float" style={{animationDelay: "1.2s"}}>
-          <div className="absolute bottom-0 w-full h-12 bg-gradient-to-b from-red-500 to-red-700 rounded-b-lg">
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-orange-500 rounded-t-full">
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-8 bg-yellow-500 rounded-t-full">
-                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-5 bg-red-500 rounded-t-full"></div>
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-white rounded-full">
-            <div className="absolute top-2 left-2 w-6 h-6 bg-blue-300 rounded-full opacity-80"></div>
-          </div>
-        </div>
-      </div>
-
-      {/* Rocket on right - hidden on small mobile, visible on larger screens */}
-      <div className="absolute top-1/3 right-8 md:right-24 animate-float hidden sm:block" style={{animationDelay: "0.5s"}}>
-        <div className="relative w-10 h-16 md:w-12 md:h-20">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded-t-full"></div>
-          <div className="absolute top-4 md:top-5 left-0 right-0 h-10 md:h-12 bg-white rounded-lg"></div>
-          <div className="absolute bottom-0 left-0 w-2 md:w-3 h-5 md:h-6 bg-red-500 rounded-b-lg"></div>
-          <div className="absolute bottom-0 right-0 w-2 md:w-3 h-5 md:h-6 bg-red-500 rounded-b-lg"></div>
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-5 md:w-6 h-2 md:h-3 bg-red-600 rounded"></div>
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 md:w-4 h-6 md:h-8 bg-orange-500 rounded-b-lg">
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 md:w-2 h-3 md:h-4 bg-yellow-400 rounded-b-lg"></div>
-          </div>
-        </div>
-      </div>
-
       {/* Content container */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-screen p-4">
-        {/* Curved neon title - smaller on mobile */}
-        <div className="mb-16 md:mb-24 relative scale-75 md:scale-100">
+      <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
+        {/* Curved neon title with gradients */}
+        <motion.div 
+          className="mb-12 md:mb-16 relative"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           {/* Arc path for text - this is invisible but used for the text path */}
-          <svg className="absolute" width="480" height="150" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
+          <svg className="w-[320px] h-[100px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
               <path id="textArc" d="M 20,100 Q 240,30 460,100" fill="none" />
+              {/* Add gradient for text */}
+              <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#4fd1ff" />
+                <stop offset="50%" stopColor="#ffffff" />
+                <stop offset="100%" stopColor="#4fd1ff" />
+              </linearGradient>
             </defs>
             
             {/* Glow effects behind the text */}
             <text>
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
-                <tspan className="text-[45px] font-bold tracking-wider fill-blue-200 filter blur-lg opacity-70">
+                <tspan className="text-[35px] md:text-[45px] font-bold tracking-wider fill-blue-200 filter blur-lg opacity-70">
                   Letter Venture
                 </tspan>
               </textPath>
             </text>
-          </svg>
-          
-          {/* Actual text that follows the path */}
-          <svg width="480" height="150" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
+            
+            {/* Actual text that follows the path */}
             <text>
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
-                <tspan className="text-[45px] font-bold tracking-wider fill-white animate-pulse-glow">
+                <tspan className="text-[35px] md:text-[45px] font-bold tracking-wider fill-[url(#titleGradient)]">
                   Letter Venture
                 </tspan>
               </textPath>
@@ -206,27 +119,75 @@ const LandingPage = () => {
             <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-20"></div>
             <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-20" style={{animationDelay: "0.5s"}}></div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Play button - slightly smaller on mobile */}
-        <button 
+        <motion.button 
           onClick={() => navigate("/game")}
-          className="relative bg-blue-400 hover:bg-blue-500 text-white rounded-full w-20 h-20 md:w-28 md:h-28 flex items-center justify-center transition-all hover:scale-105 focus:outline-none"
+          className="relative bg-blue-500 text-white rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none"
           aria-label="Play game"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
+          whileTap={{ scale: 0.95 }}
         >
           {/* Glow effect */}
           <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
           
           {/* Button content */}
-          <div className="relative bg-blue-400 hover:bg-blue-500 rounded-full w-20 h-20 md:w-28 md:h-28 flex items-center justify-center z-10">
-            <Play size={30} fill="white" className="ml-2 md:ml-3 md:size-[50px]" />
+          <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center z-10">
+            <Play size={30} fill="white" className="ml-2 md:ml-2 md:size-[40px]" />
           </div>
-        </button>
+        </motion.button>
+
+        {/* Educational elements floating */}
+        <div className="absolute top-1/4 left-10 md:left-20 hidden sm:block">
+          <motion.div 
+            className="bg-gradient-to-r from-blue-400/30 to-purple-400/30 backdrop-blur-sm p-3 rounded-lg border border-blue-300/30"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
+          >
+            <div className="text-white text-lg font-bold">ABC</div>
+          </motion.div>
+        </div>
+
+        <div className="absolute top-1/3 right-10 md:right-20 hidden sm:block">
+          <motion.div 
+            className="bg-gradient-to-r from-green-400/30 to-teal-400/30 backdrop-blur-sm p-3 rounded-lg border border-green-300/30"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
+          >
+            <div className="text-white text-lg font-bold">123</div>
+          </motion.div>
+        </div>
+
+        <div className="absolute bottom-1/3 left-12 md:left-28 hidden sm:block">
+          <motion.div 
+            className="bg-gradient-to-r from-yellow-400/30 to-orange-400/30 backdrop-blur-sm p-3 rounded-lg border border-yellow-300/30"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
+          >
+            <div className="text-white text-lg font-bold">xyz</div>
+          </motion.div>
+        </div>
       </div>
       
       {/* Robot character in bottom right - smaller on mobile */}
-      <div className="absolute bottom-4 right-4 md:bottom-5 md:right-10 z-50 transform scale-75 md:scale-90">
+      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-50">
         <Robot />
+      </div>
+
+      {/* Mobile-friendly indicators */}
+      <div className="absolute bottom-4 left-4 flex items-center space-x-2 z-50">
+        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+        <div className="text-xs text-white/80">Mobile Ready</div>
       </div>
     </div>
   );
