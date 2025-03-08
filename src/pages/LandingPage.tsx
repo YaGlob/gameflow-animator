@@ -1,24 +1,89 @@
+
 import { useNavigate } from "react-router-dom";
 import GameLayout from "@/components/GameLayout";
 import Robot from "@/components/Robot";
 import { Play } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const LandingPage = () => {
   const navigate = useNavigate();
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!gridRef.current) return;
+      
+      // Calculate the relative position of the mouse in the window
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      
+      // Apply a subtle parallax tilt effect to the grid
+      gridRef.current.style.transform = `rotateX(${60 + y * 5}deg) rotateY(${x * 5}deg)`;
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900">
-      {/* Grid floor effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/3 perspective-500">
+      {/* Grid floor effect with enhanced 3D perspective */}
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 perspective-[1000px]">
         <div 
-          className="w-full h-full transform rotateX-60 bg-[linear-gradient(to_right,rgba(0,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.4)_1px,transparent_1px)]" 
+          ref={gridRef}
+          className="w-full h-full bg-[linear-gradient(to_right,rgba(0,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.4)_1px,transparent_1px)]" 
           style={{ 
             backgroundSize: "60px 60px",
             transform: "rotateX(60deg)",
             transformOrigin: "bottom",
+            animation: "gridPulse 8s infinite linear",
           }}
-        ></div>
+        >
+          {/* Add distant vanishing lines for more depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(8,23,60,0.8)_100%)]"></div>
+          
+          {/* Animated glowing horizontal lines */}
+          {[...Array(5)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute h-px w-full bg-cyan-400 opacity-70"
+              style={{
+                bottom: `${i * 15}%`,
+                animation: `gridLineFlow ${6 + i}s infinite linear`,
+                boxShadow: '0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5)'
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
+
+      {/* Add CSS animation keyframes in a style tag */}
+      <style jsx>{`
+        @keyframes gridPulse {
+          0%, 100% { 
+            background-color: rgba(0, 20, 40, 0.1);
+          }
+          50% { 
+            background-color: rgba(0, 30, 60, 0.2);
+          }
+        }
+        
+        @keyframes gridLineFlow {
+          0% {
+            transform: translateZ(0) scaleX(0);
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.7;
+          }
+          100% {
+            transform: translateZ(400px) scaleX(2);
+            opacity: 0;
+          }
+        }
+      `}</style>
 
       {/* Stars background */}
       <div className="absolute inset-0">
