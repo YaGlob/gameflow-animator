@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "@/hooks/use-toast";
 import { Volume2, Trash2, HelpCircle, ArrowLeft, Check } from "lucide-react";
 import GameLayout from "@/components/GameLayout";
-import Robot from "@/components/Robot";
+import RobotScene from "@/components/RobotScene";
 import SpeechBubble from "@/components/SpeechBubble";
 import KeyboardLayout from "@/components/KeyboardLayout";
 
@@ -151,7 +151,6 @@ const ListeningPage = () => {
               </div>
             )}
           </AnimatePresence>
-          <Robot variant={robotVariant} />
         </div>
 
         {/* Main game container */}
@@ -268,6 +267,11 @@ const ListeningPage = () => {
               )}
             </div>
           </div>
+        </div>
+
+        {/* 3D Robot character positioned in bottom right */}
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
+          <RobotScene variant={robotVariant} />
         </div>
 
         {/* Instructions modal */}
