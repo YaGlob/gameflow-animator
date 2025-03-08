@@ -52,8 +52,8 @@ const GameScreen = () => {
         </div>
         
         {/* 3D Robot in the bottom right corner */}
-        <div className="relative w-full">
-          <Robot className="absolute bottom-0 right-0 z-50" />
+        <div className="absolute bottom-6 right-6 z-50">
+          <Robot />
         </div>
       </div>
     </GameLayout>

@@ -1,7 +1,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Float } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
 interface RobotProps {
@@ -9,7 +9,7 @@ interface RobotProps {
 }
 
 // Simple robot model component
-function RobotModel({ ...props }) {
+function RobotModel() {
   const meshRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
   
@@ -27,7 +27,7 @@ function RobotModel({ ...props }) {
   return (
     <group ref={groupRef}>
       {/* Robot body */}
-      <mesh ref={meshRef} {...props}>
+      <mesh ref={meshRef}>
         <capsuleGeometry args={[0.5, 0.8, 4, 16]} />
         <meshStandardMaterial color="#9b87f5" metalness={0.6} roughness={0.2} />
       </mesh>

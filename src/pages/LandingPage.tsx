@@ -1,7 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
 import GameLayout from "@/components/GameLayout";
-import Astronaut from "@/components/Astronaut";
 import Robot from "@/components/Robot";
 import { Play } from "lucide-react";
 
@@ -34,9 +33,6 @@ const LandingPage = () => {
           </button>
 
           {/* Decorative elements */}
-          <Astronaut className="absolute top-10 left-10" />
-          
-          {/* Letters floating */}
           <div className="absolute left-20 bottom-40 text-3xl font-bold text-orange-500 animate-float" style={{animationDelay: "0.2s"}}>
             S
           </div>
@@ -69,7 +65,9 @@ const LandingPage = () => {
           </div>
           
           {/* 3D Robot in the bottom right corner */}
-          <Robot className="absolute bottom-6 right-6 z-50" />
+          <div className="absolute bottom-6 right-6 z-50">
+            <Robot />
+          </div>
         </div>
       </div>
     </GameLayout>
