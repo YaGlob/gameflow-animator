@@ -260,7 +260,7 @@ const ListeningPage = () => {
                   whileTap={{ scale: 0.98 }}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: "spring", damping: l0 }}
+                  transition={{ type: "spring", damping: 10 }}
                   onClick={handleNext}
                 >
                   NEXT
@@ -312,7 +312,8 @@ const ListeningPage = () => {
         </AnimatePresence>
 
         {/* Confetti styles */}
-        <style jsx global>{`
+        <style>
+          {`
           .confetti {
             position: fixed;
             top: 0;
@@ -350,7 +351,8 @@ const ListeningPage = () => {
               background-position: 130% 130%;
             }
           }
-        `}</style>
+          `}
+        </style>
       </div>
     </GameLayout>
   );
