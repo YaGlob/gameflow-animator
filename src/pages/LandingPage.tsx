@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import GameLayout from "@/components/GameLayout";
 import Robot from "@/components/Robot";
@@ -134,18 +133,40 @@ const LandingPage = () => {
 
       {/* Content container */}
       <div className="relative z-10 flex flex-col items-center justify-center h-screen">
-        {/* Glowing title */}
-        <div className="mb-24">
-          <h1 className="text-6xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white relative">
-            {/* Glow effect behind text */}
-            <span className="absolute inset-0 blur-lg text-white opacity-70 text-6xl font-bold tracking-wider">
-              Letter Venture
-            </span>
-            {/* Main text with digital/pixel effect */}
-            <span className="relative text-white">
-              Letter Venture
-            </span>
-          </h1>
+        {/* Curved neon title */}
+        <div className="mb-24 relative">
+          {/* Arc path for text - this is invisible but used for the text path */}
+          <svg className="absolute" width="480" height="150" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
+            <defs>
+              <path id="textArc" d="M 20,100 Q 240,30 460,100" fill="none" />
+            </defs>
+            
+            {/* Glow effects behind the text */}
+            <text>
+              <textPath href="#textArc" textAnchor="middle" startOffset="50%">
+                <tspan className="text-[45px] font-bold tracking-wider fill-blue-200 filter blur-lg opacity-70">
+                  Letter Venture
+                </tspan>
+              </textPath>
+            </text>
+          </svg>
+          
+          {/* Actual text that follows the path */}
+          <svg width="480" height="150" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
+            <text>
+              <textPath href="#textArc" textAnchor="middle" startOffset="50%">
+                <tspan className="text-[45px] font-bold tracking-wider fill-white animate-pulse-glow">
+                  Letter Venture
+                </tspan>
+              </textPath>
+            </text>
+          </svg>
+          
+          {/* Neon animation effects */}
+          <div className="absolute inset-0 w-full h-full opacity-60">
+            <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-20"></div>
+            <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-20" style={{animationDelay: "0.5s"}}></div>
+          </div>
         </div>
 
         {/* Play button */}
