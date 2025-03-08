@@ -18,10 +18,10 @@ const SplashScreen = () => {
 
   return (
     <GameLayout showBackButton={false}>
-      <div className="flex flex-col items-center justify-center h-screen w-full max-w-5xl">
-        <div className="relative w-full h-[70vh] bg-game-panel rounded-lg flex items-center justify-center p-6 shadow-2xl">
-          {/* Logo or title could go here */}
-          <div className="text-white text-4xl font-bold">Letter Venture</div>
+      <div className="flex flex-col items-center justify-center h-full w-full max-w-5xl">
+        <div className="relative w-full h-[70vh] bg-gradient-to-b from-blue-900 to-indigo-900 rounded-lg flex items-center justify-center p-6 shadow-2xl">
+          {/* Logo or title */}
+          <div className="text-white text-6xl font-bold mb-8">Letter Venture</div>
           
           {/* 3D Robot in the bottom right corner */}
           <div className="absolute bottom-6 right-6 z-50">
