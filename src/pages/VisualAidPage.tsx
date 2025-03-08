@@ -232,10 +232,10 @@ const VisualAidPage = () => {
             {/* Active connection line */}
             {activeConnection.wordId !== null && activeConnection.imageId !== null && (
               <line
-                x1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().right ?? 0}
-                y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 24 ?? 0}
-                x2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().left ?? 0}
-                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 24 ?? 0}
+                x1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().right}
+                y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 24}
+                x2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().left}
+                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 24}
                 stroke="white"
                 strokeWidth="2"
                 strokeDasharray="5,5"
@@ -246,10 +246,10 @@ const VisualAidPage = () => {
             {completedConnections.map(id => (
               <line
                 key={`connection-${id}`}
-                x1={wordsRef.current[id - 1]?.getBoundingClientRect().right ?? 0}
-                y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 24 ?? 0}
-                x2={imagesRef.current[id - 1]?.getBoundingClientRect().left ?? 0}
-                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 24 ?? 0}
+                x1={wordsRef.current[id - 1]?.getBoundingClientRect().right}
+                y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 24}
+                x2={imagesRef.current[id - 1]?.getBoundingClientRect().left}
+                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 24}
                 stroke="#4fd1c5"
                 strokeWidth="3"
               />
