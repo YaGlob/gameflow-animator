@@ -15,9 +15,6 @@ const GameScreen = () => {
         {/* Main game screen */}
         <div className="relative w-full h-[50vh] bg-game-panel rounded-lg flex items-center justify-center mb-8 shadow-2xl">
           <h1 className="text-6xl font-bold text-center text-black">SCREEN</h1>
-          
-          {/* Robot assistant positioned at bottom-right */}
-          <Robot className="absolute bottom-2 right-2" />
         </div>
         
         {/* Letter selection area */}
@@ -54,8 +51,10 @@ const GameScreen = () => {
           </Link>
         </div>
         
-        {/* Bottom robot */}
-        <Robot className="self-end mb-4 mr-4" />
+        {/* 3D Robot in the bottom right corner */}
+        <div className="relative w-full">
+          <Robot className="absolute bottom-0 right-0 z-50" />
+        </div>
       </div>
     </GameLayout>
   );

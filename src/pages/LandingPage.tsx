@@ -57,9 +57,6 @@ const LandingPage = () => {
             </svg>
           </div>
 
-          {/* Robot assistant */}
-          <Robot className="absolute bottom-6 right-6" />
-
           {/* Space objects */}
           <div className="absolute top-20 right-20">
             <div className="w-16 h-16 rounded-full bg-yellow-400 bg-opacity-70 animate-pulse-glow"></div>
@@ -70,6 +67,9 @@ const LandingPage = () => {
               <div className="w-2 h-2 rounded-full bg-blue-200 absolute top-10 left-12"></div>
             </div>
           </div>
+          
+          {/* 3D Robot in the bottom right corner */}
+          <Robot className="absolute bottom-6 right-6 z-50" />
         </div>
       </div>
     </GameLayout>

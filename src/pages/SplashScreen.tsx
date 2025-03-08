@@ -24,11 +24,11 @@ const SplashScreen = () => {
           {/* Animated astronaut */}
           <Astronaut className="absolute top-20 left-20" />
           
-          {/* Robot assistant */}
-          <Robot className="absolute bottom-6 right-6" />
-          
           {/* Logo or title could go here */}
           <div className="hidden text-white text-4xl font-bold">Letter Venture</div>
+          
+          {/* 3D Robot in the bottom right corner */}
+          <Robot className="absolute bottom-6 right-6 z-50" />
         </div>
       </div>
     </GameLayout>
