@@ -14,7 +14,7 @@ const GameScreen = () => {
       <div className="flex flex-col items-center justify-between h-screen w-full max-w-5xl py-8">
         {/* Main game screen */}
         <div className="relative w-full h-[50vh] bg-game-panel rounded-lg flex items-center justify-center mb-8 shadow-2xl">
-          <h1 className="text-6xl font-bold text-center text-black">SCREEN</h1>
+          <h1 className="text-6xl font-bold text-center text-white">SCREEN</h1>
         </div>
         
         {/* Letter selection area */}
@@ -52,7 +52,7 @@ const GameScreen = () => {
         </div>
         
         {/* 3D Robot in the bottom right corner */}
-        <div className="absolute bottom-6 right-6 z-50">
+        <div className="absolute bottom-6 right-6 z-50 w-32 h-32">
           <Robot />
         </div>
       </div>
