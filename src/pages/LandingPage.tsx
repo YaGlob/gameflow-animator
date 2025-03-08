@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import Robot from "@/components/Robot";
 import { Play } from "lucide-react";
@@ -179,13 +178,13 @@ const LandingPage = () => {
         </div>
       </div>
       
-      {/* Robot character in bottom right - smaller on mobile */}
-      <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-50">
-        <Robot />
+      {/* Robot character in bottom right - smaller on mobile with proper z-index */}
+      <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
+        <Robot variant="happy" />
       </div>
 
       {/* Mobile-friendly indicators */}
-      <div className="absolute bottom-4 left-4 flex items-center space-x-2 z-50">
+      <div className="absolute bottom-4 left-4 flex items-center space-x-2 z-40">
         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
         <div className="text-xs text-white/80">Mobile Ready</div>
       </div>

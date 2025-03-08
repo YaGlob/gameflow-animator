@@ -31,16 +31,29 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({ text, delay = 0 }) => {
 
   return (
     <motion.div
-      className="relative"
+      className="relative max-w-xs"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
     >
-      <div className="bg-white p-4 rounded-xl shadow-lg max-w-xs relative">
-        <p className="text-black text-center text-sm">{displayText}</p>
+      <div className="bg-white p-4 rounded-xl shadow-lg relative border-2 border-blue-200">
+        <p className="text-black text-center text-sm sm:text-base font-verdana">{displayText}</p>
+        
+        {/* Glow effect behind the bubble */}
+        <motion.div 
+          className="absolute inset-0 -z-10 bg-blue-400/20 rounded-xl blur-md"
+          animate={{ 
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 2,
+            ease: "easeInOut" 
+          }}
+        />
         
         {/* Speech bubble tail */}
-        <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 right-8"></div>
+        <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 right-8 border-r-2 border-b-2 border-blue-200"></div>
       </div>
     </motion.div>
   );

@@ -102,20 +102,18 @@ const GameScreen = () => {
               <RocketButton text="LISTENING" to="/listening" delay={0.3} />
               <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.5} />
             </div>
-            
-            {/* Robot with speech bubble */}
-            <div className="flex flex-col items-end justify-end mt-4 h-52">
-              {showSpeechBubble && (
-                <div className="mb-4 mr-8">
-                  <SpeechBubble text={pixelSpeech} delay={0.2} />
-                </div>
-              )}
-              <div className="scale-150 origin-bottom-right">
-                <Robot className="transform -scale-x-100" />
-              </div>
-            </div>
           </div>
         </motion.div>
+      </div>
+      
+      {/* Robot with speech bubble - positioned absolutely to avoid interfering with the grid layout */}
+      <div className="fixed bottom-4 right-4 z-50">
+        {showSpeechBubble && (
+          <div className="mb-2 mr-4">
+            <SpeechBubble text={pixelSpeech} delay={0.2} />
+          </div>
+        )}
+        <Robot variant="normal" />
       </div>
     </GameLayout>
   );
