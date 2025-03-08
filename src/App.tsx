@@ -8,6 +8,7 @@ import SplashScreen from "./pages/SplashScreen";
 import LandingPage from "./pages/LandingPage";
 import GameScreen from "./pages/GameScreen";
 import AlphabetsPage from "./pages/AlphabetsPage";
+import VisualAidPage from "./pages/VisualAidPage";
 import NotFound from "./pages/NotFound";
 
 // Empty placeholder pages for activities
@@ -32,12 +33,6 @@ const SpeakingPage = () => (
 const ListeningPage = () => (
   <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
     <h1 className="text-4xl font-bold">Listening Activity</h1>
-  </div>
-);
-
-const VisualAidPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Visual Aid Activity</h1>
   </div>
 );
 
