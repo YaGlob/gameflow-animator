@@ -2,31 +2,12 @@
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
 
 const LandingPage = () => {
   const navigate = useNavigate();
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!gridRef.current) return;
-      
-      // Calculate the relative position of the mouse in the window
-      const x = (e.clientX / window.innerWidth) - 0.5;
-      const y = (e.clientY / window.innerHeight) - 0.5;
-      
-      // Apply a subtle parallax tilt effect to the grid
-      gridRef.current.style.transform = `rotateX(${60 + y * 5}deg) rotateY(${x * 5}deg)`;
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
@@ -42,36 +23,6 @@ const LandingPage = () => {
           particleColor="#FFFFFF"
           speed={0.8}
         />
-      </div>
-
-      {/* Grid floor effect with enhanced 3D perspective */}
-      <div className="absolute bottom-0 left-0 right-0 h-1/4 sm:h-1/3 perspective-[1000px] z-10">
-        <div 
-          ref={gridRef}
-          className="w-full h-full bg-[linear-gradient(to_right,rgba(0,255,255,0.4)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,255,255,0.4)_1px,transparent_1px)]" 
-          style={{ 
-            backgroundSize: "30px 30px",
-            transform: "rotateX(60deg)",
-            transformOrigin: "bottom",
-            animation: "gridPulse 8s infinite linear"
-          }}
-        >
-          {/* Add distant vanishing lines for more depth */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(8,23,60,0.8)_100%)]"></div>
-          
-          {/* Animated glowing horizontal lines */}
-          {[...Array(5)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute h-px w-full bg-cyan-400 opacity-70"
-              style={{
-                bottom: `${i * 15}%`,
-                animation: `gridLineFlow ${6 + i}s infinite linear`,
-                boxShadow: '0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5)'
-              }}
-            ></div>
-          ))}
-        </div>
       </div>
 
       {/* Content container */}
