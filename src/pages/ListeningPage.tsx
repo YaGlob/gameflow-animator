@@ -37,20 +37,6 @@ const ListeningPage = () => {
   return (
     <GameLayout>
       <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-between min-h-[80vh]">
-        {/* Robot with speech bubble */}
-        <div className="absolute top-4 right-4 z-50 flex flex-col items-end">
-          <AnimatePresence>
-            {showSpeechBubble && (
-              <div className="mb-2">
-                <SpeechBubble 
-                  text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
-                  delay={0.2} 
-                />
-              </div>
-            )}
-          </AnimatePresence>
-        </div>
-
         {/* Main game container - updated styling */}
         <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center">
           {/* Keyboard */}
@@ -77,8 +63,21 @@ const ListeningPage = () => {
           />
         </div>
 
-        {/* 3D Robot character positioned in bottom right */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
+        {/* 3D Robot character positioned in bottom right with speech bubble */}
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-end">
+          {/* Speech bubble positioned to the left of the robot */}
+          <AnimatePresence>
+            {showSpeechBubble && (
+              <div className="mr-4 mb-6">
+                <SpeechBubble 
+                  text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+                  delay={0.2} 
+                />
+              </div>
+            )}
+          </AnimatePresence>
+          
+          {/* Robot */}
           <RobotScene variant={robotVariant} />
         </div>
 

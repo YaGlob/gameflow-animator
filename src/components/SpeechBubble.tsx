@@ -1,3 +1,4 @@
+
 import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -65,7 +66,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         />
         
         {/* Speech bubble tail - pointing to the right (toward the robot) */}
-        <div className="absolute w-3 h-3 bg-white transform rotate-45 top-1/2 -left-1.5"></div>
+        <div className="absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2"></div>
       </div>
     </motion.div>
   );
