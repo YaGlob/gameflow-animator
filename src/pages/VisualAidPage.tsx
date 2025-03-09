@@ -342,10 +342,10 @@ const VisualAidPage = () => {
         </div>
       </div>
 
-      {/* Robot with speech bubble */}
-      <div className="fixed bottom-4 right-4 z-40">
-        <div className="mb-2 mr-4">
-          <SpeechBubble text={robotSpeech} delay={0.2} />
+      {/* Robot with speech bubble - positioned in bottom right with speech bubble to left-bottom */}
+      <div className="fixed bottom-4 right-8 z-40 flex items-end">
+        <div className="mr-3 mb-4">
+          <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
         </div>
         <RobotScene variant={completedConnections.length === levels[currentLevel].items.length ? "happy" : "normal"} />
       </div>
