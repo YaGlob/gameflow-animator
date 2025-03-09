@@ -83,7 +83,7 @@ const RobotModel: FC<{
             url={getModelPath()}
             colorSpace={THREE.SRGBColorSpace}
             onUpdate={(self) => {
-              self.needsUpdate = true;
+              if (self) self.needsUpdate = true;
             }}
           />
         </meshStandardMaterial>
