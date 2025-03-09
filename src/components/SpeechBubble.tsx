@@ -65,8 +65,8 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
           }} 
         />
         
-        {/* Speech bubble tail - positioned to point at the robot */}
-        <div className="absolute w-4 h-4 bg-white transform rotate-45 bottom-0 right-8 translate-y-2 border-r-2 border-b-2 border-red-500"></div>
+        {/* Speech bubble tail - repositioned to point right toward the robot from the left */}
+        <div className="absolute w-4 h-4 bg-white transform rotate-45 top-1/2 -right-2 border-t-2 border-r-2 border-red-500"></div>
       </div>
     </motion.div>
   );
