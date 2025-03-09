@@ -14,8 +14,21 @@ interface GameLayoutProps {
 const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayoutProps) => {
   return (
     <div className="min-h-screen w-full relative overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
-      {/* Particles background with lower density for game screens */}
-      <div className="absolute inset-0 z-0">
+      {/* Circuit board background image - increased opacity and adjusted z-index */}
+      <div 
+        className="absolute inset-0 z-[5]"
+        style={{ 
+          backgroundImage: "url('/lovable-uploads/e9839ed9-5020-4eb3-bbba-f19fdf3569a1.png')", 
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.4,
+          mixBlendMode: "soft-light",
+        }}
+      />
+      
+      {/* Particles background with lower density for game screens - moved below circuit board */}
+      <div className="absolute inset-0 z-[2]">
         <SparklesCore
           id="gameParticles"
           background="transparent"
@@ -28,21 +41,8 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         />
       </div>
       
-      {/* New circuit board background image */}
-      <div 
-        className="absolute inset-0 z-1"
-        style={{ 
-          backgroundImage: "url('/lovable-uploads/e9839ed9-5020-4eb3-bbba-f19fdf3569a1.png')", 
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.25,
-          mixBlendMode: "screen",
-        }}
-      />
-      
-      {/* Animated grid lines with reduced opacity */}
-      <div className="absolute inset-0 z-1 opacity-10 bg-[linear-gradient(to_right,#4fd1ff_1px,transparent_1px),linear-gradient(to_bottom,#4fd1ff_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
+      {/* Animated grid lines with reduced opacity - moved below circuit board */}
+      <div className="absolute inset-0 z-[3] opacity-20 bg-[linear-gradient(to_right,#4fd1ff_1px,transparent_1px),linear-gradient(to_bottom,#4fd1ff_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
       
       {/* Back button - larger touch target for mobile */}
       {showBackButton && (
@@ -62,8 +62,8 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         </motion.div>
       )}
 
-      {/* Main content with increased z-index and panel background opacity - adjusted padding to 30px */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-7">
+      {/* Main content with increased z-index */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen p-7">
         {children}
       </div>
     </div>
