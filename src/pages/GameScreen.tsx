@@ -92,7 +92,7 @@ const GameScreen = () => {
                 >
                   <DotLottieReact
                     ref={lottieRef}
-                    src="https://lottie.host/e2528284-e797-43ac-8628-c1df0ee3f036/SgLVhu5xS0.lottie"
+                    src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
                     loop={!launchingAlphabets}
                     autoplay
                     className={`w-60 h-60 transition-all duration-300 
