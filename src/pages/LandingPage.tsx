@@ -9,6 +9,11 @@ import LottieAstronaut from "@/components/LottieAstronaut";
 const LandingPage = () => {
   const navigate = useNavigate();
 
+  const handlePlayClick = () => {
+    console.log("Play button clicked, navigating to /game");
+    navigate("/game");
+  };
+
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
       {/* Particles background */}
@@ -107,7 +112,7 @@ const LandingPage = () => {
 
         {/* Play button - centered */}
         <motion.button 
-          onClick={() => navigate("/game")}
+          onClick={handlePlayClick}
           className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
           aria-label="Play game"
           initial={{ opacity: 0, scale: 0.8 }}
