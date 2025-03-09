@@ -51,15 +51,15 @@ const WritingPage = () => {
           </div>
         </motion.div>
 
-        {/* Main content container */}
+        {/* Main content container - Updated styling as requested */}
         <motion.div 
-          className="w-full max-w-5xl bg-[#395d6e] backdrop-blur-md rounded-xl p-6 flex flex-col items-center shadow-lg border border-cyan-300/30 mb-8"
+          className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Text display */}
-          <div className="w-full mb-8">
+          {/* Text display with reduced font size */}
+          <div className="w-full mb-6">
             <TextDisplay 
               targetText={currentExercise.text}
               cursorPosition={cursorPosition}
