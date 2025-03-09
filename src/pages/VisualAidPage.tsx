@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -154,6 +153,40 @@ const VisualAidPage = () => {
     }
   };
 
+  // Function to get accurate coordinates for the connection lines
+  const getCoordinates = (wordId: number | null, imageId: number | null) => {
+    if (!wordId || !imageId) return null;
+    
+    const wordDot = document.querySelector(`[data-word-dot="${wordId}"]`);
+    const imageDot = document.querySelector(`[data-image-dot="${imageId}"]`);
+    
+    if (!wordDot || !imageDot) return null;
+    
+    const wordRect = wordDot.getBoundingClientRect();
+    const imageRect = imageDot.getBoundingClientRect();
+    const svgRect = lineRef.current?.getBoundingClientRect();
+    
+    if (!svgRect) return null;
+    
+    return {
+      x1: wordRect.right - svgRect.left,
+      y1: wordRect.top + wordRect.height/2 - svgRect.top,
+      x2: imageRect.left - svgRect.left,
+      y2: imageRect.top + imageRect.height/2 - svgRect.top
+    };
+  };
+
+  // Recalculate line positions when window resizes
+  useEffect(() => {
+    const handleResize = () => {
+      // Force update to recalculate positions
+      setActiveConnection({...activeConnection});
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [activeConnection]);
+
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto pt-4 pb-20 px-4 relative">
@@ -211,10 +244,10 @@ const VisualAidPage = () => {
             {/* Active connection line */}
             {activeConnection.wordId !== null && activeConnection.imageId !== null && (
               <line
-                x1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().right}
-                y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 20}
-                x2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 20}
+                x1={getCoordinates(activeConnection.wordId, activeConnection.imageId)?.x1 || 0}
+                y1={getCoordinates(activeConnection.wordId, activeConnection.imageId)?.y1 || 0}
+                x2={getCoordinates(activeConnection.wordId, activeConnection.imageId)?.x2 || 0}
+                y2={getCoordinates(activeConnection.wordId, activeConnection.imageId)?.y2 || 0}
                 stroke="white"
                 strokeWidth="2"
                 strokeDasharray="5,5"
@@ -225,10 +258,10 @@ const VisualAidPage = () => {
             {completedConnections.map(id => (
               <line
                 key={`connection-${id}`}
-                x1={wordsRef.current[id - 1]?.getBoundingClientRect().right}
-                y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 20}
-                x2={imagesRef.current[id - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 20}
+                x1={getCoordinates(id, id)?.x1 || 0}
+                y1={getCoordinates(id, id)?.y1 || 0}
+                x2={getCoordinates(id, id)?.x2 || 0}
+                y2={getCoordinates(id, id)?.y2 || 0}
                 stroke="#4fd1c5"
                 strokeWidth="3"
               />
@@ -266,6 +299,7 @@ const VisualAidPage = () => {
                           : "bg-slate-800 border-slate-600 hover:bg-slate-700"
                     )}
                     onClick={() => handleWordDotClick(item.id)}
+                    data-word-dot={item.id}
                   >
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </motion.div>
@@ -295,6 +329,7 @@ const VisualAidPage = () => {
                           : "bg-slate-800 border-slate-600 hover:bg-slate-700"
                     )}
                     onClick={() => handleImageDotClick(item.id)}
+                    data-image-dot={item.id}
                   >
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                   </motion.div>
