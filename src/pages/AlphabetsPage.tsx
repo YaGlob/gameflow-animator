@@ -80,13 +80,13 @@ const AlphabetsPage = () => {
         }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "flex items-center justify-center w-full h-full aspect-square border-2 border-white rounded-md transition-colors cursor-pointer",
+          "flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border-2 border-white rounded-md transition-colors cursor-pointer",
           "bg-slate-800 hover:bg-slate-700",
           isSelected && "ring-4 ring-blue-400 bg-blue-800 hover:bg-blue-700"
         )}
         onClick={() => handleLetterClick(letter)}
       >
-        <span className="text-3xl md:text-4xl font-bold text-white">
+        <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
           {letter.uppercase}{letter.lowercase}
         </span>
       </motion.div>
@@ -96,19 +96,12 @@ const AlphabetsPage = () => {
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-8"
-        >
-          Alphabet Adventure
-        </motion.h1>
+        {/* Removed the Alphabet Adventure heading */}
         
         {/* Main content container box with specified properties */}
-        <div className="w-full p-6 mt-8 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
-          {/* Alphabet grid */}
-          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 w-full">
+        <div className="w-full p-6 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
+          {/* Alphabet grid - increased columns and reduced gap */}
+          <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-9 gap-2 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
             ))}
