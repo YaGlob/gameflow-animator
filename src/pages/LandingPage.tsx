@@ -136,36 +136,11 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Educational elements floating - hidden on very small screens */}
-      <div className="absolute top-1/4 left-5 md:left-20 hidden xs:block sm:block">
+      {/* Full-width educational image at the bottom */}
+      <div className="absolute bottom-0 w-full z-30 flex items-end overflow-hidden">
+        {/* Left side - People with letters */}
         <motion.div 
-          className="bg-gradient-to-r from-blue-400/30 to-purple-400/30 backdrop-blur-sm p-2 sm:p-3 rounded-lg border border-blue-300/30"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
-        >
-          <div className="text-white text-base sm:text-lg font-bold">ABC</div>
-        </motion.div>
-      </div>
-
-      <div className="absolute top-1/3 right-5 md:right-20 hidden xs:block sm:block">
-        <motion.div 
-          className="bg-gradient-to-r from-green-400/30 to-teal-400/30 backdrop-blur-sm p-2 sm:p-3 rounded-lg border border-green-300/30"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
-        >
-          <div className="text-white text-base sm:text-lg font-bold">123</div>
-        </motion.div>
-      </div>
-
-      {/* New Image with people on left and robot on right */}
-      <div className="absolute bottom-0 w-full z-30 flex justify-between items-end">
-        {/* People with letters on the left side */}
-        <motion.div 
-          className="w-1/3 md:w-1/4 ml-0"
+          className="w-1/2 h-[200px] md:h-[300px]"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -173,14 +148,16 @@ const LandingPage = () => {
           <img 
             src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
             alt="Educational Illustration" 
-            className="w-full object-contain" 
-            style={{ maxHeight: '200px' }}
+            className="h-full w-full object-cover object-left"
+            style={{ 
+              clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
+            }}
           />
         </motion.div>
         
-        {/* Robot on the right side */}
+        {/* Right side - Robot */}
         <motion.div 
-          className="w-1/3 md:w-1/4 mr-0"
+          className="w-1/2 h-[200px] md:h-[300px]"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -188,10 +165,9 @@ const LandingPage = () => {
           <img 
             src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
             alt="Educational Robot" 
-            className="w-full object-contain" 
+            className="h-full w-full object-cover object-right"
             style={{ 
-              maxHeight: '200px', 
-              clipPath: 'polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%)',
+              clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)',
               transform: 'scaleX(-1)' // Flip horizontally to get just the robot side
             }}
           />
