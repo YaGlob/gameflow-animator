@@ -5,7 +5,6 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
 import LottieAstronaut from "@/components/LottieAstronaut";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -116,6 +115,15 @@ const LandingPage = () => {
             className="w-full h-full object-cover"
           />
         </div>
+      </div>
+
+      {/* Education image with robot at the bottom */}
+      <div className="absolute bottom-0 left-0 w-full z-20">
+        <img 
+          src="/lovable-uploads/84d8b662-3d50-4987-b5bb-d912afa6292c.png" 
+          alt="Education with Robot" 
+          className="w-full object-contain"
+        />
       </div>
 
       {/* Mobile-friendly indicators */}
