@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
@@ -13,6 +12,11 @@ const LandingPage = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
+      {/* Grid Box Background - Positioned more prominently */}
+      <div className="absolute inset-0 w-full h-full z-10 overflow-hidden opacity-90">
+        <Boxes />
+      </div>
+      
       {/* Particles background */}
       <div className="absolute inset-0 z-0">
         <SparklesCore
@@ -98,13 +102,6 @@ const LandingPage = () => {
             <Play size={30} fill="white" className="ml-2 md:ml-2 md:size-[40px]" />
           </div>
         </motion.button>
-      </div>
-
-      {/* Grid Box Background - Further reduced by 50px more (total 120px smaller than 50%) */}
-      <div className="absolute bottom-0 left-0 w-full h-[calc(50%-120px)] overflow-hidden z-10">
-        {/* Gradient overlay for better visibility of elements above the grid */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
-        <Boxes className="scale-150 z-10" />
       </div>
 
       {/* Educational elements floating */}

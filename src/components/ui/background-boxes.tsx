@@ -25,20 +25,25 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
-  // State to track which line is glowing
-  const [glowingLineIndex, setGlowingLineIndex] = useState(-1);
-
-  // Effect to animate a random line every few seconds
+  // State to track which lines are glowing
+  const [glowingLines, setGlowingLines] = useState<number[]>([]);
+  
+  // Effect to animate multiple random lines for better visibility
   React.useEffect(() => {
     const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * rows.length);
-      setGlowingLineIndex(randomIndex);
+      // Generate 3-5 random lines to glow at once for better visibility
+      const numLines = Math.floor(Math.random() * 3) + 3;
+      const newGlowingLines = Array.from({ length: numLines }, () => 
+        Math.floor(Math.random() * rows.length)
+      );
+      
+      setGlowingLines(newGlowingLines);
       
       // Reset after the animation completes
       setTimeout(() => {
-        setGlowingLineIndex(-1);
-      }, 2000);
-    }, 3000);
+        setGlowingLines([]);
+      }, 3000);
+    }, 4000);
     
     return () => clearInterval(interval);
   }, [rows.length]);
@@ -59,7 +64,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
           key={`row` + i}
           className={cn(
             "w-16 h-8 border-l relative",
-            glowingLineIndex === i ? "neon-glow-line" : "border-slate-600"
+            glowingLines.includes(i) ? "neon-glow-line" : "border-slate-800"
           )}
         >
           {cols.map((_, j) => (
@@ -74,7 +79,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
               key={`col` + j}
               className={cn(
                 "w-16 h-8 border-r border-t relative",
-                glowingLineIndex === i ? "neon-glow-border" : "border-slate-600"
+                glowingLines.includes(i) ? "neon-glow-border" : "border-slate-800"
               )}
             >
               {j % 2 === 0 && i % 2 === 0 ? (
@@ -86,7 +91,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                   stroke="currentColor"
                   className={cn(
                     "absolute h-6 w-10 -top-[14px] -left-[22px] stroke-[1px] pointer-events-none",
-                    glowingLineIndex === i ? "text-green-400" : "text-slate-500"
+                    glowingLines.includes(i) ? "text-green-400" : "text-slate-600"
                   )}
                 >
                   <path
