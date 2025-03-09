@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface RobotProps {
   className?: string;
   variant?: "normal" | "thinking" | "happy";
+  onClick?: () => void;
 }
 
-const Robot: FC<RobotProps> = ({ className = "", variant = "normal" }) => {
+const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) => {
   const [currentVariant, setCurrentVariant] = useState(variant);
   
   // Cycle through expressions occasionally for more life-like behavior
@@ -44,11 +45,12 @@ const Robot: FC<RobotProps> = ({ className = "", variant = "normal" }) => {
 
   return (
     <motion.div 
-      className={`relative z-50 ${className}`}
+      className={`relative z-50 ${className} ${onClick ? 'cursor-pointer' : ''}`}
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
+      onClick={onClick}
     >
       {/* Robot image container */}
       <motion.div

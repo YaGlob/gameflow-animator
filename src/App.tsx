@@ -11,14 +11,8 @@ import VisualAidPage from "./pages/VisualAidPage";
 import ListeningPage from "./pages/ListeningPage";
 import ReadingPage from "./pages/ReadingPage";
 import WritingPage from "./pages/WritingPage";
+import SpeakingPage from "./pages/SpeakingPage";
 import NotFound from "./pages/NotFound";
-
-// Empty placeholder for speaking activity
-const SpeakingPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Speaking Activity</h1>
-  </div>
-);
 
 const queryClient = new QueryClient();
 
