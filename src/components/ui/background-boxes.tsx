@@ -1,6 +1,6 @@
 
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +25,24 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
+  // State to track which line is glowing
+  const [glowingLineIndex, setGlowingLineIndex] = useState(-1);
+
+  // Effect to animate a random line every few seconds
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * rows.length);
+      setGlowingLineIndex(randomIndex);
+      
+      // Reset after the animation completes
+      setTimeout(() => {
+        setGlowingLineIndex(-1);
+      }, 2000);
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [rows.length]);
+
   return (
     <div
       style={{
@@ -39,7 +57,10 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       {rows.map((_, i) => (
         <motion.div
           key={`row` + i}
-          className="w-16 h-8 border-l border-slate-700/50 relative"
+          className={cn(
+            "w-16 h-8 border-l relative",
+            glowingLineIndex === i ? "neon-glow-line" : "border-slate-600"
+          )}
         >
           {cols.map((_, j) => (
             <motion.div
@@ -51,7 +72,10 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                 transition: { duration: 2 },
               }}
               key={`col` + j}
-              className="w-16 h-8 border-r border-t border-slate-700/50 relative"
+              className={cn(
+                "w-16 h-8 border-r border-t relative",
+                glowingLineIndex === i ? "neon-glow-border" : "border-slate-600"
+              )}
             >
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg
@@ -60,7 +84,10 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-700/70 stroke-[1px] pointer-events-none"
+                  className={cn(
+                    "absolute h-6 w-10 -top-[14px] -left-[22px] stroke-[1px] pointer-events-none",
+                    glowingLineIndex === i ? "text-green-400" : "text-slate-500"
+                  )}
                 >
                   <path
                     strokeLinecap="round"
