@@ -8,6 +8,7 @@ import TextDisplay from "@/components/speaking-game/TextDisplay";
 import GameControls from "@/components/speaking-game/GameControls";
 import InstructionsModal from "@/components/speaking-game/InstructionsModal";
 import { motion } from "framer-motion";
+import RobotScene from "@/components/RobotScene";
 
 const SpeakingPage = () => {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -30,16 +31,17 @@ const SpeakingPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-5xl mx-auto">
-        <div className="flex flex-col items-center justify-between space-y-6 h-full">
-          {/* Instructions modal */}
-          <InstructionsModal 
-            isOpen={showInstructions} 
-            onClose={() => setShowInstructions(false)} 
-          />
-          
+      <div className="w-full max-w-6xl mx-auto">
+        {/* Instructions modal */}
+        <InstructionsModal 
+          isOpen={showInstructions} 
+          onClose={() => setShowInstructions(false)} 
+        />
+        
+        {/* Main game container with consistent styling */}
+        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30">
           {/* Main content */}
-          <div className="w-full flex-1 flex flex-col items-center justify-center gap-8 p-4">
+          <div className="w-full flex flex-col items-center justify-center gap-8 p-4">
             {/* Text display area */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -69,18 +71,13 @@ const SpeakingPage = () => {
               />
             </motion.div>
           </div>
-          
-          {/* Robot with speech bubble */}
-          <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
-            {showSpeechBubble && (
-              <div className="mb-2">
-                <SpeechBubble text={pixelSpeech} delay={0.2} />
-              </div>
-            )}
-            <Robot 
-              variant="normal" 
-              onClick={() => setShowSpeechBubble(!showSpeechBubble)} 
-            />
+        </div>
+        
+        {/* Robot with speech bubble - Updated to match other pages */}
+        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+          <RobotScene variant="normal" />
+          <div className="ml-3 mb-8">
+            <SpeechBubble text={pixelSpeech} delay={0.2} />
           </div>
         </div>
       </div>
