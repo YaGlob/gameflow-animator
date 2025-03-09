@@ -25,8 +25,8 @@ const LandingPage = () => {
         />
       </div>
       
-      {/* New abstract image in top left corner */}
-      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30 w-32 h-32 md:w-48 md:h-48">
+      {/* Abstract image in maximum top left corner */}
+      <div className="absolute top-0 left-0 z-30 w-32 h-32 md:w-48 md:h-48">
         <motion.img 
           src="/lovable-uploads/312be9c1-6dc4-4ed8-9ec0-4205fa0b3791.png"
           alt="Abstract line art"
