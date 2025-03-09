@@ -37,11 +37,11 @@ const LandingPage = () => {
         <LottieAstronaut />
       </div>
 
-      {/* Content container - moved the play button up by 20px */}
+      {/* Content container */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
-        {/* Curved neon title with gradients - enhanced neon effect */}
+        {/* Curved neon title with gradients */}
         <motion.div 
-          className="mb-8 md:mb-16 relative z-40"
+          className="mb-8 md:mb-16 relative"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -55,35 +55,19 @@ const LandingPage = () => {
                 <stop offset="50%" stopColor="#ffffff" />
                 <stop offset="100%" stopColor="#4fd1ff" />
               </linearGradient>
-              
-              {/* Enhanced filters for better neon effect */}
-              <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feFlood floodColor="#4fd1ff" result="flood" />
-                <feComposite in="flood" in2="SourceGraphic" operator="in" result="mask" />
-                <feGaussianBlur in="mask" stdDeviation="5" result="blurred" />
-                <feComposite in="SourceGraphic" in2="blurred" operator="over" />
-              </filter>
             </defs>
             
-            {/* Multiple glow layers for enhanced effect */}
+            {/* Glow effects behind the text */}
             <text>
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
-                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-200 filter blur-xl opacity-70">
+                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-200 filter blur-lg opacity-70">
                   Letter Venture
                 </tspan>
               </textPath>
             </text>
             
+            {/* Actual text that follows the path */}
             <text>
-              <textPath href="#textArc" textAnchor="middle" startOffset="50%">
-                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-300 filter blur-md opacity-80">
-                  Letter Venture
-                </tspan>
-              </textPath>
-            </text>
-            
-            {/* Actual text that follows the path - with enhanced styling */}
-            <text filter="url(#neonGlow)">
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
                 <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-[url(#titleGradient)]">
                   Letter Venture
@@ -92,16 +76,15 @@ const LandingPage = () => {
             </text>
           </svg>
           
-          {/* Enhanced neon animation effects */}
-          <div className="absolute inset-0 w-full h-full opacity-80">
-            <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-30"></div>
-            <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-30" style={{animationDelay: "0.5s"}}></div>
-            <div className="absolute inset-0 bg-white blur-md animate-pulse-glow opacity-20" style={{animationDelay: "0.8s"}}></div>
+          {/* Neon animation effects */}
+          <div className="absolute inset-0 w-full h-full opacity-60">
+            <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-20"></div>
+            <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-20" style={{animationDelay: "0.5s"}}></div>
           </div>
         </motion.div>
 
-        {/* Main content area with Lottie animation and Play button - moved up 20px */}
-        <div className="flex items-center justify-center w-full -mt-5">
+        {/* Main content area with Lottie animation and Play button */}
+        <div className="flex items-center justify-center w-full">
           {/* Lottie Animation - Increased size and moved to left side */}
           <motion.div
             className="absolute left-4 md:left-16 xl:left-32 w-24 h-24 md:w-40 md:h-40"
@@ -139,12 +122,12 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Grid Background Image - reduced height by 40px from the top (changed from 70% to 60%) */}
-      <div className="absolute bottom-0 left-0 w-full h-[60%] overflow-hidden z-10">
-        {/* Gradient overlay for better visibility of elements above the grid - adjusted to be more subtle */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-950/70 to-blue-950/90 z-20 pointer-events-none" />
+      {/* Grid Background Image - positioned at the same place as the previous grid */}
+      <div className="absolute bottom-0 left-0 w-full h-[calc(50%-80px)] overflow-hidden z-10">
+        {/* Gradient overlay for better visibility of elements above the grid */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
         
-        {/* Grid image - adjusted height and positioning */}
+        {/* Grid image - replaces the previous Boxes component */}
         <div className="w-full h-full">
           <img 
             src="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" 
