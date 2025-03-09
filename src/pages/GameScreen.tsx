@@ -84,7 +84,7 @@ const GameScreen = () => {
                 </motion.div>
               </div>
               
-              {/* Lottie Animation */}
+              {/* Lottie Animation - Updated with new animation source */}
               <Link to="/alphabets" onClick={handleAlphabetsClick}>
                 <div 
                   className={`relative w-full h-full flex items-center justify-center cursor-pointer 
@@ -92,7 +92,7 @@ const GameScreen = () => {
                 >
                   <DotLottieReact
                     ref={lottieRef}
-                    src="https://lottie.host/f0567178-ea84-435b-bbaa-2a29ecd0ea10/IPSEFbyMis.lottie"
+                    src="https://lottie.host/e2528284-e797-43ac-8628-c1df0ee3f036/SgLVhu5xS0.lottie"
                     loop={!launchingAlphabets}
                     autoplay
                     className={`w-60 h-60 transition-all duration-300 
