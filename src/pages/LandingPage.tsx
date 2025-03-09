@@ -1,6 +1,5 @@
 
 import { useNavigate } from "react-router-dom";
-import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
@@ -160,11 +159,6 @@ const LandingPage = () => {
         >
           <div className="text-white text-base sm:text-lg font-bold">123</div>
         </motion.div>
-      </div>
-      
-      {/* Robot character in bottom right - using our new 3D robot, smaller on mobile */}
-      <div className="fixed bottom-2 right-2 md:bottom-8 md:right-8 z-50 scale-75 sm:scale-100">
-        <RobotScene variant="happy" />
       </div>
 
       {/* Mobile-friendly indicators */}
