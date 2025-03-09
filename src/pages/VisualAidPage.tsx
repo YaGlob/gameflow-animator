@@ -212,9 +212,9 @@ const VisualAidPage = () => {
             {activeConnection.wordId !== null && activeConnection.imageId !== null && (
               <line
                 x1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().right}
-                y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 24}
+                y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 20}
                 x2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 60}
+                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 20}
                 stroke="white"
                 strokeWidth="2"
                 strokeDasharray="5,5"
@@ -226,9 +226,9 @@ const VisualAidPage = () => {
               <line
                 key={`connection-${id}`}
                 x1={wordsRef.current[id - 1]?.getBoundingClientRect().right}
-                y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 24}
+                y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 20}
                 x2={imagesRef.current[id - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 60}
+                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 20}
                 stroke="#4fd1c5"
                 strokeWidth="3"
               />
@@ -237,7 +237,7 @@ const VisualAidPage = () => {
 
           <div className="flex justify-between">
             {/* Words column */}
-            <div className="w-1/3 space-y-16 z-20">
+            <div className="w-1/3 space-y-8 z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`word-${item.id}`}
@@ -258,7 +258,7 @@ const VisualAidPage = () => {
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     className={cn(
-                      "w-8 h-8 rounded-full cursor-pointer ml-4 border-2 flex items-center justify-center transition-colors",
+                      "w-6 h-6 rounded-full cursor-pointer ml-4 border-2 flex items-center justify-center transition-colors",
                       completedConnections.includes(item.id) 
                         ? "bg-green-400 border-green-200" 
                         : activeConnection.wordId === item.id
@@ -274,19 +274,20 @@ const VisualAidPage = () => {
             </div>
             
             {/* Images column */}
-            <div className="w-1/2 flex flex-col justify-between z-20">
+            <div className="w-1/2 grid grid-rows-4 gap-4 z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`image-${item.id}`}
                   ref={el => imagesRef.current[item.id - 1] = el}
-                  className="flex items-center mb-6"
+                  className="flex items-center"
+                  style={{ height: '80px' }} // Fixed height for each image row
                 >
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     className={cn(
-                      "w-8 h-8 rounded-full cursor-pointer mr-4 border-2 flex items-center justify-center transition-colors",
+                      "w-6 h-6 rounded-full cursor-pointer mr-4 border-2 flex items-center justify-center transition-colors",
                       completedConnections.includes(item.id) 
                         ? "bg-green-400 border-green-200" 
                         : activeConnection.imageId === item.id
@@ -302,7 +303,7 @@ const VisualAidPage = () => {
                     initial={{ opacity: 0, scale: 0.8, x: 20 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="w-32 h-32 rounded-md overflow-hidden border-2 border-white/30"
+                    className="w-20 h-20 rounded-md overflow-hidden border-2 border-white/30"
                   >
                     <img 
                       src={item.image} 
