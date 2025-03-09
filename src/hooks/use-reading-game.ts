@@ -3,6 +3,7 @@ import { useState } from "react";
 import { READING_CONTENT } from "@/data/reading-content";
 import { RobotVariant, Question } from "@/components/reading-game/types";
 import { findQuestionById, checkIfAnswerIsCorrect, showAnswerFeedback } from "@/components/reading-game/utils";
+import { toast } from "@/hooks/use-toast";
 
 // Custom hook for reading game logic
 export const useReadingGame = () => {
