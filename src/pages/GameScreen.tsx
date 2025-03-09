@@ -132,10 +132,10 @@ const GameScreen = () => {
         </div>
       </div>
       
-      <div className="fixed bottom-4 right-4 z-50 flex flex-row-reverse items-end">
+      <div className="fixed bottom-4 right-4 z-50 flex items-end">
         {showSpeechBubble && (
-          <div className="mb-2 mr-4">
-            <SpeechBubble text={pixelSpeech} delay={0.2} position="bottom-left" />
+          <div className="mr-2">
+            <SpeechBubble text={pixelSpeech} delay={0.2} position="bottom-right" />
           </div>
         )}
         <motion.div 
