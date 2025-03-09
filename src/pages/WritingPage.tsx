@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -33,37 +34,23 @@ const WritingPage = () => {
 
   return (
     <GameLayout>
-      <div className="relative w-full mx-auto flex flex-col items-center justify-between min-h-[80vh] p-4">
-        {/* Top navigation and score - removed content and using empty div for spacing */}
+      <div className="w-full mx-auto flex flex-col items-center justify-center">
+        {/* Main content container */}
         <motion.div 
-          className="w-full flex justify-between items-center mb-6"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Empty div to maintain flex spacing */}
-          <div></div>
-          
-          {/* Empty div to maintain flex spacing */}
-          <div></div>
-        </motion.div>
-
-        {/* Main content container - Updated styling as requested */}
-        <motion.div 
-          className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30"
+          className="relative bg-[#395d6e] rounded-lg p-6 w-full shadow-lg border-2 border-blue-300/30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Score display positioned in the middle */}
+          {/* Score display */}
           <div className="absolute top-0 left-0 right-0 flex justify-center" style={{ transform: 'translateY(-50%)' }}>
             <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded shadow-lg">
               SCORE : {score.toString().padStart(2, '0')}
             </div>
           </div>
           
-          {/* Text display with reduced font size */}
-          <div className="w-full mb-6">
+          {/* Text display */}
+          <div className="w-full mb-6 mt-4">
             <TextDisplay 
               targetText={currentExercise.text}
               cursorPosition={cursorPosition}
@@ -74,7 +61,7 @@ const WritingPage = () => {
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
-          {/* Controls at the bottom of the content area */}
+          {/* Controls */}
           <div className="w-full flex justify-start items-center mt-6 gap-2">
             <Button
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl font-bold"
@@ -95,7 +82,7 @@ const WritingPage = () => {
           </div>
         </motion.div>
 
-        {/* Custom robot image with speech bubble */}
+        {/* Robot with speech bubble */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <motion.div 
             className="w-32 h-32 sm:w-40 sm:h-40"

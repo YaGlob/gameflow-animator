@@ -188,7 +188,7 @@ const VisualAidPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-6xl mx-auto pt-4 pb-20 px-4 relative">
+      <div className="w-full mx-auto relative">
         {/* Help modal */}
         {showHelp && (
           <motion.div
@@ -233,7 +233,7 @@ const VisualAidPage = () => {
         )}
 
         {/* Game area */}
-        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30">
+        <div className="relative bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
           {/* SVG for drawing lines */}
           <svg 
             ref={lineRef} 
@@ -267,9 +267,9 @@ const VisualAidPage = () => {
             ))}
           </svg>
 
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             {/* Words column */}
-            <div className="w-1/3 space-y-8 z-20">
+            <div className="w-2/5 space-y-8 z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`word-${item.id}`}
@@ -280,7 +280,7 @@ const VisualAidPage = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="text-white text-2xl md:text-3xl font-bold"
+                    className="text-white text-xl md:text-2xl font-bold"
                   >
                     {item.word}
                   </motion.div>
@@ -307,13 +307,12 @@ const VisualAidPage = () => {
             </div>
             
             {/* Images column */}
-            <div className="w-1/2 grid grid-rows-4 gap-4 z-20">
+            <div className="w-1/2 grid grid-rows-4 gap-6 z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`image-${item.id}`}
                   ref={el => imagesRef.current[item.id - 1] = el}
                   className="flex items-center"
-                  style={{ height: '80px' }} // Fixed height for each image row
                 >
                   <motion.div
                     initial={{ scale: 0 }}
@@ -349,44 +348,40 @@ const VisualAidPage = () => {
               ))}
             </div>
           </div>
-        </div>
-        
-        {/* Bottom controls - NEXT button and Help button side by side */}
-        <div className="absolute left-4 bottom-4 z-20 flex items-center gap-3">
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.8 }}
-            className="bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-2 px-8 rounded-lg transition-colors shadow-lg"
-            onClick={handleNextLevel}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            NEXT
-          </motion.button>
           
-          {/* Help button - Fixed the TypeScript error by removing motion props */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
-              onClick={toggleHelp}
+          {/* Bottom controls */}
+          <div className="mt-8 flex items-center gap-3">
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.8 }}
+              className="bg-blue-600 hover:bg-blue-500 text-white text-xl font-bold py-2 px-8 rounded-lg transition-colors shadow-lg"
+              onClick={handleNextLevel}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              ?
-            </Button>
-          </motion.div>
+              NEXT
+            </motion.button>
+            
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
+                onClick={toggleHelp}
+              >
+                ?
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Robot with speech bubble - positioned in bottom right with speech bubble to left */}
-      <div className="fixed bottom-4 right-4 z-40 flex items-end">
-        <div className="mr-3 mb-4">
-          <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
-        </div>
+      {/* Robot with speech bubble */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -400,6 +395,9 @@ const VisualAidPage = () => {
             className="w-full h-full object-contain"
           />
         </motion.div>
+        <div className="ml-3 mb-8">
+          <SpeechBubble text={robotSpeech} delay={0.2} />
+        </div>
       </div>
     </GameLayout>
   );

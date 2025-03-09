@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -40,15 +41,15 @@ const ReadingPage = () => {
 
   return (
     <GameLayout>
-      <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-between min-h-[80vh]" style={{ margin: '50px' }}>
+      <div className="relative w-full mx-auto flex flex-col items-center justify-between">
         {/* Main content container */}
         <motion.div 
-          className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 w-full"
+          className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 w-full shadow-lg border-2 border-blue-300/30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Reading content with reduced font size */}
+          {/* Reading content */}
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
@@ -59,7 +60,7 @@ const ReadingPage = () => {
             />
           )}
 
-          {/* Question container with reduced size */}
+          {/* Question container */}
           {currentStory && (
             <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {currentStory.pages[currentPage].questions.map((question, index) => (
@@ -74,9 +75,8 @@ const ReadingPage = () => {
             </div>
           )}
 
-          {/* Navigation controls with smaller spacing */}
+          {/* Navigation controls */}
           <div className="w-full flex justify-between mt-8">
-            {/* Controls on the left side */}
             <div className="flex items-center gap-3">
               <motion.button
                 className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg"
@@ -99,12 +99,11 @@ const ReadingPage = () => {
               </motion.button>
             </div>
             
-            {/* Empty div to maintain flex spacing */}
             <div></div>
           </div>
         </motion.div>
 
-        {/* Custom robot image positioned in bottom right with speech bubble */}
+        {/* Robot with speech bubble */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <motion.div 
             className="w-32 h-32 sm:w-40 sm:h-40"

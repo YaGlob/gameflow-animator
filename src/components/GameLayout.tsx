@@ -1,3 +1,4 @@
+
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -10,21 +11,21 @@ interface GameLayoutProps {
   backTo?: string;
 }
 
-const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayoutProps) => {
+const GameLayout = ({ children, showBackButton = true, backTo = "/game" }: GameLayoutProps) => {
   return (
     <div className="game-layout min-h-screen w-full relative overflow-hidden">
-      {/* Main background image - updated to fill the entire screen */}
+      {/* Main background image */}
       <div 
         className="absolute inset-0 z-[1]"
         style={{ 
           backgroundImage: "url('/images/game-background.png')", 
-          backgroundSize: "100% 100%", // Changed to fill the entire screen
+          backgroundSize: "100% 100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       />
       
-      {/* Circuit board background image - increased opacity and adjusted z-index */}
+      {/* Circuit board background image */}
       <div 
         className="absolute inset-0 z-[5]"
         style={{ 
@@ -32,26 +33,26 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.1, // Further reduced opacity
+          opacity: 0.1,
           mixBlendMode: "soft-light",
         }}
       />
       
-      {/* Particles background with lower density for game screens - moved below circuit board */}
+      {/* Particles background */}
       <div className="absolute inset-0 z-[2]">
         <SparklesCore
           id="gameParticles"
           background="transparent"
           minSize={0.4}
           maxSize={1}
-          particleDensity={30} // Reduced for mobile performance
+          particleDensity={30}
           className="w-full h-full"
           particleColor="#FFFFFF"
           speed={0.5}
         />
       </div>
       
-      {/* Back button - larger touch target for mobile with improved positioning */}
+      {/* Back button */}
       {showBackButton && (
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -69,9 +70,11 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         </motion.div>
       )}
 
-      {/* Main content with increased z-index and mobile-friendly padding */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
-        {children}
+      {/* Main content */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen py-16 px-4 sm:px-6 md:px-8">
+        <div className="w-full max-w-7xl mx-auto">
+          {children}
+        </div>
       </div>
     </div>
   );

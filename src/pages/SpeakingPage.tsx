@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -33,17 +34,17 @@ const SpeakingPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="w-full mx-auto">
         {/* Instructions modal */}
         <InstructionsModal 
           isOpen={showInstructions} 
           onClose={() => setShowInstructions(false)} 
         />
         
-        {/* Main game container with consistent styling */}
-        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30">
+        {/* Main game container */}
+        <div className="relative bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
           {/* Main content */}
-          <div className="w-full flex flex-col items-center justify-center gap-8 p-4">
+          <div className="w-full flex flex-col items-center justify-center gap-6">
             {/* Text display area */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -75,12 +76,12 @@ const SpeakingPage = () => {
               />
             </motion.div>
             
-            {/* Next button and Help button positioned at bottom left */}
+            {/* Next button and Help button */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="absolute bottom-6 left-6 flex items-center gap-3"
+              className="flex items-center gap-3 self-start mt-4"
             >
               <Button 
                 onClick={goToNextExercise}
