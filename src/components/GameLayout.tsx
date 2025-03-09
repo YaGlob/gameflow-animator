@@ -50,7 +50,7 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute top-4 left-4 z-50"
+          className="absolute top-6 left-6 z-50"
         >
           <Link 
             to={backTo} 
@@ -62,8 +62,8 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         </motion.div>
       )}
 
-      {/* Main content with increased z-index and panel background opacity */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
+      {/* Main content with increased z-index and panel background opacity - adjusted padding to 30px */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-7">
         {children}
       </div>
     </div>

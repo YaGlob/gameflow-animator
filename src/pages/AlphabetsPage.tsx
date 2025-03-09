@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -80,13 +79,13 @@ const AlphabetsPage = () => {
         }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border-2 border-white rounded-md transition-colors cursor-pointer",
+          "flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-white rounded-md transition-colors cursor-pointer",
           "bg-slate-800 hover:bg-slate-700",
           isSelected && "ring-4 ring-blue-400 bg-blue-800 hover:bg-blue-700"
         )}
         onClick={() => handleLetterClick(letter)}
       >
-        <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+        <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
           {letter.uppercase}{letter.lowercase}
         </span>
       </motion.div>
@@ -95,82 +94,80 @@ const AlphabetsPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
-        {/* Removed the Alphabet Adventure heading */}
-        
-        {/* Main content container box with specified properties */}
-        <div className="w-full p-6 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
-          {/* Alphabet grid - increased columns and reduced gap */}
-          <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-9 gap-2 w-full">
+      <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
+        {/* Main content container box with specified properties - reduced padding for more space */}
+        <div className="w-full p-4 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
+          {/* Alphabet grid - optimized number of columns for larger tiles */}
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Selected letter detail modal */}
-        {showLetterDetail && selectedLetter && (
+      {/* Selected letter detail modal */}
+      {showLetterDetail && selectedLetter && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        >
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeLetterDetail}></div>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="bg-slate-800 border-2 border-blue-400 rounded-xl p-6 max-w-md w-full relative z-10"
           >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeLetterDetail}></div>
-            <motion.div
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-slate-800 border-2 border-blue-400 rounded-xl p-6 max-w-md w-full relative z-10"
-            >
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-4xl font-bold text-white">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-4xl font-bold text-white">
+                {selectedLetter.uppercase}{selectedLetter.lowercase}
+              </h2>
+              <button 
+                onClick={closeLetterDetail}
+                className="text-white hover:text-blue-300 text-2xl"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="text-center">
+                <span className="text-8xl font-bold bg-gradient-to-br from-blue-300 to-purple-400 bg-clip-text text-transparent">
                   {selectedLetter.uppercase}{selectedLetter.lowercase}
-                </h2>
-                <button 
-                  onClick={closeLetterDetail}
-                  className="text-white hover:text-blue-300 text-2xl"
-                >
-                  ×
-                </button>
+                </span>
               </div>
               
-              <div className="space-y-4">
-                <div className="text-center">
-                  <span className="text-8xl font-bold bg-gradient-to-br from-blue-300 to-purple-400 bg-clip-text text-transparent">
-                    {selectedLetter.uppercase}{selectedLetter.lowercase}
-                  </span>
-                </div>
-                
-                <div className="space-y-2 mt-4">
-                  <h3 className="text-xl text-blue-300 font-semibold">Examples:</h3>
-                  <ul className="space-y-2">
-                    {selectedLetter.examples?.map((example, i) => (
-                      <motion.li 
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + (i * 0.1) }}
-                        className="text-lg text-white flex items-center"
-                      >
-                        <span className="text-blue-400 mr-2">•</span> {example}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-6 w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg"
-                  onClick={closeLetterDetail}
-                >
-                  Continue Exploring
-                </motion.button>
+              <div className="space-y-2 mt-4">
+                <h3 className="text-xl text-blue-300 font-semibold">Examples:</h3>
+                <ul className="space-y-2">
+                  {selectedLetter.examples?.map((example, i) => (
+                    <motion.li 
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + (i * 0.1) }}
+                      className="text-lg text-white flex items-center"
+                    >
+                      <span className="text-blue-400 mr-2">•</span> {example}
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
-            </motion.div>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-6 w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg"
+                onClick={closeLetterDetail}
+              >
+                Continue Exploring
+              </motion.button>
+            </div>
           </motion.div>
-        )}
-      </div>
+        </motion.div>
+      )}
 
       {/* Robot with speech bubble */}
       <div className="fixed bottom-4 right-4 z-40">
