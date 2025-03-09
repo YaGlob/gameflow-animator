@@ -28,19 +28,20 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         />
       </div>
       
-      {/* Circuit board background with gradient overlay */}
+      {/* New circuit board background image with gradient overlay */}
       <div 
-        className="absolute inset-0 z-1 opacity-30"
+        className="absolute inset-0 z-1 opacity-25 bg-blend-overlay"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/d5427a2d-db99-40dc-98f1-1ce26f183ab3.png')", 
+          backgroundImage: "url('/lovable-uploads/d6ab7bc7-4b5b-4cc8-8c05-42cec66a7fc4.png')", 
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundBlendMode: "overlay",
+          backgroundRepeat: "no-repeat",
+          mixBlendMode: "soft-light",
         }}
       />
       
-      {/* Animated grid lines */}
-      <div className="absolute inset-0 z-1 opacity-20 bg-[linear-gradient(to_right,#4fd1ff_1px,transparent_1px),linear-gradient(to_bottom,#4fd1ff_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
+      {/* Animated grid lines with reduced opacity */}
+      <div className="absolute inset-0 z-1 opacity-10 bg-[linear-gradient(to_right,#4fd1ff_1px,transparent_1px),linear-gradient(to_bottom,#4fd1ff_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
       
       {/* Back button - larger touch target for mobile */}
       {showBackButton && (
@@ -60,7 +61,7 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         </motion.div>
       )}
 
-      {/* Main content */}
+      {/* Main content with increased z-index and panel background opacity */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 sm:p-6">
         {children}
       </div>
