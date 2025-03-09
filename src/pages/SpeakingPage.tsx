@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
-import Robot from "@/components/Robot";
 import SpeechBubble from "@/components/SpeechBubble";
 import TextDisplay from "@/components/speaking-game/TextDisplay";
 import GameControls from "@/components/speaking-game/GameControls";
 import InstructionsModal from "@/components/speaking-game/InstructionsModal";
 import { motion } from "framer-motion";
 import RobotScene from "@/components/RobotScene";
+import { Button } from "@/components/ui/button";
 
 const SpeakingPage = () => {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -66,14 +66,28 @@ const SpeakingPage = () => {
                 onPlayAudio={playAudio}
                 isAudioPlaying={isAudioPlaying}
                 onNext={goToNextExercise}
-                onBack={goToPreviousExercise}
                 onHelp={() => setShowInstructions(true)}
               />
+            </motion.div>
+            
+            {/* Next button positioned at bottom left */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="absolute bottom-6 left-6"
+            >
+              <Button 
+                onClick={goToNextExercise}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase"
+              >
+                NEXT
+              </Button>
             </motion.div>
           </div>
         </div>
         
-        {/* Robot with speech bubble - Updated to match design in image */}
+        {/* Robot with speech bubble */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <RobotScene variant="normal" />
           <div className="ml-3 mb-8">

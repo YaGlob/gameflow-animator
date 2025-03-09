@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 import { 
   Play, 
   Pause, 
-  SkipBack, 
-  SkipForward, 
   Volume2, 
   HelpCircle 
 } from "lucide-react";
@@ -18,7 +16,6 @@ interface GameControlsProps {
   onPlayAudio: () => void;
   isAudioPlaying: boolean;
   onNext: () => void;
-  onBack: () => void;
   onHelp: () => void;
 }
 
@@ -29,7 +26,6 @@ const GameControls: FC<GameControlsProps> = ({
   onPlayAudio,
   isAudioPlaying,
   onNext,
-  onBack,
   onHelp,
 }) => {
   return (
@@ -82,22 +78,8 @@ const GameControls: FC<GameControlsProps> = ({
           </Button>
         </motion.div>
       </div>
-
-      {/* Navigation buttons */}
-      <div className="flex gap-4 mt-6">
-        <Button 
-          onClick={onNext}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase"
-        >
-          NEXT
-        </Button>
-        <Button 
-          onClick={onHelp}
-          className="bg-blue-500/50 hover:bg-blue-600/50 text-white w-12 h-12 rounded-full flex items-center justify-center p-0"
-        >
-          ?
-        </Button>
-      </div>
+      
+      {/* Removed the Navigation buttons section with the Help button */}
     </div>
   );
 };
