@@ -39,9 +39,9 @@ const LandingPage = () => {
 
       {/* Content container - moved the play button up by 20px */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
-        {/* Curved neon title with gradients - increased z-index to bring to front */}
+        {/* Curved neon title with gradients - enhanced neon effect */}
         <motion.div 
-          className="mb-8 md:mb-16 relative z-30"
+          className="mb-8 md:mb-16 relative z-40"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -55,19 +55,35 @@ const LandingPage = () => {
                 <stop offset="50%" stopColor="#ffffff" />
                 <stop offset="100%" stopColor="#4fd1ff" />
               </linearGradient>
+              
+              {/* Enhanced filters for better neon effect */}
+              <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feFlood floodColor="#4fd1ff" result="flood" />
+                <feComposite in="flood" in2="SourceGraphic" operator="in" result="mask" />
+                <feGaussianBlur in="mask" stdDeviation="5" result="blurred" />
+                <feComposite in="SourceGraphic" in2="blurred" operator="over" />
+              </filter>
             </defs>
             
-            {/* Glow effects behind the text */}
+            {/* Multiple glow layers for enhanced effect */}
             <text>
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
-                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-200 filter blur-lg opacity-70">
+                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-200 filter blur-xl opacity-70">
                   Letter Venture
                 </tspan>
               </textPath>
             </text>
             
-            {/* Actual text that follows the path */}
             <text>
+              <textPath href="#textArc" textAnchor="middle" startOffset="50%">
+                <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-blue-300 filter blur-md opacity-80">
+                  Letter Venture
+                </tspan>
+              </textPath>
+            </text>
+            
+            {/* Actual text that follows the path - with enhanced styling */}
+            <text filter="url(#neonGlow)">
               <textPath href="#textArc" textAnchor="middle" startOffset="50%">
                 <tspan className="text-[28px] md:text-[45px] font-bold tracking-wider fill-[url(#titleGradient)]">
                   Letter Venture
@@ -76,10 +92,11 @@ const LandingPage = () => {
             </text>
           </svg>
           
-          {/* Neon animation effects */}
-          <div className="absolute inset-0 w-full h-full opacity-60">
-            <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-20"></div>
-            <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-20" style={{animationDelay: "0.5s"}}></div>
+          {/* Enhanced neon animation effects */}
+          <div className="absolute inset-0 w-full h-full opacity-80">
+            <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-30"></div>
+            <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-30" style={{animationDelay: "0.5s"}}></div>
+            <div className="absolute inset-0 bg-white blur-md animate-pulse-glow opacity-20" style={{animationDelay: "0.8s"}}></div>
           </div>
         </motion.div>
 
