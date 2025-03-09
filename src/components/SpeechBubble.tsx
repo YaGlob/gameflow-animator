@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 interface SpeechBubbleProps {
   text: string;
   delay?: number;
-  position?: "top-right" | "bottom-left";
+  position?: "top-right" | "bottom-left" | "bottom-right";
 }
 
 const SpeechBubble: FC<SpeechBubbleProps> = ({
   text,
   delay = 0,
-  position = "top-right"
+  position = "bottom-left"
 }) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -34,15 +34,31 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
   }, [text]);
 
   // Determine bubble tail direction and styling based on position
-  const bubbleStyles = position === "bottom-left" 
-    ? {
-        containerClass: "relative max-w-xs",
-        tailClass: "absolute w-3 h-3 bg-white transform rotate-45 left-0 top-1/2 -translate-x-1/2" // Left pointing tail
-      }
-    : {
-        containerClass: "relative max-w-xs",
-        tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2" // Right pointing tail
-      };
+  const getBubbleStyles = () => {
+    switch (position) {
+      case "bottom-left":
+        return {
+          containerClass: "relative max-w-xs",
+          bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-8 bottom-0 translate-y-1/2" // Bottom right pointing tail
+        };
+      case "bottom-right":
+        return {
+          containerClass: "relative max-w-xs",
+          bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 left-8 bottom-0 translate-y-1/2" // Bottom left pointing tail
+        };
+      case "top-right":
+      default:
+        return {
+          containerClass: "relative max-w-xs",
+          bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2" // Right pointing tail
+        };
+    }
+  };
+
+  const bubbleStyles = getBubbleStyles();
 
   return (
     <motion.div 
@@ -60,7 +76,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         delay
       }}
     >
-      <div className="bg-white p-3 rounded-xl shadow-lg relative">
+      <div className={bubbleStyles.bubbleClass}>
         <p className="text-black text-sm font-verdana text-center">
           {displayText}
         </p>
