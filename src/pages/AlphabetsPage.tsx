@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -164,11 +165,12 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      <div className="fixed bottom-4 right-8 z-40 flex flex-row items-end">
-        <div className="mr-3 mb-8">
+      {/* Repositioned Robot with speech bubble to the left side of the robot */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+        <RobotScene variant={selectedLetter ? "happy" : "normal"} />
+        <div className="ml-3 mb-8">
           <SpeechBubble text={robotSpeech} delay={0.2} />
         </div>
-        <RobotScene variant={selectedLetter ? "happy" : "normal"} />
       </div>
     </GameLayout>
   );

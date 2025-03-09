@@ -1,4 +1,3 @@
-
 import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -33,7 +32,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
 
   return (
     <motion.div 
-      className="relative max-w-xs" // Reduced max-width from max-w-sm to max-w-xs
+      className="relative max-w-xs"
       initial={{
         opacity: 0,
         scale: 0.8
@@ -47,12 +46,12 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         delay
       }}
     >
-      <div className="bg-white p-3 rounded-xl shadow-lg relative"> {/* Removed border-2 border-red-500 and reduced padding */}
-        <p className="text-black text-sm font-verdana text-center"> {/* Reduced text size from text-base to text-sm */}
+      <div className="bg-white p-3 rounded-xl shadow-lg relative">
+        <p className="text-black text-sm font-verdana text-center">
           {displayText}
         </p>
         
-        {/* Blue outline effect (changed from red) */}
+        {/* Blue outline effect */}
         <motion.div 
           className="absolute inset-0 -z-10 rounded-xl" 
           animate={{
@@ -65,8 +64,8 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
           }} 
         />
         
-        {/* Speech bubble tail - repositioned to point right toward the robot from the left */}
-        <div className="absolute w-3 h-3 bg-white transform rotate-45 top-1/2 -right-1.5"></div> {/* Removed border and made smaller */}
+        {/* Speech bubble tail - pointing to the right (toward the robot) */}
+        <div className="absolute w-3 h-3 bg-white transform rotate-45 top-1/2 -left-1.5"></div>
       </div>
     </motion.div>
   );
