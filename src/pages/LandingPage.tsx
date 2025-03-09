@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
@@ -6,6 +5,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
 import LottieAstronaut from "@/components/LottieAstronaut";
+import { Boxes } from "@/components/ui/background-boxes";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -45,7 +45,6 @@ const LandingPage = () => {
           <svg className="w-[320px] h-[100px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
               <path id="textArc" d="M 20,100 Q 240,30 460,100" fill="none" />
-              {/* Add gradient for text */}
               <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#4fd1ff" />
                 <stop offset="50%" stopColor="#ffffff" />
@@ -82,7 +81,7 @@ const LandingPage = () => {
         {/* Play button - slightly smaller on mobile */}
         <motion.button 
           onClick={() => navigate("/game")}
-          className="relative bg-blue-500 text-white rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none"
+          className="relative bg-blue-500 text-white rounded-full w-20 h-20 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
           aria-label="Play game"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -98,6 +97,12 @@ const LandingPage = () => {
             <Play size={30} fill="white" className="ml-2 md:ml-2 md:size-[40px]" />
           </div>
         </motion.button>
+
+        {/* Grid Box Background */}
+        <div className="absolute bottom-0 left-0 w-full h-2/3 overflow-hidden z-10">
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
+          <Boxes className="scale-125 z-10" />
+        </div>
 
         {/* Educational elements floating */}
         <div className="absolute top-1/4 left-10 md:left-20 hidden sm:block">
@@ -123,8 +128,6 @@ const LandingPage = () => {
             <div className="text-white text-lg font-bold">123</div>
           </motion.div>
         </div>
-
-        {/* Removed the yellow/orange div that was here */}
       </div>
       
       {/* Robot character in bottom right - using our new 3D robot */}
