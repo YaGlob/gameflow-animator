@@ -100,8 +100,8 @@ const LandingPage = () => {
         </motion.button>
       </div>
 
-      {/* Grid Box Background - Repositioned to cover entire bottom half */}
-      <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden z-10">
+      {/* Grid Box Background - Adjusted to be 30px smaller in height */}
+      <div className="absolute bottom-0 left-0 w-full h-[calc(50%-30px)] overflow-hidden z-10">
         {/* Gradient overlay for better visibility of elements above the grid */}
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
         <Boxes className="scale-150 z-10" />
