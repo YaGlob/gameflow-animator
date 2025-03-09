@@ -165,10 +165,10 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      {/* Repositioned Robot with speech bubble to the left side of the robot */}
-      <div className="fixed bottom-2 right-2 sm:bottom-4 sm:right-8 z-40 flex flex-row-reverse items-end scale-75 sm:scale-100">
+      {/* Updated Robot with speech bubble - positioned in bottom right with speech bubble to the left */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <RobotScene variant={selectedLetter ? "happy" : "normal"} />
-        <div className="ml-3 mb-8 mobile-speech-bubble">
+        <div className="ml-3 mb-8">
           <SpeechBubble text={robotSpeech} delay={0.2} />
         </div>
       </div>
