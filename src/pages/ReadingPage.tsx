@@ -99,14 +99,13 @@ const ReadingPage = () => {
           </div>
         </motion.div>
 
-        {/* 3D Robot character positioned in bottom left with speech bubble */}
-        <div className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50 flex items-end">
+        {/* 3D Robot character positioned in bottom right with speech bubble */}
+        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-end">
           {showSpeechBubble && (
-            <div className="mb-2 mr-2">
+            <div className="mb-2">
               <SpeechBubble 
                 text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
                 delay={0.2}
-                position="bottom-left"
               />
             </div>
           )}
