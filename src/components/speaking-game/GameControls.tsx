@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { 
   Play, 
   Pause, 
-  Volume2, 
-  HelpCircle 
+  Volume2
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -30,18 +29,6 @@ const GameControls: FC<GameControlsProps> = ({
 }) => {
   return (
     <div className="w-full flex flex-col items-center gap-6">
-      {/* Help button */}
-      <div className="self-start">
-        <Button
-          onClick={onHelp}
-          variant="outline"
-          size="icon"
-          className="bg-blue-500/30 hover:bg-blue-500/50 border-none rounded-full text-white"
-        >
-          <HelpCircle className="h-6 w-6" />
-        </Button>
-      </div>
-      
       {/* Main controls */}
       <div className="flex items-center justify-center gap-4 w-full">
         {/* Play/Pause button */}
@@ -78,8 +65,6 @@ const GameControls: FC<GameControlsProps> = ({
           </Button>
         </motion.div>
       </div>
-      
-      {/* Removed the Navigation buttons section with the Help button */}
     </div>
   );
 };

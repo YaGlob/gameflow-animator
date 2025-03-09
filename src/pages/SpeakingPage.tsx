@@ -9,6 +9,7 @@ import InstructionsModal from "@/components/speaking-game/InstructionsModal";
 import { motion } from "framer-motion";
 import RobotScene from "@/components/RobotScene";
 import { Button } from "@/components/ui/button";
+import { HelpCircle } from "lucide-react";
 
 const SpeakingPage = () => {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -70,18 +71,27 @@ const SpeakingPage = () => {
               />
             </motion.div>
             
-            {/* Next button positioned at bottom left */}
+            {/* Next button and Help button positioned at bottom left */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="absolute bottom-6 left-6"
+              className="absolute bottom-6 left-6 flex items-center gap-3"
             >
               <Button 
                 onClick={goToNextExercise}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase"
               >
                 NEXT
+              </Button>
+              
+              <Button
+                onClick={() => setShowInstructions(true)}
+                variant="outline"
+                size="icon"
+                className="bg-blue-500/30 hover:bg-blue-500/50 border-none rounded-full text-white h-12 w-12"
+              >
+                <HelpCircle className="h-6 w-6" />
               </Button>
             </motion.div>
           </div>
