@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
@@ -97,37 +98,38 @@ const LandingPage = () => {
             <Play size={30} fill="white" className="ml-2 md:ml-2 md:size-[40px]" />
           </div>
         </motion.button>
+      </div>
 
-        {/* Grid Box Background */}
-        <div className="absolute bottom-0 left-0 w-full h-2/3 overflow-hidden z-10">
-          <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
-          <Boxes className="scale-125 z-10" />
-        </div>
+      {/* Grid Box Background - Repositioned to cover entire bottom half */}
+      <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden z-10">
+        {/* Gradient overlay for better visibility of elements above the grid */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
+        <Boxes className="scale-150 z-10" />
+      </div>
 
-        {/* Educational elements floating */}
-        <div className="absolute top-1/4 left-10 md:left-20 hidden sm:block">
-          <motion.div 
-            className="bg-gradient-to-r from-blue-400/30 to-purple-400/30 backdrop-blur-sm p-3 rounded-lg border border-blue-300/30"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
-          >
-            <div className="text-white text-lg font-bold">ABC</div>
-          </motion.div>
-        </div>
+      {/* Educational elements floating */}
+      <div className="absolute top-1/4 left-10 md:left-20 hidden sm:block">
+        <motion.div 
+          className="bg-gradient-to-r from-blue-400/30 to-purple-400/30 backdrop-blur-sm p-3 rounded-lg border border-blue-300/30"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
+        >
+          <div className="text-white text-lg font-bold">ABC</div>
+        </motion.div>
+      </div>
 
-        <div className="absolute top-1/3 right-10 md:right-20 hidden sm:block">
-          <motion.div 
-            className="bg-gradient-to-r from-green-400/30 to-teal-400/30 backdrop-blur-sm p-3 rounded-lg border border-green-300/30"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
-          >
-            <div className="text-white text-lg font-bold">123</div>
-          </motion.div>
-        </div>
+      <div className="absolute top-1/3 right-10 md:right-20 hidden sm:block">
+        <motion.div 
+          className="bg-gradient-to-r from-green-400/30 to-teal-400/30 backdrop-blur-sm p-3 rounded-lg border border-green-300/30"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
+        >
+          <div className="text-white text-lg font-bold">123</div>
+        </motion.div>
       </div>
       
       {/* Robot character in bottom right - using our new 3D robot */}
