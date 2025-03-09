@@ -46,14 +46,14 @@ const ReadingPage = () => {
           )}
         </div>
 
-        {/* Main content container */}
+        {/* Main content container - Updated with new styling */}
         <motion.div 
-          className="w-full bg-[#395d6e] backdrop-blur-md rounded-xl p-6 mt-4 flex flex-col items-center shadow-lg border border-cyan-300/30"
+          className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Reading content */}
+          {/* Reading content with reduced font size */}
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
@@ -61,9 +61,9 @@ const ReadingPage = () => {
             />
           )}
 
-          {/* Question container */}
+          {/* Question container with reduced size */}
           {currentStory && (
-            <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
               {currentStory.pages[currentPage].questions.map((question, index) => (
                 <QuestionContainer
                   key={index}
@@ -76,10 +76,10 @@ const ReadingPage = () => {
             </div>
           )}
 
-          {/* Navigation controls */}
-          <div className="w-full flex justify-between mt-8">
+          {/* Navigation controls with smaller spacing */}
+          <div className="w-full flex justify-between mt-6">
             <motion.button
-              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg"
+              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md font-bold text-base shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={handlePreviousPage}
@@ -90,7 +90,7 @@ const ReadingPage = () => {
             </motion.button>
 
             <motion.button
-              className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full font-bold text-lg shadow-lg"
+              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-base shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={toggleInstructions}
@@ -99,7 +99,7 @@ const ReadingPage = () => {
             </motion.button>
 
             <motion.button
-              className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg"
+              className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md font-bold text-base shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleNextPage}

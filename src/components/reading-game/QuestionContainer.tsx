@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Answer, Question } from "./types";
@@ -30,13 +31,13 @@ const QuestionContainer = ({
   };
 
   return (
-    <div className="bg-[#395d6e] shadow-inner rounded-lg p-4 border-l-2 border-cyan-300/50">
-      <h3 className="text-white font-bold mb-3">{question.text}</h3>
-      <div className="space-y-2">
+    <div className="bg-[#395d6e] shadow-inner rounded-lg p-3 border-l-2 border-cyan-300/50">
+      <h3 className="text-white font-bold mb-2 text-sm">{question.text}</h3>
+      <div className="space-y-1.5">
         {question.answers.map((answer) => (
           <motion.div
             key={answer.id}
-            className={`p-2 rounded cursor-pointer transition-colors ${
+            className={`p-1.5 rounded cursor-pointer transition-colors text-xs ${
               selectedAnswer === answer.id
                 ? isCorrect
                   ? "bg-green-500 text-white"
