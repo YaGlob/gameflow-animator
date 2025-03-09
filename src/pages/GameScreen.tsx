@@ -100,7 +100,7 @@ const GameScreen = () => {
                   </div>
                 </Link>
                 
-                {/* Alphabets label with animation */}
+                {/* Launching label with animation */}
                 <AnimatePresence>
                   {launchingAlphabets && (
                     <motion.div 
@@ -118,12 +118,12 @@ const GameScreen = () => {
                 </AnimatePresence>
               </motion.div>
               
-              {/* New position for ALPHABETS text - below the rocket */}
+              {/* New position for ALPHABETS text - below the rocket, but moved 20px up */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="mt-2 sm:mt-4"
+                className="mt-2 sm:mt-4 -translate-y-5" // Added -translate-y-5 to move up by 20px
               >
                 <span className="text-sm sm:text-lg font-bold text-black bg-white/90 px-3 sm:px-4 py-1 sm:py-2 rounded-full shadow-md">
                   ALPHABETS
