@@ -139,12 +139,12 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Grid Background Image - expanded to cover more of the screen */}
-      <div className="absolute bottom-0 left-0 w-full h-[70%] overflow-hidden z-10">
+      {/* Grid Background Image - reduced height by 40px from the top (changed from 70% to 60%) */}
+      <div className="absolute bottom-0 left-0 w-full h-[60%] overflow-hidden z-10">
         {/* Gradient overlay for better visibility of elements above the grid - adjusted to be more subtle */}
         <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-950/70 to-blue-950/90 z-20 pointer-events-none" />
         
-        {/* Grid image - expanded height and positioning */}
+        {/* Grid image - adjusted height and positioning */}
         <div className="w-full h-full">
           <img 
             src="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" 
