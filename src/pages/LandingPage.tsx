@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 import { SparklesCore } from "@/components/ui/sparkles";
@@ -111,10 +110,10 @@ const LandingPage = () => {
         </motion.div>
       </div>
 
-      {/* Play button - moved 25px more to the left */}
+      {/* Play button - moved 15px more to the left */}
       <motion.button 
         onClick={handlePlayClick}
-        className="absolute left-[calc(50%-50px)] top-[calc(50%+20px)] transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-40"
+        className="absolute left-[calc(50%-65px)] top-[calc(50%+20px)] transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-40"
         aria-label="Play game"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
