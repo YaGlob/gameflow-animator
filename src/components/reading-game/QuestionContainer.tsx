@@ -11,6 +11,7 @@ interface Question {
   id: string;
   text: string;
   answers: Answer[];
+  correctAnswerId: string; // Added this property to fix the TypeScript error
 }
 
 interface QuestionContainerProps {
