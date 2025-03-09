@@ -53,7 +53,7 @@ const GameControls: FC<GameControlsProps> = ({
           <Button 
             onClick={onTogglePlayPause} 
             size="icon"
-            className="h-16 w-16 rounded-full bg-blue-500 hover:bg-blue-600 text-white"
+            className="h-16 w-16 rounded-full bg-blue-500/70 hover:bg-blue-600/70 text-white"
           >
             {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
           </Button>
@@ -76,7 +76,7 @@ const GameControls: FC<GameControlsProps> = ({
             onClick={onPlayAudio} 
             size="icon"
             disabled={isAudioPlaying}
-            className="h-16 w-16 rounded-full bg-blue-500 hover:bg-blue-600 text-white"
+            className="h-16 w-16 rounded-full bg-blue-500/70 hover:bg-blue-600/70 text-white"
           >
             <Volume2 className="h-8 w-8" />
           </Button>
@@ -87,15 +87,15 @@ const GameControls: FC<GameControlsProps> = ({
       <div className="flex gap-4 mt-6">
         <Button 
           onClick={onNext}
-          className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-2 text-xl"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase"
         >
           NEXT
         </Button>
         <Button 
-          onClick={onBack}
-          className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-2 text-xl"
+          onClick={onHelp}
+          className="bg-blue-500/50 hover:bg-blue-600/50 text-white w-12 h-12 rounded-full flex items-center justify-center p-0"
         >
-          BACK
+          ?
         </Button>
       </div>
     </div>

@@ -73,7 +73,7 @@ const SpeakingPage = () => {
           </div>
         </div>
         
-        {/* Robot with speech bubble - Updated to match other pages */}
+        {/* Robot with speech bubble - Updated to match design in image */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <RobotScene variant="normal" />
           <div className="ml-3 mb-8">
