@@ -82,8 +82,8 @@ const RobotModel: FC<{
             attach="map"
             url={getModelPath()}
             colorSpace={THREE.SRGBColorSpace}
-            onUpdate={(texture) => {
-              texture.needsUpdate = true;
+            onUpdate={(self) => {
+              self.needsUpdate = true;
             }}
           />
         </meshStandardMaterial>
