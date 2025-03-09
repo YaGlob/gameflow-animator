@@ -34,19 +34,7 @@ const ReadingPage = () => {
   return (
     <GameLayout>
       <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-between min-h-[80vh]">
-        {/* Robot with speech bubble */}
-        <div className="absolute top-4 right-4 z-50 flex flex-col items-end">
-          {showSpeechBubble && (
-            <div className="mb-2">
-              <SpeechBubble 
-                text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
-                delay={0.2} 
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Main content container - Updated with new styling */}
+        {/* Main content container */}
         <motion.div 
           className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30"
           initial={{ opacity: 0, y: 20 }}
@@ -111,8 +99,17 @@ const ReadingPage = () => {
           </div>
         </motion.div>
 
-        {/* 3D Robot character positioned in bottom right */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
+        {/* 3D Robot character positioned in bottom left with speech bubble */}
+        <div className="fixed bottom-4 left-4 md:bottom-8 md:left-8 z-50 flex items-end">
+          {showSpeechBubble && (
+            <div className="mb-2 mr-2">
+              <SpeechBubble 
+                text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
+                delay={0.2}
+                position="bottom-left"
+              />
+            </div>
+          )}
           <RobotScene variant={robotVariant} />
         </div>
 

@@ -5,11 +5,13 @@ import { motion } from "framer-motion";
 interface SpeechBubbleProps {
   text: string;
   delay?: number;
+  position?: "top-right" | "bottom-left";
 }
 
 const SpeechBubble: FC<SpeechBubbleProps> = ({
   text,
-  delay = 0
+  delay = 0,
+  position = "top-right"
 }) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,9 +33,20 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
     setCurrentIndex(0);
   }, [text]);
 
+  // Determine bubble tail direction and styling based on position
+  const bubbleStyles = position === "bottom-left" 
+    ? {
+        containerClass: "relative max-w-xs",
+        tailClass: "absolute w-3 h-3 bg-white transform rotate-45 left-0 top-1/2 -translate-x-1/2" // Left pointing tail
+      }
+    : {
+        containerClass: "relative max-w-xs",
+        tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2" // Right pointing tail
+      };
+
   return (
     <motion.div 
-      className="relative max-w-xs"
+      className={bubbleStyles.containerClass}
       initial={{
         opacity: 0,
         scale: 0.8
@@ -65,8 +78,8 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
           }} 
         />
         
-        {/* Speech bubble tail - pointing to the right (toward the robot) */}
-        <div className="absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2"></div>
+        {/* Speech bubble tail - direction depends on position prop */}
+        <div className={bubbleStyles.tailClass}></div>
       </div>
     </motion.div>
   );
