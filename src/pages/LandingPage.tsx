@@ -25,6 +25,18 @@ const LandingPage = () => {
         />
       </div>
       
+      {/* New abstract image in top left corner */}
+      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-30 w-32 h-32 md:w-48 md:h-48">
+        <motion.img 
+          src="/lovable-uploads/312be9c1-6dc4-4ed8-9ec0-4205fa0b3791.png"
+          alt="Abstract line art"
+          className="w-full h-full object-contain"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+      </div>
+      
       {/* Planet images in top right corner - increased size */}
       <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30 w-32 h-32 md:w-48 md:h-48">
         <motion.img 
