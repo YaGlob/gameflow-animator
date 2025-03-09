@@ -53,7 +53,7 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
       {rows.map((row, rowIndex) => (
         <motion.div
           key={`row-${rowIndex}`}
-          className="flex justify-center gap-2 mb-4"
+          className="flex justify-center gap-1 mb-3"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -61,7 +61,7 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
           {row.map((key) => (
             <motion.button
               key={key}
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border border-white/30 text-white text-2xl font-bold backdrop-blur-sm bg-[#1e3e4a]"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border border-white/30 text-white text-lg font-bold backdrop-blur-sm bg-[#1e3e4a]"
               onClick={() => onKeyPress(key)}
               variants={keyVariants}
               whileHover="hover"

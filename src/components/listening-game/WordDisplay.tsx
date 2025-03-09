@@ -13,7 +13,7 @@ const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) 
     <div className="relative w-full mt-6 mb-6">
       <div className="flex items-center justify-center">
         <motion.div 
-          className="w-full max-w-md h-12 bg-transparent border-b-4 border-cyan-400 flex items-center justify-center text-white text-3xl"
+          className="w-full max-w-md h-12 bg-transparent border-b-4 border-cyan-400 flex items-center justify-center text-white text-2xl"
           animate={{ 
             borderColor: gameCompleted && isCorrect
               ? ["#4fd1ff", "#50ff8d", "#4fd1ff"] 

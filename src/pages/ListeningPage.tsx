@@ -38,7 +38,7 @@ const ListeningPage = () => {
     <GameLayout>
       <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-between min-h-[80vh]">
         {/* Main game container - updated styling */}
-        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center">
+        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30">
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
