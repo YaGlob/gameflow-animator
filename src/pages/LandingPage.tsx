@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
 import LottieAstronaut from "@/components/LottieAstronaut";
 import { Boxes } from "@/components/ui/background-boxes";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const LandingPage = () => {
   const navigate = useNavigate();
