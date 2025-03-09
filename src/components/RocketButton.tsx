@@ -1,7 +1,8 @@
 
-import { FC, useState } from "react";
+import { FC, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 interface RocketButtonProps {
   text: string;
@@ -17,9 +18,17 @@ const RocketButton: FC<RocketButtonProps> = ({
   direction = "left" 
 }) => {
   const [isLaunching, setIsLaunching] = useState(false);
+  const lottieRef = useRef<any>(null);
 
   const handleClick = () => {
     setIsLaunching(true);
+    
+    // Play the animation at higher speed to show launching
+    if (lottieRef.current) {
+      lottieRef.current.play();
+      lottieRef.current.setSpeed(2); // Increase animation speed
+    }
+    
     // The Link navigation will happen automatically after the animation plays
   };
 
@@ -38,7 +47,7 @@ const RocketButton: FC<RocketButtonProps> = ({
     >
       <Link to={to} className="block">
         <div className={`flex items-center ${direction === "right" ? "flex-row-reverse" : "flex-row"}`}>
-          {/* Rocket with animation */}
+          {/* Lottie Rocket with animation - rotated 90 degrees */}
           <motion.div 
             className="relative z-10"
             animate={isLaunching ? { 
@@ -47,27 +56,26 @@ const RocketButton: FC<RocketButtonProps> = ({
               transition: { duration: 0.5 }
             } : {}}
           >
-            <svg width="90" height="50" viewBox="0 0 90 50" className="fill-white stroke-[1.5] stroke-red-500">
-              {/* Rocket body */}
-              <rect x="20" y="10" width="40" height="30" rx="5" />
-              {/* Rocket nose */}
-              <polygon points="15,25 20,10 20,40" fill="red" stroke="none" />
-              {/* Window */}
-              <circle cx="35" cy="25" r="7" fill="cyan" stroke="gray" />
-              {/* Fins */}
-              <polygon points="60,5 70,5 60,15" fill="red" stroke="none" />
-              <polygon points="60,45 70,45 60,35" fill="red" stroke="none" />
-            </svg>
+            <div className="w-24 h-24" style={{ transform: 'rotate(-90deg)' }}>
+              <DotLottieReact
+                ref={lottieRef}
+                src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
+                loop={!isLaunching}
+                autoplay
+                className="w-full h-full"
+              />
+            </div>
             
             {/* Fire animation that shows when launching */}
             <AnimatePresence>
               {isLaunching && (
                 <motion.div 
-                  className={`absolute ${direction === "left" ? "right-full -mr-2" : "left-full -ml-2"} top-1/2 -translate-y-1/2`}
-                  initial={{ width: 0, opacity: 0 }}
-                  animate={{ width: 40, opacity: 1 }}
-                  exit={{ width: 0, opacity: 0 }}
+                  className={`absolute ${direction === "left" ? "bottom-0 left-1/2 -translate-x-1/2" : "bottom-0 left-1/2 -translate-x-1/2"}`}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 40, opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  style={{ transform: direction === "left" ? 'rotate(-90deg)' : 'rotate(90deg)' }}
                 >
                   <svg width="40" height="30" viewBox="0 0 40 30">
                     <path
