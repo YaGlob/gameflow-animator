@@ -161,6 +161,43 @@ const LandingPage = () => {
         </motion.div>
       </div>
 
+      {/* New Image with people on left and robot on right */}
+      <div className="absolute bottom-0 w-full z-30 flex justify-between items-end">
+        {/* People with letters on the left side */}
+        <motion.div 
+          className="w-1/3 md:w-1/4 ml-0"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <img 
+            src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
+            alt="Educational Illustration" 
+            className="w-full object-contain" 
+            style={{ maxHeight: '200px' }}
+          />
+        </motion.div>
+        
+        {/* Robot on the right side */}
+        <motion.div 
+          className="w-1/3 md:w-1/4 mr-0"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <img 
+            src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
+            alt="Educational Robot" 
+            className="w-full object-contain" 
+            style={{ 
+              maxHeight: '200px', 
+              clipPath: 'polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%)',
+              transform: 'scaleX(-1)' // Flip horizontally to get just the robot side
+            }}
+          />
+        </motion.div>
+      </div>
+
       {/* Mobile-friendly indicators */}
       <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 flex items-center space-x-2 z-40">
         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
