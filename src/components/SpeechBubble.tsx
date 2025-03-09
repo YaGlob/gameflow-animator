@@ -33,7 +33,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
 
   return (
     <motion.div 
-      className="relative max-w-sm"
+      className="relative max-w-xs" // Reduced max-width from max-w-sm to max-w-xs
       initial={{
         opacity: 0,
         scale: 0.8
@@ -47,12 +47,12 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         delay
       }}
     >
-      <div className="bg-white p-4 rounded-xl shadow-lg relative border-2 border-red-500">
-        <p className="text-black text-base font-verdana text-center">
+      <div className="bg-white p-3 rounded-xl shadow-lg relative"> {/* Removed border-2 border-red-500 and reduced padding */}
+        <p className="text-black text-sm font-verdana text-center"> {/* Reduced text size from text-base to text-sm */}
           {displayText}
         </p>
         
-        {/* Red outline effect matching the image */}
+        {/* Blue outline effect (changed from red) */}
         <motion.div 
           className="absolute inset-0 -z-10 rounded-xl" 
           animate={{
@@ -66,7 +66,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         />
         
         {/* Speech bubble tail - repositioned to point right toward the robot from the left */}
-        <div className="absolute w-4 h-4 bg-white transform rotate-45 top-1/2 -right-2 border-t-2 border-r-2 border-red-500"></div>
+        <div className="absolute w-3 h-3 bg-white transform rotate-45 top-1/2 -right-1.5"></div> {/* Removed border and made smaller */}
       </div>
     </motion.div>
   );

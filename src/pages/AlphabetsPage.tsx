@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -19,7 +18,6 @@ const AlphabetsPage = () => {
   );
   const [showLetterDetail, setShowLetterDetail] = useState(false);
 
-  // Generate alphabet array with full letter info
   const alphabet: LetterInfo[] = [
     { uppercase: "A", lowercase: "a", examples: ["Apple", "Astronaut", "Ant"] },
     { uppercase: "B", lowercase: "b", examples: ["Ball", "Balloon", "Butterfly"] },
@@ -60,7 +58,6 @@ const AlphabetsPage = () => {
     setRobotSpeech("GREAT JOB! WHICH LETTER WOULD YOU LIKE TO LEARN NEXT?");
   };
 
-  // Letter tile component
   const LetterTile = ({ letter, index }: { letter: LetterInfo; index: number }) => {
     const isSelected = selectedLetter?.uppercase === letter.uppercase;
     
@@ -96,9 +93,7 @@ const AlphabetsPage = () => {
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
-        {/* Main content container box with specified properties - reduced padding for more space */}
         <div className="w-full p-4 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
-          {/* Alphabet grid - optimized number of columns for larger tiles */}
           <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
@@ -107,7 +102,6 @@ const AlphabetsPage = () => {
         </div>
       </div>
 
-      {/* Selected letter detail modal */}
       {showLetterDetail && selectedLetter && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -170,9 +164,8 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      {/* Repositioned Robot with speech bubble to the left side */}
-      <div className="fixed bottom-8 right-8 z-40 flex flex-row items-center">
-        <div className="mr-3">
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row items-end">
+        <div className="mr-3 mb-8">
           <SpeechBubble text={robotSpeech} delay={0.2} />
         </div>
         <RobotScene variant={selectedLetter ? "happy" : "normal"} />
