@@ -29,11 +29,11 @@ const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
           </motion.div>
         ))}
       </div>
-      <div className="md:col-span-1 flex flex-col space-y-3">
+      <div className="md:col-span-1 flex flex-col space-y-2">
         {images.map((image) => (
           <motion.div
             key={image.id}
-            className="bg-white p-1 rounded-lg shadow-lg"
+            className="bg-white p-1 rounded-lg shadow-lg h-20 md:h-28"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: image.id * 0.2 }}
@@ -41,7 +41,7 @@ const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-auto rounded object-cover"
+              className="w-full h-full rounded object-cover"
             />
           </motion.div>
         ))}
