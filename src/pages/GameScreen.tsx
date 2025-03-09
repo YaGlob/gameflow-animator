@@ -53,7 +53,7 @@ const GameScreen = () => {
               {/* Main rocket body - make this a Link to the alphabets page */}
               <Link to="/alphabets">
                 <motion.div 
-                  className="absolute inset-0 bg-white rounded-t-full rounded-b-lg flex flex-col items-center justify-center cursor-pointer hover:bg-blue-50 transition-colors"
+                  className="relative group flex flex-col items-center justify-center"
                   animate={{ 
                     y: [0, -10, 0],
                   }}
@@ -65,11 +65,22 @@ const GameScreen = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {/* Rocket nose */}
-                  <div className="absolute -top-8 w-0 h-0 border-l-[18px] border-r-[18px] border-b-[24px] border-l-transparent border-r-transparent border-b-red-600"></div>
+                  {/* Rocket SVG */}
+                  <svg width="120" height="300" viewBox="0 0 120 300" className="fill-white stroke-[3] stroke-red-500">
+                    {/* Rocket body */}
+                    <rect x="30" y="50" width="60" height="200" rx="10" />
+                    {/* Rocket nose */}
+                    <polygon points="60,20 30,50 90,50" fill="red" stroke="none" />
+                    {/* Windows */}
+                    <circle cx="60" cy="100" r="8" fill="cyan" stroke="gray" />
+                    <circle cx="60" cy="130" r="8" fill="cyan" stroke="gray" />
+                    {/* Fins */}
+                    <polygon points="30,250 10,270 30,270" fill="red" stroke="none" />
+                    <polygon points="90,250 110,270 90,270" fill="red" stroke="none" />
+                  </svg>
                   
-                  {/* Letters stacked vertically */}
-                  <div className="flex flex-col items-center justify-center h-full">
+                  {/* Letters stacked vertically - positioned over the rocket */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center pt-12">
                     {['A', 'L', 'P', 'H', 'A', 'B', 'E', 'T', 'S'].map((letter, index) => (
                       <motion.div 
                         key={index}
