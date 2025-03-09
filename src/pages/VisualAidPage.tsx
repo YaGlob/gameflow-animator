@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -166,18 +165,6 @@ const VisualAidPage = () => {
           Visual Aid Activity
         </motion.h1>
 
-        {/* Help button */}
-        <div className="absolute top-4 left-20">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
-            onClick={toggleHelp}
-          >
-            ?
-          </Button>
-        </div>
-
         {/* Help modal */}
         {showHelp && (
           <motion.div
@@ -333,8 +320,8 @@ const VisualAidPage = () => {
           </div>
         </div>
         
-        {/* Next button */}
-        <div className="absolute left-4 bottom-4 z-20">
+        {/* Bottom controls - NEXT button and Help button side by side */}
+        <div className="absolute left-4 bottom-4 z-20 flex items-center gap-3">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -346,6 +333,18 @@ const VisualAidPage = () => {
           >
             NEXT
           </motion.button>
+          
+          {/* Help button moved here */}
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
+            onClick={toggleHelp}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            ?
+          </Button>
         </div>
       </div>
 
