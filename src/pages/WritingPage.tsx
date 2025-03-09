@@ -43,16 +43,9 @@ const WritingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* BACK button removed */}
-
-          <Button
-            className="bg-[#395d6e] hover:bg-[#2a4452] text-white px-8 py-2 text-xl font-bold"
-            onClick={handleNextExercise}
-            disabled={!exerciseCompleted}
-          >
-            NEXT
-          </Button>
-
+          {/* Empty div to maintain flex spacing */}
+          <div></div>
+          
           <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded">
             SCORE : {score.toString().padStart(2, '0')}
           </div>
@@ -76,17 +69,27 @@ const WritingPage = () => {
 
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
+          
+          {/* Controls at the bottom of the content area */}
+          <div className="w-full flex justify-start items-center mt-6 gap-2">
+            <Button
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl font-bold"
+              onClick={handleNextExercise}
+              disabled={!exerciseCompleted}
+            >
+              NEXT
+            </Button>
+            
+            <motion.button
+              className="bg-blue-400 text-white font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleInstructions}
+            >
+              ?
+            </motion.button>
+          </div>
         </motion.div>
-
-        {/* Help button */}
-        <motion.button
-          className="absolute left-4 bottom-4 bg-white text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={toggleInstructions}
-        >
-          ?
-        </motion.button>
 
         {/* Robot with speech bubble */}
         <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
