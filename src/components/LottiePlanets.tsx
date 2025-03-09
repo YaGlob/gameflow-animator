@@ -8,7 +8,7 @@ const LottiePlanets = () => {
     <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none z-20">
       {/* First planet (blue one) positioned in top-right */}
       <motion.div 
-        className="absolute top-10 right-10 w-32 h-32 md:w-40 md:h-40 md:right-20"
+        className="absolute top-10 right-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 md:right-20"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}

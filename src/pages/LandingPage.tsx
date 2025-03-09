@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
@@ -7,7 +6,7 @@ import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
 import LottieAstronaut from "@/components/LottieAstronaut";
 import { Boxes } from "@/components/ui/background-boxes";
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -28,10 +27,8 @@ const LandingPage = () => {
         />
       </div>
 
-      {/* Lottie Planets - reduced size on mobile */}
-      <div className="scale-75 sm:scale-100">
-        <LottiePlanets />
-      </div>
+      {/* Lottie Planets - ensure it's visible and properly sized */}
+      <LottiePlanets />
 
       {/* Lottie Astronaut - hidden on smaller screens */}
       <div className="hidden sm:block">
@@ -86,7 +83,7 @@ const LandingPage = () => {
 
         {/* Main content area with Lottie animation and Play button */}
         <div className="flex items-center justify-center w-full">
-          {/* Lottie Animation - Increased size and moved to left side */}
+          {/* Lottie Animation - on left side */}
           <motion.div
             className="absolute left-4 md:left-16 xl:left-32 w-24 h-24 md:w-40 md:h-40"
             initial={{ opacity: 0, scale: 0.8 }}
