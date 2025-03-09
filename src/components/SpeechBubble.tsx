@@ -1,3 +1,4 @@
+
 import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 interface SpeechBubbleProps {
@@ -49,8 +50,8 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         ease: "easeInOut"
       }} />
         
-        {/* Speech bubble tail */}
-        <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 right-8 border-r-2 border-b-2 border-blue-200"></div>
+        {/* Speech bubble tail - moved from right to left */}
+        <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 left-8 border-l-2 border-b-2 border-blue-200"></div>
       </div>
     </motion.div>;
 };
