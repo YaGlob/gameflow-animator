@@ -1,26 +1,14 @@
-import { useState, useEffect, useRef } from "react";
+
+import { useState, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
-import RobotScene from "@/components/RobotScene";
 import RocketButton from "@/components/RocketButton";
-import SpeechBubble from "@/components/SpeechBubble";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const GameScreen = () => {
-  const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [launchingAlphabets, setLaunchingAlphabets] = useState(false);
   const lottieRef = useRef<any>(null);
-  
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setShowSpeechBubble(true);
-    }, 1000);
-    
-    return () => clearTimeout(timeout);
-  }, []);
-  
-  const pixelSpeech = "HI! I AM PIXEL! I WILL BE YOUR GUIDE THROUGHOUT THE GAME, MY FRIEND. LET'S PICK AN ACTIVITY AND BEGIN OUR JOURNEY!";
   
   const handleAlphabetsClick = () => {
     setLaunchingAlphabets(true);
@@ -130,15 +118,6 @@ const GameScreen = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-      
-      <div className="fixed bottom-4 right-4 z-50 flex flex-row-reverse items-end">
-        {showSpeechBubble && (
-          <div className="mb-2 mr-4">
-            <SpeechBubble text={pixelSpeech} delay={0.2} position="bottom-left" />
-          </div>
-        )}
-        <RobotScene variant="normal" />
       </div>
     </GameLayout>
   );
