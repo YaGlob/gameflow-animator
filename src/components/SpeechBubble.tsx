@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 interface SpeechBubbleProps {
   text: string;
   delay?: number;
-  position?: "top-right" | "bottom-left";
+  position?: "top-right" | "bottom-left" | "left";
 }
 
 const SpeechBubble: FC<SpeechBubbleProps> = ({
@@ -38,6 +38,11 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
     ? {
         containerClass: "relative max-w-xs",
         tailClass: "absolute w-3 h-3 bg-white transform rotate-45 left-0 top-1/2 -translate-x-1/2" // Left pointing tail
+      }
+    : position === "left"
+    ? {
+        containerClass: "relative max-w-xs absolute -left-64 top-1/2 -translate-y-1/2",
+        tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2" // Right pointing tail (appears on left side)
       }
     : {
         containerClass: "relative max-w-xs",

@@ -100,10 +100,11 @@ const WritingPage = () => {
         {/* Robot with speech bubble */}
         <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
           {showSpeechBubble && (
-            <div className="mb-2">
+            <div className="relative">
               <SpeechBubble 
                 text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
-                delay={0.2} 
+                delay={0.2}
+                position="left"
               />
             </div>
           )}
