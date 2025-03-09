@@ -43,13 +43,7 @@ const WritingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Button
-            className="bg-[#395d6e] hover:bg-[#2a4452] text-white px-8 py-2 text-xl font-bold"
-            onClick={handlePreviousExercise}
-            disabled={!hasPreviousExercise}
-          >
-            BACK
-          </Button>
+          {/* BACK button removed */}
 
           <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded">
             SCORE : {score.toString().padStart(2, '0')}
