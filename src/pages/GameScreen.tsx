@@ -128,8 +128,8 @@ const GameScreen = () => {
         </motion.div>
       </div>
       
-      {/* Robot with speech bubble - positioned absolutely to avoid interfering with the grid layout */}
-      <div className="fixed bottom-4 right-4 z-50">
+      {/* Robot with speech bubble - repositioned to show the bubble on the left side of the robot */}
+      <div className="fixed bottom-4 right-4 z-50 flex flex-row-reverse items-end">
         {showSpeechBubble && (
           <div className="mb-2 mr-4">
             <SpeechBubble text={pixelSpeech} delay={0.2} />

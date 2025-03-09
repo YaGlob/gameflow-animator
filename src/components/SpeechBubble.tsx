@@ -52,7 +52,7 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({ text, delay = 0 }) => {
           }}
         />
         
-        {/* Speech bubble tail */}
+        {/* Speech bubble tail - moved to the right side to point toward the robot */}
         <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 right-8 border-r-2 border-b-2 border-blue-200"></div>
       </div>
     </motion.div>
