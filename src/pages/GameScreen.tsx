@@ -120,10 +120,10 @@ const GameScreen = () => {
             </motion.div>
           </div>
           
-          {/* Right column - 2 activities */}
+          {/* Right column - LISTENING and VISUAL AID activities (reordered) */}
           <div className="flex flex-col justify-evenly space-y-6 md:space-y-12 h-full">
-            <RocketButton text="LISTENING" to="/listening" delay={0.3} direction="right" />
-            <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.5} direction="right" />
+            <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+            <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
           </div>
         </motion.div>
       </div>
