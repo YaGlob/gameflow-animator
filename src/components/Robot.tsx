@@ -2,7 +2,7 @@
 import { FC, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import { OrbitControls, useGLTF, useAnimations, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 interface RobotProps {
@@ -72,26 +72,23 @@ const RobotModel: FC<{
     }
   };
   
+  // Load texture using useTexture hook
+  const texture = useTexture(getModelPath());
+  
+  // Set texture parameters
+  useEffect(() => {
+    if (texture) {
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.needsUpdate = true;
+    }
+  }, [texture]);
+  
   return (
     <group ref={group}>
       {/* Create a plane geometry with the robot texture */}
       <mesh>
         <planeGeometry args={[2, 2]} />
-        <meshStandardMaterial transparent>
-          <texture
-            attach="map"
-            url={getModelPath()}
-            colorSpace={THREE.SRGBColorSpace}
-            onUpdate={function() {
-              // This function can be called with or without arguments
-              // When called with a texture, update it
-              const texture = arguments[0];
-              if (texture && texture.needsUpdate !== undefined) {
-                texture.needsUpdate = true;
-              }
-            }}
-          />
-        </meshStandardMaterial>
+        <meshStandardMaterial transparent map={texture} />
       </mesh>
     </group>
   );
