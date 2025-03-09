@@ -78,13 +78,13 @@ const AlphabetsPage = () => {
         }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-white rounded-md transition-colors cursor-pointer",
+          "flex items-center justify-center mobile-letter-tile w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-white rounded-md transition-colors cursor-pointer",
           "bg-slate-800 hover:bg-slate-700",
           isSelected && "ring-4 ring-blue-400 bg-blue-800 hover:bg-blue-700"
         )}
         onClick={() => handleLetterClick(letter)}
       >
-        <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+        <span className="text-xl sm:text-2xl md:text-4xl font-bold text-white">
           {letter.uppercase}{letter.lowercase}
         </span>
       </motion.div>
@@ -94,8 +94,8 @@ const AlphabetsPage = () => {
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
-        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 w-full z-10">
-          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 w-full">
+        <div className="relative bg-[#395d6e] rounded-lg p-3 sm:p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 w-full z-10 mobile-content-container">
+          <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-2 sm:gap-3 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
             ))}
@@ -114,10 +114,10 @@ const AlphabetsPage = () => {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-slate-800 border-2 border-blue-400 rounded-xl p-6 max-w-md w-full relative z-10"
+            className="bg-slate-800 border-2 border-blue-400 rounded-xl p-4 sm:p-6 max-w-md w-full relative z-10 mx-2"
           >
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-4xl font-bold text-white">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white">
                 {selectedLetter.uppercase}{selectedLetter.lowercase}
               </h2>
               <button 
@@ -130,13 +130,13 @@ const AlphabetsPage = () => {
             
             <div className="space-y-4">
               <div className="text-center">
-                <span className="text-8xl font-bold bg-gradient-to-br from-blue-300 to-purple-400 bg-clip-text text-transparent">
+                <span className="text-6xl sm:text-8xl font-bold bg-gradient-to-br from-blue-300 to-purple-400 bg-clip-text text-transparent">
                   {selectedLetter.uppercase}{selectedLetter.lowercase}
                 </span>
               </div>
               
               <div className="space-y-2 mt-4">
-                <h3 className="text-xl text-blue-300 font-semibold">Examples:</h3>
+                <h3 className="text-lg sm:text-xl text-blue-300 font-semibold">Examples:</h3>
                 <ul className="space-y-2">
                   {selectedLetter.examples?.map((example, i) => (
                     <motion.li 
@@ -144,7 +144,7 @@ const AlphabetsPage = () => {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + (i * 0.1) }}
-                      className="text-lg text-white flex items-center"
+                      className="text-base sm:text-lg text-white flex items-center mobile-text"
                     >
                       <span className="text-blue-400 mr-2">•</span> {example}
                     </motion.li>
@@ -155,7 +155,7 @@ const AlphabetsPage = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-6 w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg"
+                className="mt-6 w-full py-2 sm:py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg mobile-button"
                 onClick={closeLetterDetail}
               >
                 Continue Exploring
@@ -166,9 +166,9 @@ const AlphabetsPage = () => {
       )}
 
       {/* Repositioned Robot with speech bubble to the left side of the robot */}
-      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+      <div className="fixed bottom-2 right-2 sm:bottom-4 sm:right-8 z-40 flex flex-row-reverse items-end scale-75 sm:scale-100">
         <RobotScene variant={selectedLetter ? "happy" : "normal"} />
-        <div className="ml-3 mb-8">
+        <div className="ml-3 mb-8 mobile-speech-bubble">
           <SpeechBubble text={robotSpeech} delay={0.2} />
         </div>
       </div>

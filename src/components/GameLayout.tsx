@@ -34,33 +34,33 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
           background="transparent"
           minSize={0.4}
           maxSize={1}
-          particleDensity={40}
+          particleDensity={30} // Reduced for mobile performance
           className="w-full h-full"
           particleColor="#FFFFFF"
           speed={0.5}
         />
       </div>
       
-      {/* Back button - larger touch target for mobile */}
+      {/* Back button - larger touch target for mobile with improved positioning */}
       {showBackButton && (
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute top-6 left-6 z-50"
+          className="absolute top-3 left-3 sm:top-6 sm:left-6 z-50"
         >
           <Link 
             to={backTo} 
-            className="flex items-center justify-center w-12 h-12 text-white bg-blue-500/30 hover:bg-blue-500/50 backdrop-blur-sm rounded-full transition-colors touch-manipulation"
+            className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 text-white bg-blue-500/50 hover:bg-blue-500/70 backdrop-blur-sm rounded-full transition-colors touch-manipulation"
             aria-label="Go back"
           >
-            <ArrowLeft className="h-6 w-6" />
+            <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </Link>
         </motion.div>
       )}
 
-      {/* Main content with increased z-index */}
-      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen p-7">
+      {/* Main content with increased z-index and mobile-friendly padding */}
+      <div className="relative z-20 flex flex-col items-center justify-center min-h-screen p-3 sm:p-5 md:p-7">
         {children}
       </div>
     </div>
