@@ -24,6 +24,18 @@ const LandingPage = () => {
           speed={0.8}
         />
       </div>
+      
+      {/* New planet images in top right corner */}
+      <div className="absolute top-4 right-4 md:top-8 md:right-8 z-30 w-20 h-20 md:w-28 md:h-28">
+        <motion.img 
+          src="/lovable-uploads/a317a535-c4fd-480b-8c2f-92a1b62372d2.png"
+          alt="Saturn and Neptune planets"
+          className="w-full h-full object-contain"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
+      </div>
 
       {/* Lottie Planets - reduced size on mobile */}
       <div className="scale-75 sm:scale-100">
