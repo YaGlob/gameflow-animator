@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -25,29 +25,6 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
-  // State to track which lines are glowing
-  const [glowingLines, setGlowingLines] = useState<number[]>([]);
-  
-  // Effect to animate multiple random lines for better visibility
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      // Generate 3-5 random lines to glow at once for better visibility
-      const numLines = Math.floor(Math.random() * 3) + 3;
-      const newGlowingLines = Array.from({ length: numLines }, () => 
-        Math.floor(Math.random() * rows.length)
-      );
-      
-      setGlowingLines(newGlowingLines);
-      
-      // Reset after the animation completes
-      setTimeout(() => {
-        setGlowingLines([]);
-      }, 3000);
-    }, 4000);
-    
-    return () => clearInterval(interval);
-  }, [rows.length]);
-
   return (
     <div
       style={{
@@ -62,10 +39,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
       {rows.map((_, i) => (
         <motion.div
           key={`row` + i}
-          className={cn(
-            "w-16 h-8 border-l relative",
-            glowingLines.includes(i) ? "neon-glow-line" : "border-slate-800"
-          )}
+          className="w-16 h-8 border-l border-slate-700/50 relative"
         >
           {cols.map((_, j) => (
             <motion.div
@@ -77,10 +51,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                 transition: { duration: 2 },
               }}
               key={`col` + j}
-              className={cn(
-                "w-16 h-8 border-r border-t relative",
-                glowingLines.includes(i) ? "neon-glow-border" : "border-slate-800"
-              )}
+              className="w-16 h-8 border-r border-t border-slate-700/50 relative"
             >
               {j % 2 === 0 && i % 2 === 0 ? (
                 <svg
@@ -89,10 +60,7 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className={cn(
-                    "absolute h-6 w-10 -top-[14px] -left-[22px] stroke-[1px] pointer-events-none",
-                    glowingLines.includes(i) ? "text-green-400" : "text-slate-600"
-                  )}
+                  className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-700/70 stroke-[1px] pointer-events-none"
                 >
                   <path
                     strokeLinecap="round"
