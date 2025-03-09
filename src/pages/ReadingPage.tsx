@@ -24,6 +24,15 @@ const ReadingPage = () => {
     robotVariant
   } = useReadingGame();
 
+  // Custom image replacement for the selected image
+  const getCustomImage = (imageSrc: string) => {
+    // Replace the specific image with our uploaded girl and cat image
+    if (imageSrc.includes("placeholder") || imageSrc.includes("cat")) {
+      return "/lovable-uploads/a43472ee-74e2-4469-8f36-a510e9ebd66c.png";
+    }
+    return imageSrc;
+  };
+
   // Toggle help instructions
   const toggleInstructions = () => {
     setShowInstructions(prev => !prev);
@@ -43,7 +52,10 @@ const ReadingPage = () => {
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
-              images={currentStory.pages[currentPage].images}
+              images={currentStory.pages[currentPage].images.map(img => ({
+                ...img,
+                src: getCustomImage(img.src)
+              }))}
             />
           )}
 
