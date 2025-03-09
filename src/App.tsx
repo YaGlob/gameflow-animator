@@ -9,15 +9,10 @@ import GameScreen from "./pages/GameScreen";
 import AlphabetsPage from "./pages/AlphabetsPage";
 import VisualAidPage from "./pages/VisualAidPage";
 import ListeningPage from "./pages/ListeningPage";
+import ReadingPage from "./pages/ReadingPage";
 import NotFound from "./pages/NotFound";
 
 // Empty placeholder pages for activities
-const ReadingPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Reading Activity</h1>
-  </div>
-);
-
 const WritingPage = () => (
   <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
     <h1 className="text-4xl font-bold">Writing Activity</h1>
