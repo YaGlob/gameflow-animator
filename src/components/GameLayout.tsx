@@ -41,9 +41,6 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         />
       </div>
       
-      {/* Animated grid lines with reduced opacity - moved below circuit board */}
-      <div className="absolute inset-0 z-[3] opacity-20 bg-[linear-gradient(to_right,#4fd1ff_1px,transparent_1px),linear-gradient(to_bottom,#4fd1ff_1px,transparent_1px)]" style={{ backgroundSize: "40px 40px" }}></div>
-      
       {/* Back button - larger touch target for mobile */}
       {showBackButton && (
         <motion.div
