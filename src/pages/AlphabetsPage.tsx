@@ -94,7 +94,7 @@ const AlphabetsPage = () => {
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
-        <div className="w-full p-4 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
+        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 w-full z-10">
           <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
