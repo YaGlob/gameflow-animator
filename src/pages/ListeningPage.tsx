@@ -10,7 +10,6 @@ import GameControls from "@/components/listening-game/GameControls";
 import InstructionsModal from "@/components/listening-game/InstructionsModal";
 import ConfettiEffect from "@/components/listening-game/ConfettiEffect";
 import { useListeningGame } from "@/hooks/use-listening-game";
-import { ArrowLeft } from "lucide-react";
 
 const ListeningPage = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState<boolean>(true);
@@ -38,17 +37,6 @@ const ListeningPage = () => {
   return (
     <GameLayout>
       <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center justify-between min-h-[80vh]">
-        {/* Back button on top left */}
-        <motion.button
-          className="absolute top-4 left-4 flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white px-6 py-3 rounded-md backdrop-blur-sm transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => window.history.back()}
-        >
-          <ArrowLeft className="mr-2 h-5 w-5" />
-          BACK
-        </motion.button>
-        
         {/* Robot with speech bubble */}
         <div className="absolute top-4 right-4 z-50 flex flex-col items-end">
           <AnimatePresence>
