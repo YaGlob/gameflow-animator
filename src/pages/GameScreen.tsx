@@ -120,15 +120,22 @@ const GameScreen = () => {
             </motion.div>
           </div>
           
-          {/* Right column - LISTENING and VISUAL AID activities (reordered) */}
-          <div className="flex flex-col justify-evenly space-y-6 md:space-y-12 h-full">
-            <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
-            <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
+          {/* Right column - VISUAL AID and LISTENING activities with adjusted positioning */}
+          <div className="flex flex-col justify-evenly h-full">
+            {/* Visual Aid button positioned at the top */}
+            <div className="mb-4">
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+            </div>
+            
+            {/* Listening button with 20px extra space above */}
+            <div className="mt-20"> 
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
+            </div>
           </div>
         </motion.div>
       </div>
       
-      {/* Robot with speech bubble - repositioned to show the bubble on the left side of the robot */}
+      {/* Robot with speech bubble - positioned on the right side */}
       <div className="fixed bottom-4 right-4 z-50 flex flex-row-reverse items-end">
         {showSpeechBubble && (
           <div className="mb-2 mr-4">
