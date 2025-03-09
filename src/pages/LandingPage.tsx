@@ -109,27 +109,27 @@ const LandingPage = () => {
             <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-20" style={{animationDelay: "0.5s"}}></div>
           </div>
         </motion.div>
-
-        {/* Play button - centered */}
-        <motion.button 
-          onClick={handlePlayClick}
-          className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
-          aria-label="Play game"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {/* Glow effect */}
-          <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
-          
-          {/* Button content */}
-          <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center z-10">
-            <Play size={20} fill="white" className="ml-1 md:ml-2 md:size-[40px]" />
-          </div>
-        </motion.button>
       </div>
+
+      {/* Play button - CENTER OF SCREEN in the red highlighted area */}
+      <motion.button 
+        onClick={handlePlayClick}
+        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 translate-y-[25%] bg-blue-500 text-white rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-40"
+        aria-label="Play game"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {/* Glow effect */}
+        <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
+        
+        {/* Button content */}
+        <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center z-10">
+          <Play size={30} fill="white" className="ml-2 md:size-[50px]" />
+        </div>
+      </motion.button>
 
       {/* Grid Background Image - positioned at the same place as the previous grid */}
       <div className="absolute bottom-0 left-0 w-full h-[calc(50%-80px)] overflow-hidden z-10">
