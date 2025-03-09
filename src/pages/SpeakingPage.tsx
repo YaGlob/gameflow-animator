@@ -38,20 +38,6 @@ const SpeakingPage = () => {
             onClose={() => setShowInstructions(false)} 
           />
           
-          {/* Help icon */}
-          <motion.div 
-            className="absolute top-16 left-4 sm:left-16 bg-white rounded-lg p-2 cursor-pointer shadow-lg"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setShowInstructions(true)}
-          >
-            <img
-              src="/lovable-uploads/c8caa626-7e14-4bc5-a2d2-305de095e8ae.png"
-              alt="Help"
-              className="w-10 h-10"
-            />
-          </motion.div>
-          
           {/* Main content */}
           <div className="w-full flex-1 flex flex-col items-center justify-center gap-8 p-4">
             {/* Text display area */}
