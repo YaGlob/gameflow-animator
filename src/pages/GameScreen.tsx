@@ -1,15 +1,17 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RobotScene from "@/components/RobotScene";
 import RocketButton from "@/components/RocketButton";
 import SpeechBubble from "@/components/SpeechBubble";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const GameScreen = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState(false);
   const [launchingAlphabets, setLaunchingAlphabets] = useState(false);
+  const lottieRef = useRef<any>(null);
   
   useEffect(() => {
     // Delay showing the speech bubble for a more natural feel
@@ -23,7 +25,20 @@ const GameScreen = () => {
   const pixelSpeech = "HI! I AM PIXEL! I WILL BE YOUR GUIDE THROUGHOUT THE GAME, MY FRIEND. LET'S PICK AN ACTIVITY AND BEGIN OUR JOURNEY!";
   
   const handleAlphabetsClick = () => {
+    // Change animation state to launching
     setLaunchingAlphabets(true);
+    
+    // Play the animation at higher speed to show launching
+    if (lottieRef.current) {
+      lottieRef.current.play();
+      lottieRef.current.setSpeed(2); // Increase animation speed
+    }
+    
+    // Delay navigation to allow time for the animation to play
+    setTimeout(() => {
+      // Navigation will happen after the animation plays
+      // The Link component will handle it automatically
+    }, 1500);
   };
   
   return (
@@ -42,10 +57,10 @@ const GameScreen = () => {
             <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
           </div>
           
-          {/* Center column - ALPHABETS rocket */}
+          {/* Center column - ALPHABETS rocket with Lottie animation */}
           <div className="flex items-center justify-center">
             <motion.div
-              className="relative w-36 h-96"
+              className="relative w-full h-96"
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -55,109 +70,53 @@ const GameScreen = () => {
                 stiffness: 50
               }}
             >
-              {/* Main rocket body - make this a Link to the alphabets page */}
-              <Link to="/alphabets" onClick={handleAlphabetsClick}>
-                <motion.div 
-                  className="relative group flex flex-col items-center justify-center"
-                  animate={ launchingAlphabets ? {
-                    y: -500,
-                    transition: {
-                      duration: 1.5,
-                      ease: [0.45, 0.05, 0.55, 0.95]
-                    }
-                  } : { 
-                    y: [0, -10, 0],
-                    transition: { 
-                      repeat: Infinity, 
-                      duration: 3,
-                      ease: "easeInOut" 
-                    }
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
+              {/* Alphabets text displayed in smoke */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 z-10">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="flex flex-col items-center"
                 >
-                  {/* Rocket SVG */}
-                  <svg width="120" height="300" viewBox="0 0 120 300" className="fill-white stroke-[3] stroke-red-500">
-                    {/* Rocket body */}
-                    <rect x="30" y="50" width="60" height="200" rx="10" />
-                    {/* Rocket nose */}
-                    <polygon points="60,20 30,50 90,50" fill="red" stroke="none" />
-                    {/* Windows */}
-                    <circle cx="60" cy="100" r="8" fill="cyan" stroke="gray" />
-                    <circle cx="60" cy="130" r="8" fill="cyan" stroke="gray" />
-                    {/* Fins */}
-                    <polygon points="30,250 10,270 30,270" fill="red" stroke="none" />
-                    <polygon points="90,250 110,270 90,270" fill="red" stroke="none" />
-                  </svg>
-                  
-                  {/* Letters stacked vertically - positioned over the rocket */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center pt-12">
-                    {['A', 'L', 'P', 'H', 'A', 'B', 'E', 'T', 'S'].map((letter, index) => (
-                      <motion.div 
-                        key={index}
-                        className="text-2xl font-bold text-black"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.5 + (index * 0.1) }}
-                      >
-                        {letter}
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  {/* Rocket engine flames - visible when launching */}
-                  <AnimatePresence>
-                    {launchingAlphabets ? (
-                      <motion.div 
-                        className="absolute -bottom-12 w-20 h-24 z-10"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 24 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <svg width="80" height="100" viewBox="0 0 80 100">
-                          <defs>
-                            <radialGradient id="flameGradient" cx="0.5" cy="0.3" r="0.7">
-                              <stop offset="0%" stopColor="yellow" />
-                              <stop offset="40%" stopColor="orange" />
-                              <stop offset="90%" stopColor="red" />
-                            </radialGradient>
-                          </defs>
-                          <motion.path
-                            d="M30,0 Q20,30 40,60 Q60,30 50,0 Q40,5 30,0 Z"
-                            fill="url(#flameGradient)"
-                            animate={{
-                              d: [
-                                "M30,0 Q20,30 40,60 Q60,30 50,0 Q40,5 30,0 Z",
-                                "M30,0 Q20,40 40,70 Q60,40 50,0 Q40,5 30,0 Z",
-                                "M30,0 Q25,35 40,65 Q55,35 50,0 Q40,5 30,0 Z",
-                                "M30,0 Q20,30 40,60 Q60,30 50,0 Q40,5 30,0 Z"
-                              ]
-                            }}
-                            transition={{
-                              repeat: Infinity,
-                              duration: 0.5,
-                              ease: "easeInOut"
-                            }}
-                          />
-                        </svg>
-                      </motion.div>
-                    ) : (
-                      <motion.div 
-                        className="absolute -bottom-8 w-10 h-12 bg-gradient-to-t from-orange-500 via-yellow-400 to-red-500 rounded-b-full"
-                        animate={{ 
-                          height: [12, 16, 12],
-                          opacity: [0.8, 1, 0.8]
-                        }}
-                        transition={{ 
-                          repeat: Infinity, 
-                          duration: 0.5,
-                          ease: "easeInOut" 
-                        }}
-                      />
-                    )}
-                  </AnimatePresence>
+                  <span className="text-3xl font-bold text-white bg-slate-800/70 px-4 py-2 rounded-full">
+                    ALPHABETS
+                  </span>
                 </motion.div>
+              </div>
+              
+              {/* Lottie Animation */}
+              <Link to="/alphabets" onClick={handleAlphabetsClick}>
+                <div 
+                  className={`relative w-full h-full flex items-center justify-center cursor-pointer 
+                              ${launchingAlphabets ? 'animate-pulse' : ''}`}
+                >
+                  <DotLottieReact
+                    ref={lottieRef}
+                    src="https://lottie.host/f0567178-ea84-435b-bbaa-2a29ecd0ea10/IPSEFbyMis.lottie"
+                    loop={!launchingAlphabets}
+                    autoplay
+                    className={`w-60 h-60 transition-all duration-300 
+                              ${launchingAlphabets ? 'scale-110 translate-y-[-50px]' : 'hover:scale-105'}`}
+                  />
+                </div>
               </Link>
+              
+              {/* Alphabets label with animation */}
+              <AnimatePresence>
+                {launchingAlphabets && (
+                  <motion.div 
+                    className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-center bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 text-white font-bold px-4 py-2 rounded-full animate-pulse">
+                      Launching...
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           </div>
           
