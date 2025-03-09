@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
 import LottieAstronaut from "@/components/LottieAstronaut";
 import { Boxes } from "@/components/ui/background-boxes";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -83,25 +84,43 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* Play button - slightly smaller on mobile */}
-        <motion.button 
-          onClick={() => navigate("/game")}
-          className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
-          aria-label="Play game"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
-          whileTap={{ scale: 0.95 }}
-        >
-          {/* Glow effect */}
-          <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
-          
-          {/* Button content */}
-          <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center z-10">
-            <Play size={20} fill="white" className="ml-1 md:ml-2 md:size-[40px]" />
-          </div>
-        </motion.button>
+        {/* New container for play button and new lottie animation to position them in a row */}
+        <div className="flex items-center justify-center space-x-20 md:space-x-32">
+          {/* New Lottie Animation */}
+          <motion.div
+            className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <DotLottieReact
+              src="https://lottie.host/08e6c86d-575f-4d62-a73b-9c82ac9f7427/CafDlUpEf5.lottie"
+              loop
+              autoplay
+              className="w-full h-full"
+            />
+          </motion.div>
+
+          {/* Play button - slightly smaller on mobile */}
+          <motion.button 
+            onClick={() => navigate("/game")}
+            className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
+            aria-label="Play game"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
+            
+            {/* Button content */}
+            <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center z-10">
+              <Play size={20} fill="white" className="ml-1 md:ml-2 md:size-[40px]" />
+            </div>
+          </motion.button>
+        </div>
       </div>
 
       {/* Grid Box Background - Increased z-index and better scaling for mobile */}
