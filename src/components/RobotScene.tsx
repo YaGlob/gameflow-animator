@@ -30,25 +30,19 @@ const RobotScene = ({ className = "", variant = "normal" }: RobotSceneProps) => 
         />
       </div>
       
-      {/* Replaced light effect behind the robot with the new image */}
+      {/* Light effect behind the robot */}
       <motion.div 
-        className="absolute inset-0 -z-10 w-full h-full"
+        className="absolute inset-0 -z-10 bg-blue-400/20 rounded-full blur-lg"
         animate={{ 
           scale: [1, 1.1, 1],
-          opacity: [0.8, 1, 0.8],
+          opacity: [0.6, 0.8, 0.6],
         }}
         transition={{ 
           repeat: Infinity, 
           duration: 2,
           ease: "easeInOut" 
         }}
-      >
-        <img 
-          src="/lovable-uploads/a0d85079-b7ce-48fc-b64c-aa74eecd3b8c.png" 
-          alt="Educational letters with silhouettes" 
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
+      />
     </motion.div>
   );
 };
