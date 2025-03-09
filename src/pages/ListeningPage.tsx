@@ -63,22 +63,15 @@ const ListeningPage = () => {
           />
         </div>
 
-        {/* 3D Robot character positioned in bottom right with speech bubble */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex items-end">
-          {/* Speech bubble positioned to the left of the robot */}
-          <AnimatePresence>
-            {showSpeechBubble && (
-              <div className="mr-4 mb-6">
-                <SpeechBubble 
-                  text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
-                  delay={0.2} 
-                />
-              </div>
-            )}
-          </AnimatePresence>
-          
-          {/* Robot */}
+        {/* 3D Robot character positioned in bottom right with speech bubble - updated to match AlphabetsPage style */}
+        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <RobotScene variant={robotVariant} />
+          <div className="ml-3 mb-8">
+            <SpeechBubble 
+              text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+              delay={0.2} 
+            />
+          </div>
         </div>
 
         {/* Instructions modal */}

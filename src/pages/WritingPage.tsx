@@ -97,18 +97,15 @@ const WritingPage = () => {
           </div>
         </motion.div>
 
-        {/* Robot with speech bubble */}
-        <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50">
-          {showSpeechBubble && (
-            <div className="relative">
-              <SpeechBubble 
-                text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
-                delay={0.2}
-                position="left"
-              />
-            </div>
-          )}
+        {/* Robot with speech bubble - Updated to match AlphabetsPage style */}
+        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
           <RobotScene variant={robotVariant} />
+          <div className="ml-3 mb-8">
+            <SpeechBubble 
+              text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
+              delay={0.2}
+            />
+          </div>
         </div>
 
         {/* Instructions modal */}
