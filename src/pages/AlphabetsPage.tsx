@@ -95,7 +95,7 @@ const AlphabetsPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-6xl mx-auto relative z-10">
+      <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,12 +104,15 @@ const AlphabetsPage = () => {
         >
           Alphabet Adventure
         </motion.h1>
-
-        {/* Alphabet grid */}
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 p-4">
-          {alphabet.map((letter, index) => (
-            <LetterTile key={letter.uppercase} letter={letter} index={index} />
-          ))}
+        
+        {/* Main content container box with specified properties */}
+        <div className="w-full p-6 mt-8 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
+          {/* Alphabet grid */}
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 w-full">
+            {alphabet.map((letter, index) => (
+              <LetterTile key={letter.uppercase} letter={letter} index={index} />
+            ))}
+          </div>
         </div>
 
         {/* Selected letter detail modal */}
