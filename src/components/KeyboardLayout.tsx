@@ -8,9 +8,9 @@ interface KeyboardLayoutProps {
 const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
   // Define keyboard layout
   const rows = [
-    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
-    ['k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'],
-    ['u', 'v', 'w', 'x', 'y', 'z'],
+    ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
+    ['j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r'],
+    ['s', 't', 'u', 'v', 'w', 'x', 'y', 'z', '.'],
   ];
   
   // Animation variants for keyboard
@@ -61,7 +61,7 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
           {row.map((key) => (
             <motion.button
               key={key}
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center bg-slate-700/80 border border-cyan-400/30 text-white text-2xl font-bold backdrop-blur-sm"
+              className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center border border-white/30 text-white text-2xl font-bold backdrop-blur-sm bg-[#1e3e4a]"
               onClick={() => onKeyPress(key)}
               variants={keyVariants}
               whileHover="hover"

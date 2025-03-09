@@ -10,15 +10,10 @@ import AlphabetsPage from "./pages/AlphabetsPage";
 import VisualAidPage from "./pages/VisualAidPage";
 import ListeningPage from "./pages/ListeningPage";
 import ReadingPage from "./pages/ReadingPage";
+import WritingPage from "./pages/WritingPage";
 import NotFound from "./pages/NotFound";
 
-// Empty placeholder pages for activities
-const WritingPage = () => (
-  <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
-    <h1 className="text-4xl font-bold">Writing Activity</h1>
-  </div>
-);
-
+// Empty placeholder for speaking activity
 const SpeakingPage = () => (
   <div className="min-h-screen bg-blue-950 text-white flex items-center justify-center">
     <h1 className="text-4xl font-bold">Speaking Activity</h1>
