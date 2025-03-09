@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -213,7 +214,7 @@ const VisualAidPage = () => {
                 x1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().right}
                 y1={wordsRef.current[activeConnection.wordId - 1]?.getBoundingClientRect().top + 24}
                 x2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 24}
+                y2={imagesRef.current[activeConnection.imageId - 1]?.getBoundingClientRect().top + 60}
                 stroke="white"
                 strokeWidth="2"
                 strokeDasharray="5,5"
@@ -227,7 +228,7 @@ const VisualAidPage = () => {
                 x1={wordsRef.current[id - 1]?.getBoundingClientRect().right}
                 y1={wordsRef.current[id - 1]?.getBoundingClientRect().top + 24}
                 x2={imagesRef.current[id - 1]?.getBoundingClientRect().left}
-                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 24}
+                y2={imagesRef.current[id - 1]?.getBoundingClientRect().top + 60}
                 stroke="#4fd1c5"
                 strokeWidth="3"
               />
@@ -236,7 +237,7 @@ const VisualAidPage = () => {
 
           <div className="flex justify-between">
             {/* Words column */}
-            <div className="w-1/3 space-y-8 z-20">
+            <div className="w-1/3 space-y-16 z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`word-${item.id}`}
@@ -257,7 +258,7 @@ const VisualAidPage = () => {
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     className={cn(
-                      "w-6 h-6 rounded-full cursor-pointer ml-4 border-2 transition-colors",
+                      "w-8 h-8 rounded-full cursor-pointer ml-4 border-2 flex items-center justify-center transition-colors",
                       completedConnections.includes(item.id) 
                         ? "bg-green-400 border-green-200" 
                         : activeConnection.wordId === item.id
@@ -265,25 +266,27 @@ const VisualAidPage = () => {
                           : "bg-slate-800 border-slate-600 hover:bg-slate-700"
                     )}
                     onClick={() => handleWordDotClick(item.id)}
-                  />
+                  >
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </motion.div>
                 </div>
               ))}
             </div>
             
             {/* Images column */}
-            <div className="w-1/2 space-y-4 flex flex-col justify-between z-20">
+            <div className="w-1/2 flex flex-col justify-between z-20">
               {levels[currentLevel].items.map((item, index) => (
                 <div 
                   key={`image-${item.id}`}
                   ref={el => imagesRef.current[item.id - 1] = el}
-                  className="flex items-center"
+                  className="flex items-center mb-6"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                     className={cn(
-                      "w-6 h-6 rounded-full cursor-pointer mr-4 border-2 transition-colors",
+                      "w-8 h-8 rounded-full cursor-pointer mr-4 border-2 flex items-center justify-center transition-colors",
                       completedConnections.includes(item.id) 
                         ? "bg-green-400 border-green-200" 
                         : activeConnection.imageId === item.id
@@ -291,13 +294,15 @@ const VisualAidPage = () => {
                           : "bg-slate-800 border-slate-600 hover:bg-slate-700"
                     )}
                     onClick={() => handleImageDotClick(item.id)}
-                  />
+                  >
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                  </motion.div>
                   
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8, x: 20 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="w-24 h-24 rounded-md overflow-hidden border-2 border-white/30"
+                    className="w-32 h-32 rounded-md overflow-hidden border-2 border-white/30"
                   >
                     <img 
                       src={item.image} 
