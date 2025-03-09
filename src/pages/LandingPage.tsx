@@ -82,43 +82,25 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* Main content area with Lottie animation and Play button */}
-        <div className="flex items-center justify-center w-full">
-          {/* Lottie Animation - Increased size and moved to left side */}
-          <motion.div
-            className="absolute left-4 md:left-16 xl:left-32 w-24 h-24 md:w-40 md:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <DotLottieReact
-              src="https://lottie.host/08e6c86d-575f-4d62-a73b-9c82ac9f7427/CafDlUpEf5.lottie"
-              loop
-              autoplay
-              className="w-full h-full"
-            />
-          </motion.div>
-
-          {/* Play button - in center */}
-          <motion.button 
-            onClick={() => navigate("/game")}
-            className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
-            aria-label="Play game"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
-            
-            {/* Button content */}
-            <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center z-10">
-              <Play size={20} fill="white" className="ml-1 md:ml-2 md:size-[40px]" />
-            </div>
-          </motion.button>
-        </div>
+        {/* Play button - centered */}
+        <motion.button 
+          onClick={() => navigate("/game")}
+          className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
+          aria-label="Play game"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(79, 209, 255, 0.8)" }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {/* Glow effect */}
+          <div className="absolute inset-0 rounded-full bg-blue-400 blur-md opacity-70"></div>
+          
+          {/* Button content */}
+          <div className="relative bg-blue-500 hover:bg-blue-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center z-10">
+            <Play size={20} fill="white" className="ml-1 md:ml-2 md:size-[40px]" />
+          </div>
+        </motion.button>
       </div>
 
       {/* Grid Background Image - positioned at the same place as the previous grid */}
