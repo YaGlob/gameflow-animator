@@ -36,7 +36,7 @@ const WritingPage = () => {
   return (
     <GameLayout>
       <div className="relative w-full mx-auto flex flex-col items-center justify-between min-h-[80vh] p-4">
-        {/* Top navigation and score */}
+        {/* Top navigation and score - removed content and using empty div for spacing */}
         <motion.div 
           className="w-full flex justify-between items-center mb-6"
           initial={{ opacity: 0, y: -20 }}
@@ -46,9 +46,8 @@ const WritingPage = () => {
           {/* Empty div to maintain flex spacing */}
           <div></div>
           
-          <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded">
-            SCORE : {score.toString().padStart(2, '0')}
-          </div>
+          {/* Empty div to maintain flex spacing */}
+          <div></div>
         </motion.div>
 
         {/* Main content container - Updated styling as requested */}
@@ -58,6 +57,13 @@ const WritingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* Score display positioned in the middle */}
+          <div className="absolute top-0 left-0 right-0 flex justify-center" style={{ transform: 'translateY(-50%)' }}>
+            <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded shadow-lg">
+              SCORE : {score.toString().padStart(2, '0')}
+            </div>
+          </div>
+          
           {/* Text display with reduced font size */}
           <div className="w-full mb-6">
             <TextDisplay 
