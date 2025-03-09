@@ -84,11 +84,11 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* New container for play button and new lottie animation to position them in a row */}
-        <div className="flex items-center justify-center space-x-20 md:space-x-32">
-          {/* New Lottie Animation */}
+        {/* Main content area with Lottie animation and Play button */}
+        <div className="flex items-center justify-center w-full">
+          {/* Lottie Animation - Increased size and moved to left side */}
           <motion.div
-            className="w-16 h-16 md:w-24 md:h-24 flex items-center justify-center"
+            className="absolute left-4 md:left-16 xl:left-32 w-24 h-24 md:w-40 md:h-40"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -101,7 +101,7 @@ const LandingPage = () => {
             />
           </motion.div>
 
-          {/* Play button - slightly smaller on mobile */}
+          {/* Play button - in center */}
           <motion.button 
             onClick={() => navigate("/game")}
             className="relative bg-blue-500 text-white rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-30"
