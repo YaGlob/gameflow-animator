@@ -70,7 +70,7 @@ const GameScreen = () => {
                 stiffness: 50
               }}
             >
-              {/* Alphabets text displayed in smoke */}
+              {/* Alphabets text displayed in oval white background */}
               <div className="absolute left-1/2 transform -translate-x-1/2 -top-10 z-10">
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -78,7 +78,7 @@ const GameScreen = () => {
                   transition={{ delay: 1, duration: 0.5 }}
                   className="flex flex-col items-center"
                 >
-                  <span className="text-3xl font-bold text-white bg-slate-800/70 px-4 py-2 rounded-full">
+                  <span className="text-3xl font-bold text-black bg-white/90 px-8 py-4 rounded-full shadow-md">
                     ALPHABETS
                   </span>
                 </motion.div>
