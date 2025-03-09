@@ -69,7 +69,7 @@ const GameScreen = () => {
             </div>
             
             {/* Center column - ALPHABETS rocket with Lottie animation */}
-            <div className="flex items-center justify-center mt-4 sm:mt-0">
+            <div className="flex items-center justify-center mt-4 sm:mt-0 flex-col">
               <motion.div
                 className="relative w-full h-64 sm:h-72 md:h-96"
                 initial={{ opacity: 0, y: 100 }}
@@ -81,19 +81,7 @@ const GameScreen = () => {
                   stiffness: 50
                 }}
               >
-                {/* Alphabets text displayed in oval white background */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -top-6 sm:-top-10 z-10">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.5 }}
-                    className="flex flex-col items-center"
-                  >
-                    <span className="text-xl sm:text-3xl font-bold text-black bg-white/90 px-4 sm:px-8 py-2 sm:py-4 rounded-full shadow-md">
-                      ALPHABETS
-                    </span>
-                  </motion.div>
-                </div>
+                {/* Removed the ALPHABETS text from here */}
                 
                 {/* Lottie Animation - scaled down on mobile */}
                 <Link to="/alphabets" onClick={handleAlphabetsClick}>
@@ -128,6 +116,18 @@ const GameScreen = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </motion.div>
+              
+              {/* New position for ALPHABETS text - below the rocket */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="mt-2 sm:mt-4"
+              >
+                <span className="text-sm sm:text-lg font-bold text-black bg-white/90 px-3 sm:px-4 py-1 sm:py-2 rounded-full shadow-md">
+                  ALPHABETS
+                </span>
               </motion.div>
             </div>
             
