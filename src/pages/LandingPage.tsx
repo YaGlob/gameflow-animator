@@ -1,11 +1,9 @@
-
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
-import { useEffect } from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
-import PlanetarySystem from "@/components/PlanetarySystem";
+import LottiePlanets from "@/components/LottiePlanets";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -26,8 +24,8 @@ const LandingPage = () => {
         />
       </div>
 
-      {/* Planetary System in top right */}
-      <PlanetarySystem />
+      {/* Lottie Planets */}
+      <LottiePlanets />
 
       {/* Content container */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
