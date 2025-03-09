@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -383,8 +384,8 @@ const VisualAidPage = () => {
         </div>
       </div>
 
-      {/* Robot with speech bubble - positioned in bottom right with speech bubble to left-bottom */}
-      <div className="fixed bottom-4 right-8 z-40 flex items-end">
+      {/* Robot with speech bubble - positioned in bottom right with speech bubble to left */}
+      <div className="fixed bottom-4 right-4 z-40 flex items-end">
         <div className="mr-3 mb-4">
           <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
         </div>
