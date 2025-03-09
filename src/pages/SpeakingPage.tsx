@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
 import Robot from "@/components/Robot";
@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 const SpeakingPage = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const [showSpeechBubble, setShowSpeechBubble] = useState(true);
+  const [isRobotSpeaking, setIsRobotSpeaking] = useState(false);
   
   const {
     currentExercise,
@@ -27,6 +28,24 @@ const SpeakingPage = () => {
 
   // Robot speech content
   const pixelSpeech = "READ THE TEXT OUT LOUD! IF YOU NEED HELP, PRESS THE SPEAKER BUTTON TO HEAR THE WORDS. PRACTICE MAKES PERFECT!";
+
+  // Robot speaking animation effect
+  useEffect(() => {
+    if (showSpeechBubble || isAudioPlaying) {
+      setIsRobotSpeaking(true);
+      
+      // Stop speaking after speech bubble content would be read
+      if (showSpeechBubble && !isAudioPlaying) {
+        const timeout = setTimeout(() => {
+          setIsRobotSpeaking(false);
+        }, pixelSpeech.length * 50); // Rough estimate of reading time
+        
+        return () => clearTimeout(timeout);
+      }
+    } else {
+      setIsRobotSpeaking(false);
+    }
+  }, [showSpeechBubble, isAudioPlaying, pixelSpeech]);
 
   return (
     <GameLayout backTo="/game">
@@ -94,6 +113,7 @@ const SpeakingPage = () => {
             <Robot 
               variant="normal" 
               onClick={() => setShowSpeechBubble(!showSpeechBubble)} 
+              isSpeaking={isRobotSpeaking}
             />
           </div>
         </div>

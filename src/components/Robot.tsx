@@ -1,14 +1,103 @@
 
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import * as THREE from "three";
 
 interface RobotProps {
   className?: string;
   variant?: "normal" | "thinking" | "happy";
   onClick?: () => void;
+  isSpeaking?: boolean;
 }
 
-const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) => {
+// 3D Robot Model Component
+const RobotModel: FC<{
+  variant: "normal" | "thinking" | "happy";
+  isSpeaking: boolean;
+}> = ({ variant, isSpeaking }) => {
+  const group = useRef<THREE.Group>(null);
+  
+  // Animation state
+  const [animationIntensity, setAnimationIntensity] = useState(0);
+  
+  // Update animation intensity when speaking
+  useEffect(() => {
+    if (isSpeaking) {
+      const interval = setInterval(() => {
+        // Random variation for speaking animation
+        setAnimationIntensity(Math.random() * 0.5);
+      }, 150);
+      
+      return () => clearInterval(interval);
+    } else {
+      setAnimationIntensity(0);
+    }
+  }, [isSpeaking]);
+  
+  // Animation loop
+  useEffect(() => {
+    if (!group.current) return;
+    
+    const animate = () => {
+      if (group.current) {
+        // Basic floating animation
+        group.current.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+        
+        // Add speaking animation when isSpeaking is true
+        if (isSpeaking) {
+          // Simulate speaking by subtle rotation variations
+          group.current.rotation.z = Math.sin(Date.now() * 0.01) * animationIntensity * 0.1;
+        }
+      }
+      
+      requestAnimationFrame(animate);
+    };
+    
+    const animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, [isSpeaking, animationIntensity]);
+  
+  // Different models based on variant
+  const getModelPath = () => {
+    switch (variant) {
+      case "thinking":
+        return "/lovable-uploads/dab3d977-577e-4c65-bfba-057c5b478b32.png";
+      case "happy":
+        return "/lovable-uploads/020498bf-762c-4f12-b186-390b2a7c21f6.png";
+      case "normal":
+      default:
+        return "/lovable-uploads/a1044efd-454f-470d-a486-4ea82a28e402.png";
+    }
+  };
+  
+  return (
+    <group ref={group}>
+      {/* Create a plane geometry with the robot texture */}
+      <mesh>
+        <planeGeometry args={[2, 2]} />
+        <meshStandardMaterial transparent>
+          <texture
+            attach="map"
+            url={getModelPath()}
+            colorSpace={THREE.SRGBColorSpace}
+            onUpdate={(texture) => {
+              texture.needsUpdate = true;
+            }}
+          />
+        </meshStandardMaterial>
+      </mesh>
+    </group>
+  );
+};
+
+const Robot: FC<RobotProps> = ({ 
+  className = "", 
+  variant = "normal", 
+  onClick,
+  isSpeaking = false 
+}) => {
   const [currentVariant, setCurrentVariant] = useState(variant);
   
   // Cycle through expressions occasionally for more life-like behavior
@@ -30,19 +119,6 @@ const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) 
     return () => clearInterval(interval);
   }, [variant]);
   
-  // Get the appropriate robot image based on variant
-  const getRobotImage = () => {
-    switch (currentVariant) {
-      case "thinking":
-        return "/lovable-uploads/dab3d977-577e-4c65-bfba-057c5b478b32.png";
-      case "happy":
-        return "/lovable-uploads/020498bf-762c-4f12-b186-390b2a7c21f6.png";
-      case "normal":
-      default:
-        return "/lovable-uploads/a1044efd-454f-470d-a486-4ea82a28e402.png";
-    }
-  };
-
   return (
     <motion.div 
       className={`relative z-50 ${className} ${onClick ? 'cursor-pointer' : ''}`}
@@ -52,7 +128,7 @@ const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) 
       whileHover={{ y: -5 }}
       onClick={onClick}
     >
-      {/* Robot image container */}
+      {/* 3D Robot container */}
       <motion.div
         className="w-24 h-24 sm:w-32 sm:h-32"
         animate={{ 
@@ -64,19 +140,22 @@ const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) 
           ease: "easeInOut" 
         }}
       >
-        <motion.img 
-          src={getRobotImage()}
-          alt="Pixel the Robot"
-          className="w-full h-full object-contain"
-          animate={{ 
-            rotateZ: [0, 2, 0, -2, 0],
-          }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 5,
-            ease: "easeInOut" 
-          }}
-        />
+        <Canvas
+          camera={{ position: [0, 0, 3], fov: 50 }}
+          style={{ width: '100%', height: '100%' }}
+        >
+          <ambientLight intensity={1.5} />
+          <pointLight position={[10, 10, 10]} intensity={1.5} />
+          <RobotModel 
+            variant={currentVariant} 
+            isSpeaking={isSpeaking} 
+          />
+          <OrbitControls 
+            enableZoom={false} 
+            enablePan={false} 
+            enableRotate={false} 
+          />
+        </Canvas>
       </motion.div>
       
       {/* Light effect behind the robot */}
