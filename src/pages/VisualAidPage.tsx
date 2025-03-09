@@ -156,15 +156,6 @@ const VisualAidPage = () => {
   return (
     <GameLayout backTo="/game">
       <div className="w-full max-w-6xl mx-auto pt-4 pb-20 px-4 relative">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-8"
-        >
-          Visual Aid Activity
-        </motion.h1>
-
         {/* Help modal */}
         {showHelp && (
           <motion.div
@@ -340,8 +331,6 @@ const VisualAidPage = () => {
             size="icon" 
             className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
             onClick={toggleHelp}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             ?
           </Button>
