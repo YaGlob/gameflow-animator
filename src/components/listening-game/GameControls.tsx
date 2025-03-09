@@ -1,9 +1,8 @@
 
 import { motion } from "framer-motion";
-import { ArrowLeft, HelpCircle, Trash2, Volume2 } from "lucide-react";
+import { HelpCircle, Trash2, Volume2 } from "lucide-react";
 
 interface GameControlsProps {
-  onBackClick: () => void;
   onHelpClick: () => void;
   onDeleteClick: () => void;
   onSpeakerClick: () => void;
@@ -16,7 +15,6 @@ interface GameControlsProps {
 }
 
 const GameControls = ({
-  onBackClick,
   onHelpClick,
   onDeleteClick,
   onSpeakerClick,
@@ -30,17 +28,6 @@ const GameControls = ({
   return (
     <div className="w-full flex items-center justify-between mt-4">
       <div className="flex space-x-4">
-        {/* Back button */}
-        <motion.button
-          className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white px-6 py-3 rounded-md backdrop-blur-sm transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={onBackClick}
-        >
-          <ArrowLeft className="mr-2 h-5 w-5" />
-          BACK
-        </motion.button>
-
         {/* Help button */}
         <motion.button
           className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
