@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const LottieAstronaut = () => {
   return (
     <motion.div 
-      className="absolute left-4 bottom-0 md:left-10 md:bottom-8 w-24 h-24 md:w-32 md:h-32"
+      className="absolute top-24 left-4 md:top-32 md:left-20 w-24 h-24 md:w-32 md:h-32"
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.6 }}
