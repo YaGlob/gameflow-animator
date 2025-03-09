@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
 import LottiePlanets from "@/components/LottiePlanets";
+import LottieAstronaut from "@/components/LottieAstronaut";
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ const LandingPage = () => {
 
       {/* Lottie Planets */}
       <LottiePlanets />
+
+      {/* Lottie Astronaut */}
+      <LottieAstronaut />
 
       {/* Content container */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
