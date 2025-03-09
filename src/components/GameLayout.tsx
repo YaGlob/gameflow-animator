@@ -28,15 +28,16 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         />
       </div>
       
-      {/* New circuit board background image with gradient overlay */}
+      {/* Circuit board background image with improved visibility */}
       <div 
-        className="absolute inset-0 z-1 opacity-25 bg-blend-overlay"
+        className="absolute inset-0 z-1"
         style={{ 
           backgroundImage: "url('/lovable-uploads/d6ab7bc7-4b5b-4cc8-8c05-42cec66a7fc4.png')", 
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          mixBlendMode: "soft-light",
+          opacity: 0.15,
+          mixBlendMode: "screen",
         }}
       />
       
