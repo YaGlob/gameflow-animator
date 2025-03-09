@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import RobotScene from "@/components/RobotScene";
 import { Play } from "lucide-react";
@@ -119,17 +120,7 @@ const LandingPage = () => {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-1/3 left-12 md:left-28 hidden sm:block">
-          <motion.div 
-            className="bg-gradient-to-r from-yellow-400/30 to-orange-400/30 backdrop-blur-sm p-3 rounded-lg border border-yellow-300/30"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            whileHover={{ y: -5, boxShadow: "0 0 15px rgba(79, 209, 255, 0.5)" }}
-          >
-            <div className="text-white text-lg font-bold">xyz</div>
-          </motion.div>
-        </div>
+        {/* Removed the yellow/orange div that was here */}
       </div>
       
       {/* Robot character in bottom right - using our new 3D robot */}
