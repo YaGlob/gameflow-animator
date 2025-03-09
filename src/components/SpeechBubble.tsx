@@ -1,10 +1,12 @@
 
 import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
+
 interface SpeechBubbleProps {
   text: string;
   delay?: number;
 }
+
 const SpeechBubble: FC<SpeechBubbleProps> = ({
   text,
   delay = 0
@@ -28,31 +30,46 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
     setDisplayText("");
     setCurrentIndex(0);
   }, [text]);
-  return <motion.div className="relative max-w-xs" initial={{
-    opacity: 0,
-    scale: 0.8
-  }} animate={{
-    opacity: 1,
-    scale: 1
-  }} transition={{
-    duration: 0.5,
-    delay
-  }}>
-      <div className="bg-white p-4 rounded-xl shadow-lg relative border-2 border-blue-200">
-        <p className="text-black text-sm font-verdana text-center sm:text-xs">{displayText}</p>
+
+  return (
+    <motion.div 
+      className="relative max-w-sm"
+      initial={{
+        opacity: 0,
+        scale: 0.8
+      }} 
+      animate={{
+        opacity: 1,
+        scale: 1
+      }} 
+      transition={{
+        duration: 0.5,
+        delay
+      }}
+    >
+      <div className="bg-white p-4 rounded-xl shadow-lg relative border-2 border-red-500">
+        <p className="text-black text-base font-verdana text-center">
+          {displayText}
+        </p>
         
-        {/* Glow effect behind the bubble */}
-        <motion.div className="absolute inset-0 -z-10 bg-blue-400/20 rounded-xl blur-md" animate={{
-        opacity: [0.3, 0.6, 0.3]
-      }} transition={{
-        repeat: Infinity,
-        duration: 2,
-        ease: "easeInOut"
-      }} />
+        {/* Red outline effect matching the image */}
+        <motion.div 
+          className="absolute inset-0 -z-10 rounded-xl" 
+          animate={{
+            opacity: [0.3, 0.6, 0.3]
+          }} 
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+            ease: "easeInOut"
+          }} 
+        />
         
-        {/* Speech bubble tail - moved from right to left */}
-        <div className="absolute w-4 h-4 bg-white transform rotate-45 -bottom-2 left-8 border-l-2 border-b-2 border-blue-200"></div>
+        {/* Speech bubble tail - positioned to point at the robot */}
+        <div className="absolute w-4 h-4 bg-white transform rotate-45 bottom-0 right-8 translate-y-2 border-r-2 border-b-2 border-red-500"></div>
       </div>
-    </motion.div>;
+    </motion.div>
+  );
 };
+
 export default SpeechBubble;
