@@ -66,19 +66,7 @@ const ReadingPage = () => {
 
           {/* Navigation controls with smaller spacing */}
           <div className="w-full flex justify-between mt-6">
-            {/* Back button removed */}
-            
-            <div></div> {/* Empty div to maintain flex spacing */}
-
-            <motion.button
-              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-base shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={toggleInstructions}
-            >
-              ?
-            </motion.button>
-
+            {/* Next button moved to left side */}
             <motion.button
               className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md font-bold text-base shadow-lg"
               whileHover={{ scale: 1.05 }}
@@ -88,6 +76,16 @@ const ReadingPage = () => {
               style={{ opacity: hasNextPage ? 1 : 0.5 }}
             >
               NEXT
+            </motion.button>
+
+            {/* Help button stays on right */}
+            <motion.button
+              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-base shadow-lg"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={toggleInstructions}
+            >
+              ?
             </motion.button>
           </div>
         </motion.div>
