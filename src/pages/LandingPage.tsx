@@ -37,11 +37,11 @@ const LandingPage = () => {
         <LottieAstronaut />
       </div>
 
-      {/* Content container */}
+      {/* Content container - moved the play button up by 20px */}
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
-        {/* Curved neon title with gradients */}
+        {/* Curved neon title with gradients - increased z-index to bring to front */}
         <motion.div 
-          className="mb-8 md:mb-16 relative"
+          className="mb-8 md:mb-16 relative z-30"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -83,8 +83,8 @@ const LandingPage = () => {
           </div>
         </motion.div>
 
-        {/* Main content area with Lottie animation and Play button */}
-        <div className="flex items-center justify-center w-full">
+        {/* Main content area with Lottie animation and Play button - moved up 20px */}
+        <div className="flex items-center justify-center w-full -mt-5">
           {/* Lottie Animation - Increased size and moved to left side */}
           <motion.div
             className="absolute left-4 md:left-16 xl:left-32 w-24 h-24 md:w-40 md:h-40"
