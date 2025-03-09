@@ -111,10 +111,10 @@ const LandingPage = () => {
         </motion.div>
       </div>
 
-      {/* Play button - EXACTLY at the center of the screen */}
+      {/* Play button - moved 25px left and 20px down from center */}
       <motion.button 
         onClick={handlePlayClick}
-        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-40"
+        className="absolute left-[calc(50%-25px)] top-[calc(50%+20px)] transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white rounded-full w-24 h-24 md:w-32 md:h-32 flex items-center justify-center transition-all hover:scale-105 focus:outline-none z-40"
         aria-label="Play game"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
