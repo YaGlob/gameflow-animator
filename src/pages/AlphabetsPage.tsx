@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -78,13 +77,13 @@ const AlphabetsPage = () => {
         }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "flex items-center justify-center mobile-letter-tile w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-white rounded-md transition-colors cursor-pointer",
+          "flex items-center justify-center mobile-letter-tile w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 border-2 border-white rounded-md transition-colors cursor-pointer",
           "bg-slate-800 hover:bg-slate-700",
           isSelected && "ring-4 ring-blue-400 bg-blue-800 hover:bg-blue-700"
         )}
         onClick={() => handleLetterClick(letter)}
       >
-        <span className="text-xl sm:text-2xl md:text-4xl font-bold text-white">
+        <span className="text-2xl sm:text-3xl md:text-5xl font-bold text-white">
           {letter.uppercase}{letter.lowercase}
         </span>
       </motion.div>
@@ -93,9 +92,9 @@ const AlphabetsPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-4">
-        <div className="relative bg-[#395d6e] rounded-lg p-3 sm:p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 w-full z-10 mobile-content-container">
-          <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-2 sm:gap-3 w-full">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4" style={{ margin: '50px' }}>
+        <div className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 w-full z-10 mobile-content-container">
+          <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 md:gap-5 w-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
             ))}

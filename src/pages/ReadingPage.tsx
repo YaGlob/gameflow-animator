@@ -1,7 +1,5 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
-import RobotScene from "@/components/RobotScene";
 import SpeechBubble from "@/components/SpeechBubble";
 import ReadingContent from "@/components/reading-game/ReadingContent";
 import QuestionContainer from "@/components/reading-game/QuestionContainer";
@@ -33,10 +31,10 @@ const ReadingPage = () => {
 
   return (
     <GameLayout>
-      <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-between min-h-[80vh]">
+      <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-between min-h-[80vh]" style={{ margin: '50px' }}>
         {/* Main content container */}
         <motion.div 
-          className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30"
+          className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 w-full"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -51,7 +49,7 @@ const ReadingPage = () => {
 
           {/* Question container with reduced size */}
           {currentStory && (
-            <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {currentStory.pages[currentPage].questions.map((question, index) => (
                 <QuestionContainer
                   key={index}
@@ -65,11 +63,11 @@ const ReadingPage = () => {
           )}
 
           {/* Navigation controls with smaller spacing */}
-          <div className="w-full flex justify-between mt-6">
+          <div className="w-full flex justify-between mt-8">
             {/* Controls on the left side */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <motion.button
-                className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md font-bold text-base shadow-lg"
+                className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleNextPage}
@@ -80,7 +78,7 @@ const ReadingPage = () => {
               </motion.button>
               
               <motion.button
-                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-base shadow-lg"
+                className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full font-bold text-lg shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={toggleInstructions}
@@ -94,9 +92,21 @@ const ReadingPage = () => {
           </div>
         </motion.div>
 
-        {/* 3D Robot character positioned in bottom right with speech bubble - updated to match AlphabetsPage style */}
+        {/* Custom robot image positioned in bottom right with speech bubble */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <RobotScene variant={robotVariant} />
+          <motion.div 
+            className="w-32 h-32 sm:w-40 sm:h-40"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -5 }}
+          >
+            <img 
+              src="/images/robot-custom.png" 
+              alt="Robot Assistant" 
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
           <div className="ml-3 mb-8">
             <SpeechBubble 
               text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"

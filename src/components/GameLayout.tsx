@@ -1,4 +1,3 @@
-
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -13,7 +12,18 @@ interface GameLayoutProps {
 
 const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayoutProps) => {
   return (
-    <div className="min-h-screen w-full relative overflow-hidden bg-gradient-to-br from-blue-950 to-slate-950">
+    <div className="game-layout min-h-screen w-full relative overflow-hidden">
+      {/* Main background image - updated to fill the entire screen */}
+      <div 
+        className="absolute inset-0 z-[1]"
+        style={{ 
+          backgroundImage: "url('/images/game-background.png')", 
+          backgroundSize: "100% 100%", // Changed to fill the entire screen
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      
       {/* Circuit board background image - increased opacity and adjusted z-index */}
       <div 
         className="absolute inset-0 z-[5]"
@@ -22,7 +32,7 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.4,
+          opacity: 0.1, // Further reduced opacity
           mixBlendMode: "soft-light",
         }}
       />

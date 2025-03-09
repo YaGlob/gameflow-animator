@@ -1,8 +1,6 @@
-
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
-import RobotScene from "@/components/RobotScene";
 import SpeechBubble from "@/components/SpeechBubble";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -29,18 +27,18 @@ const VisualAidPage = () => {
   const levels: Level[] = [
     {
       items: [
-        { id: 1, word: "Flower", image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07" },
-        { id: 2, word: "Dog", image: "https://plus.unsplash.com/premium_photo-1676480245914-4f33f2c2899c" },
-        { id: 3, word: "Girl", image: "/lovable-uploads/40627e9b-492d-4baa-adf7-5309ef4c5d3c.png" },
-        { id: 4, word: "Pencil", image: "/lovable-uploads/1653c41a-eb28-4a62-ab2f-c60e2b4efe09.png" },
+        { id: 1, word: "Flower", image: "/images/Visualaid/Flower.png" },
+        { id: 2, word: "Dog", image: "/images/Visualaid/Dog.png" },
+        { id: 3, word: "Girl", image: "/images/Visualaid/Girl.png" },
+        { id: 4, word: "Pencil", image: "/images/Visualaid/pencil.png" },
       ],
     },
     {
       items: [
-        { id: 1, word: "Rock", image: "/lovable-uploads/f6ae6355-3a5f-4b58-b0fd-eb97af92682d.png" },
-        { id: 2, word: "Lion", image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d" },
-        { id: 3, word: "Bottle", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8" },
-        { id: 4, word: "Notebook", image: "https://images.unsplash.com/photo-1531346878377-a5be20888e57" },
+        { id: 1, word: "Rock", image: "/images/Visualaid/Rock.png" },
+        { id: 2, word: "Lion", image: "/images/Visualaid/Lion.png" },
+        { id: 3, word: "Bottle", image: "/images/Visualaid/bottle.png" },
+        { id: 4, word: "Notebook", image: "/images/Visualaid/Notebook.png" },
       ],
     },
   ];
@@ -389,7 +387,19 @@ const VisualAidPage = () => {
         <div className="mr-3 mb-4">
           <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
         </div>
-        <RobotScene variant={completedConnections.length === levels[currentLevel].items.length ? "happy" : "normal"} />
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-visual-aid.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
       </div>
     </GameLayout>
   );

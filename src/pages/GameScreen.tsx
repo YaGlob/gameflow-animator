@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -39,24 +38,24 @@ const GameScreen = () => {
   
   return (
     <GameLayout backTo="/landing">
-      <div className="w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-2 sm:px-4">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4" style={{ margin: '50px' }}>
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-center text-white mb-4 sm:mb-8 mobile-header"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6 sm:mb-8 mobile-header"
         >
           Choose Your Adventure
         </motion.h1>
         
-        <div className="relative bg-[#395d6e] rounded-lg p-4 sm:p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mobile-content-container w-full">
+        <div className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mobile-content-container w-full">
           <motion.div 
-            className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6"
+            className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col justify-evenly space-y-4 sm:space-y-12 h-full">
+            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12 h-full">
               <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
               <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
               <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
@@ -64,7 +63,7 @@ const GameScreen = () => {
             
             <div className="flex items-center justify-center mt-4 sm:mt-0 flex-col">
               <motion.div
-                className="relative w-full h-64 sm:h-72 md:h-96"
+                className="relative w-full h-72 sm:h-80 md:h-96"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -84,7 +83,7 @@ const GameScreen = () => {
                       src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
                       loop={!launchingAlphabets}
                       autoplay
-                      className={`w-44 h-44 sm:w-60 sm:h-60 transition-all duration-300 
+                      className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
                                 ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                     />
                   </div>
@@ -99,7 +98,7 @@ const GameScreen = () => {
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="text-center bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 text-white font-bold px-4 py-2 rounded-full animate-pulse text-sm sm:text-base">
+                      <div className="text-center bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 text-white font-bold px-6 py-3 rounded-full animate-pulse text-lg sm:text-xl">
                         Launching...
                       </div>
                     </motion.div>
@@ -111,9 +110,9 @@ const GameScreen = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="mt-2 sm:mt-4 -translate-y-5"
+                className="mt-4 sm:mt-6 -translate-y-5"
               >
-                <span className="text-sm sm:text-lg font-bold text-black bg-white/90 px-3 sm:px-4 py-1 sm:py-2 rounded-full shadow-md">
+                <span className="text-lg sm:text-2xl font-bold text-black bg-white/90 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
                   ALPHABETS
                 </span>
               </motion.div>
@@ -139,7 +138,7 @@ const GameScreen = () => {
           </div>
         )}
         <motion.div 
-          className="w-24 h-24 sm:w-32 sm:h-32"
+          className="w-28 h-28 sm:w-32 sm:h-32"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}

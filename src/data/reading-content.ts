@@ -1,4 +1,3 @@
-
 import { Story } from "@/components/reading-game/types";
 
 // Sample reading content
@@ -22,12 +21,12 @@ export const READING_CONTENT: Story[] = [
         images: [
           {
             id: 1,
-            src: "/lovable-uploads/0692117c-23a6-4a57-8e4f-530a1b6ab863.png",
+            src: "/images/Visualaid/Lily.png",
             alt: "Lily and her cat Whiskers"
           },
           {
             id: 2,
-            src: "/lovable-uploads/9c5dc57d-39c2-4ac1-b504-8232e674d7ca.png",
+            src: "/images/Visualaid/Ron.png",
             alt: "Ron on his red bike"
           }
         ],
@@ -82,12 +81,12 @@ export const READING_CONTENT: Story[] = [
         images: [
           {
             id: 1,
-            src: "/lovable-uploads/ca5f8d39-a241-47e8-b1ee-f127f1c0263b.png",
+            src: "/images/Visualaid/Julia.png",
             alt: "Julia and her garden"
           },
           {
             id: 2,
-            src: "/lovable-uploads/9c5dc57d-39c2-4ac1-b504-8232e674d7ca.png",
+            src: "/images/Visualaid/Lucas.png",
             alt: "Lucas playing piano"
           }
         ],

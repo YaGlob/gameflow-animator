@@ -1,4 +1,3 @@
-
 import { FC, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -56,7 +55,7 @@ const RocketButton: FC<RocketButtonProps> = ({
               transition: { duration: 0.5 }
             } : {}}
           >
-            <div className="w-24 h-24" style={{ transform: 'rotate(-90deg)' }}>
+            <div className="w-28 h-28 sm:w-32 sm:h-32" style={{ transform: 'rotate(-90deg)' }}>
               <DotLottieReact
                 ref={lottieRef}
                 src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
@@ -72,12 +71,12 @@ const RocketButton: FC<RocketButtonProps> = ({
                 <motion.div 
                   className={`absolute ${direction === "left" ? "bottom-0 left-1/2 -translate-x-1/2" : "bottom-0 left-1/2 -translate-x-1/2"}`}
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 40, opacity: 1 }}
+                  animate={{ height: 50, opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   style={{ transform: direction === "left" ? 'rotate(-90deg)' : 'rotate(90deg)' }}
                 >
-                  <svg width="40" height="30" viewBox="0 0 40 30">
+                  <svg width="50" height="40" viewBox="0 0 40 30">
                     <path
                       d="M0,15 Q10,5 20,15 Q30,25 40,15 Q30,5 20,15 Q10,25 0,15"
                       fill="url(#fireGradient)"
@@ -99,11 +98,11 @@ const RocketButton: FC<RocketButtonProps> = ({
           <motion.div 
             className={`relative z-0 bg-white/90 rounded-full flex items-center justify-center
                       ${direction === "left" 
-                        ? "ml-2 pl-12 pr-8" 
-                        : "mr-2 pr-12 pl-8"} 
-                      py-4 h-20 shadow-md`}
+                        ? "ml-2 pl-14 pr-10" 
+                        : "mr-2 pr-14 pl-10"} 
+                      py-5 h-24 shadow-md`}
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 180, opacity: 0.9 }}
+            animate={{ width: 220, opacity: 0.9 }}
             transition={{ duration: 0.3, delay: delay + 0.2 }}
             style={{
               clipPath: "ellipse(50% 50% at 50% 50%)"
@@ -126,7 +125,7 @@ const RocketButton: FC<RocketButtonProps> = ({
                 clipPath: "ellipse(55% 55% at 50% 50%)"
               }}
             />
-            <span className="text-black font-extrabold text-xl md:text-2xl tracking-wider relative z-10">
+            <span className="text-black font-extrabold text-2xl md:text-3xl tracking-wider relative z-10">
               {text}
             </span>
           </motion.div>

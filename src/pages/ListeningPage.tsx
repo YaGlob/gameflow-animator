@@ -1,8 +1,6 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
-import RobotScene from "@/components/RobotScene";
 import SpeechBubble from "@/components/SpeechBubble";
 import KeyboardLayout from "@/components/KeyboardLayout";
 import WordDisplay from "@/components/listening-game/WordDisplay";
@@ -63,9 +61,21 @@ const ListeningPage = () => {
           />
         </div>
 
-        {/* 3D Robot character positioned in bottom right with speech bubble on left */}
+        {/* Custom robot image positioned in bottom right with speech bubble on left */}
         <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <RobotScene variant={robotVariant} />
+          <motion.div 
+            className="w-32 h-32 sm:w-40 sm:h-40"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ y: -5 }}
+          >
+            <img 
+              src="/images/robot-listening.png" 
+              alt="Robot Assistant" 
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
           <div className="ml-3 mb-8">
             <SpeechBubble 
               text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
