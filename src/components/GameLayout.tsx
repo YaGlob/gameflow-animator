@@ -28,15 +28,15 @@ const GameLayout = ({ children, showBackButton = true, backTo = "/" }: GameLayou
         />
       </div>
       
-      {/* Circuit board background image with improved visibility */}
+      {/* New circuit board background image */}
       <div 
         className="absolute inset-0 z-1"
         style={{ 
-          backgroundImage: "url('/lovable-uploads/d6ab7bc7-4b5b-4cc8-8c05-42cec66a7fc4.png')", 
+          backgroundImage: "url('/lovable-uploads/e9839ed9-5020-4eb3-bbba-f19fdf3569a1.png')", 
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.15,
+          opacity: 0.25,
           mixBlendMode: "screen",
         }}
       />
