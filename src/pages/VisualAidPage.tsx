@@ -325,15 +325,20 @@ const VisualAidPage = () => {
             NEXT
           </motion.button>
           
-          {/* Help button moved here */}
-          <Button 
-            variant="outline" 
-            size="icon" 
-            className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
-            onClick={toggleHelp}
+          {/* Help button - Fixed the TypeScript error by removing motion props */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            ?
-          </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
+              onClick={toggleHelp}
+            >
+              ?
+            </Button>
+          </motion.div>
         </div>
       </div>
 
