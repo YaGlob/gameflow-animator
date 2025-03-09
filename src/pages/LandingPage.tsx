@@ -122,12 +122,12 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Grid Background Image - positioned at the same place as the previous grid */}
-      <div className="absolute bottom-0 left-0 w-full h-[calc(50%-80px)] overflow-hidden z-10">
-        {/* Gradient overlay for better visibility of elements above the grid */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
+      {/* Grid Background Image - expanded to cover more of the screen */}
+      <div className="absolute bottom-0 left-0 w-full h-[70%] overflow-hidden z-10">
+        {/* Gradient overlay for better visibility of elements above the grid - adjusted to be more subtle */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-blue-950/70 to-blue-950/90 z-20 pointer-events-none" />
         
-        {/* Grid image - replaces the previous Boxes component */}
+        {/* Grid image - expanded height and positioning */}
         <div className="w-full h-full">
           <img 
             src="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" 
