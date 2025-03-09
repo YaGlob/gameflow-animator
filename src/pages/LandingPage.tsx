@@ -136,44 +136,6 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Full-width educational image at the bottom */}
-      <div className="absolute bottom-0 w-full z-30 flex items-end overflow-hidden">
-        {/* Left side - People with letters */}
-        <motion.div 
-          className="w-1/2 h-[200px] md:h-[300px]"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <img 
-            src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
-            alt="Educational Illustration" 
-            className="h-full w-full object-cover object-left"
-            style={{ 
-              clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)'
-            }}
-          />
-        </motion.div>
-        
-        {/* Right side - Robot */}
-        <motion.div 
-          className="w-1/2 h-[200px] md:h-[300px]"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <img 
-            src="/lovable-uploads/f086a356-3ac3-492e-8ad3-5dbde9a24b7a.png" 
-            alt="Educational Robot" 
-            className="h-full w-full object-cover object-right"
-            style={{ 
-              clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)',
-              transform: 'scaleX(-1)' // Flip horizontally to get just the robot side
-            }}
-          />
-        </motion.div>
-      </div>
-
       {/* Mobile-friendly indicators */}
       <div className="absolute bottom-2 left-2 md:bottom-4 md:left-4 flex items-center space-x-2 z-40">
         <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
