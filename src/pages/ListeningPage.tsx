@@ -51,8 +51,8 @@ const ListeningPage = () => {
           </AnimatePresence>
         </div>
 
-        {/* Main game container */}
-        <div className="w-full bg-game-panel backdrop-blur-md rounded-xl p-6 mt-8 flex flex-col items-center">
+        {/* Main game container - updated styling */}
+        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center">
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
