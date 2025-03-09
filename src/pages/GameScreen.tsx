@@ -53,8 +53,8 @@ const GameScreen = () => {
           Choose Your Adventure
         </motion.h1>
         
-        {/* Main container box with specified properties */}
-        <div className="w-full p-6 mt-8 rounded-xl backdrop-blur-md bg-game-panel flex flex-col items-center relative z-10">
+        {/* Main container box with updated styles */}
+        <div className="relative bg-[#395d6e] rounded-lg p-6 min-h-[400px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10">
           <motion.div 
             className="w-full grid grid-cols-1 md:grid-cols-3 gap-6"
             initial={{ opacity: 0 }}
