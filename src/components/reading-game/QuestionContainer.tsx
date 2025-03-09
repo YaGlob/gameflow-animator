@@ -1,18 +1,6 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
-
-interface Answer {
-  id: string;
-  text: string;
-}
-
-interface Question {
-  id: string;
-  text: string;
-  answers: Answer[];
-  correctAnswerId: string; // Added this property to fix the TypeScript error
-}
+import { Answer, Question } from "./types";
 
 interface QuestionContainerProps {
   question: Question;
