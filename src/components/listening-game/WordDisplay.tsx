@@ -10,10 +10,10 @@ interface WordDisplayProps {
 
 const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) => {
   return (
-    <div className="relative w-full mt-6 mb-6">
+    <div className="relative w-full mt-8 mb-8">
       <div className="flex items-center justify-center">
         <motion.div 
-          className="w-full max-w-md h-12 bg-transparent border-b-4 border-cyan-400 flex items-center justify-center text-white text-2xl"
+          className="w-full max-w-lg h-16 bg-transparent border-b-4 border-cyan-400 flex items-center justify-center text-white text-3xl"
           animate={{ 
             borderColor: gameCompleted && isCorrect
               ? ["#4fd1ff", "#50ff8d", "#4fd1ff"] 
@@ -36,7 +36,7 @@ const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) 
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", damping: 10 }}
           >
-            <Check className="w-8 h-8 text-green-400" />
+            <Check className="w-10 h-10 text-green-400" />
           </motion.div>
         )}
       </div>
