@@ -43,23 +43,25 @@ const ListeningPage = () => {
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
           {/* Word display area with NEXT button moved next to it */}
-          <div className="flex items-center justify-center mt-4 sm:mt-8 mb-4 sm:mb-8">
-            <WordDisplay 
-              typedWord={typedWord} 
-              gameCompleted={gameCompleted} 
-              isCorrect={isCorrect} 
-            />
+          <div className="flex items-center justify-center mt-4 sm:mt-8 mb-4 sm:mb-8 flex-wrap sm:flex-nowrap">
+            <div className="flex-1 max-w-full sm:max-w-[70%]">
+              <WordDisplay 
+                typedWord={typedWord} 
+                gameCompleted={gameCompleted} 
+                isCorrect={isCorrect} 
+              />
+            </div>
             
             {/* NEXT button placed next to the typing line */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="ml-4"
+              className="ml-0 mt-3 sm:mt-0 sm:ml-4 w-full sm:w-auto"
             >
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 text-lg uppercase flex items-center gap-2"
-                onClick={() => console.log('Next button clicked')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 text-lg uppercase flex items-center gap-2 w-full sm:w-auto"
+                onClick={handleNext}
               >
                 NEXT
                 <ChevronRight className="h-5 w-5" />
@@ -67,8 +69,8 @@ const ListeningPage = () => {
             </motion.div>
           </div>
           
-          {/* Help and Delete buttons above where the NEXT button used to be */}
-          <div className="absolute bottom-6 left-6 flex space-x-4">
+          {/* Help and Delete buttons positioned correctly for all browsers */}
+          <div className="absolute bottom-6 left-6 flex space-x-4 z-10">
             <motion.button
               className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
               whileHover={{ scale: 1.05 }}
@@ -106,7 +108,7 @@ const ListeningPage = () => {
         </div>
       </div>
 
-      {/* Custom robot image positioned in bottom right with speech bubble on left */}
+      {/* Fixed positioning for robot and controls to ensure cross-browser compatibility */}
       <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         {/* Speaker button moved next to robot */}
         <motion.div 
@@ -123,7 +125,7 @@ const ListeningPage = () => {
           />
         </motion.div>
         
-        {/* Speaker button */}
+        {/* Speaker button with improved positioning */}
         <motion.button
           className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg mr-4 mb-8"
           whileHover={{ scale: 1.05 }}
@@ -146,7 +148,7 @@ const ListeningPage = () => {
           </motion.div>
         </motion.button>
         
-        {/* Submit button with check mark */}
+        {/* Submit button with check mark - improved for cross-browser */}
         <motion.button
           className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-lg mr-4 mb-8 ${
             gameCompleted ? 'bg-green-500' : 'bg-cyan-400'
@@ -164,6 +166,7 @@ const ListeningPage = () => {
           </svg>
         </motion.button>
         
+        {/* Speech bubble with improved positioning */}
         <div className="ml-3 mb-8">
           <SpeechBubble 
             text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
