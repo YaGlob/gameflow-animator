@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -88,13 +89,14 @@ const GameScreen = () => {
                                   ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                       />
 
+                      {/* Updated oval-shaped Alphabets container */}
                       <motion.div
-                        className="mt-4 h-[280px] w-20 sm:w-24 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
+                        className="mt-4 px-6 py-4 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                       >
-                        <div className="font-extrabold text-black text-xl sm:text-2xl tracking-wider flex flex-col items-center space-y-2">
+                        <div className="font-extrabold text-black text-base sm:text-lg tracking-wider flex flex-col items-center space-y-1">
                           <div>A</div>
                           <div>L</div>
                           <div>P</div>
