@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -8,6 +9,8 @@ import GameControls from "@/components/listening-game/GameControls";
 import InstructionsModal from "@/components/listening-game/InstructionsModal";
 import ConfettiEffect from "@/components/listening-game/ConfettiEffect";
 import { useListeningGame } from "@/hooks/use-listening-game";
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
 const ListeningPage = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState<boolean>(true);
@@ -58,6 +61,23 @@ const ListeningPage = () => {
             gameCompleted={gameCompleted}
             isTypedWordEmpty={typedWord.trim() === ""}
           />
+          
+          {/* NEXT button in bottom left */}
+          <div className="absolute bottom-6 left-6">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase flex items-center gap-2"
+                onClick={() => console.log('Next button clicked')}
+              >
+                NEXT
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </div>
 
