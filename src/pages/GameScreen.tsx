@@ -79,34 +79,36 @@ const GameScreen = () => {
                     className={`relative w-full h-full flex items-center justify-center cursor-pointer 
                                 ${launchingAlphabets ? 'animate-pulse' : ''}`}
                   >
-                    <DotLottieReact
-                      ref={lottieRef}
-                      src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
-                      loop={!launchingAlphabets}
-                      autoplay
-                      className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
-                                ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
-                    />
+                    <div className="flex flex-col items-center justify-center transform translate-y-[-30px]">
+                      <DotLottieReact
+                        ref={lottieRef}
+                        src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
+                        loop={!launchingAlphabets}
+                        autoplay
+                        className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
+                                  ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
+                      />
 
-                    {/* Vertical Alphabets Box */}
-                    <motion.div
-                      className="absolute right-[-20px] sm:right-[-40px] h-[240px] w-14 sm:w-16 bg-white/90 rounded-lg shadow-md flex flex-col items-center justify-center"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.5, duration: 0.5 }}
-                    >
-                      <div className="font-extrabold text-black text-lg sm:text-xl tracking-wider flex flex-col items-center">
-                        <div>A</div>
-                        <div>L</div>
-                        <div>P</div>
-                        <div>H</div>
-                        <div>A</div>
-                        <div>B</div>
-                        <div>E</div>
-                        <div>T</div>
-                        <div>S</div>
-                      </div>
-                    </motion.div>
+                      {/* Vertical Alphabets Box - now positioned directly under the lottie */}
+                      <motion.div
+                        className="mt-4 h-[240px] w-14 sm:w-16 bg-white/90 rounded-lg shadow-md flex flex-col items-center justify-center"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.5 }}
+                      >
+                        <div className="font-extrabold text-black text-lg sm:text-xl tracking-wider flex flex-col items-center">
+                          <div>A</div>
+                          <div>L</div>
+                          <div>P</div>
+                          <div>H</div>
+                          <div>A</div>
+                          <div>B</div>
+                          <div>E</div>
+                          <div>T</div>
+                          <div>S</div>
+                        </div>
+                      </motion.div>
+                    </div>
                   </div>
                 </Link>
                 
