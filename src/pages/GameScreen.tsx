@@ -131,8 +131,9 @@ const GameScreen = () => {
             </div>
             
             <div className="flex flex-col justify-evenly h-full">
-              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
-              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
+              {/* Swapped the order of these two buttons */}
+              <RocketButton text="LISTENING" to="/listening" delay={0.3} direction="right" />
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.5} direction="right" />
             </div>
           </motion.div>
         </div>
