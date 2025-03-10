@@ -42,17 +42,33 @@ const ListeningPage = () => {
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
-          {/* Word display area */}
-          <WordDisplay 
-            typedWord={typedWord} 
-            gameCompleted={gameCompleted} 
-            isCorrect={isCorrect} 
-          />
+          {/* Word display area with NEXT button moved next to it */}
+          <div className="flex items-center justify-center mt-4 sm:mt-8 mb-4 sm:mb-8">
+            <WordDisplay 
+              typedWord={typedWord} 
+              gameCompleted={gameCompleted} 
+              isCorrect={isCorrect} 
+            />
+            
+            {/* NEXT button placed next to the typing line */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="ml-4"
+            >
+              <Button 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 text-lg uppercase flex items-center gap-2"
+                onClick={() => console.log('Next button clicked')}
+              >
+                NEXT
+                <ChevronRight className="h-5 w-5" />
+              </Button>
+            </motion.div>
+          </div>
           
-          {/* Control buttons - removed from here */}
-          
-          {/* Help and Delete buttons above NEXT button */}
-          <div className="absolute bottom-20 left-6 flex space-x-4">
+          {/* Help and Delete buttons above where the NEXT button used to be */}
+          <div className="absolute bottom-6 left-6 flex space-x-4">
             <motion.button
               className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
               whileHover={{ scale: 1.05 }}
@@ -86,23 +102,6 @@ const ListeningPage = () => {
                 <line x1="14" y1="11" x2="14" y2="17"></line>
               </svg>
             </motion.button>
-          </div>
-          
-          {/* NEXT button in bottom left */}
-          <div className="absolute bottom-6 left-6">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase flex items-center gap-2"
-                onClick={() => console.log('Next button clicked')}
-              >
-                NEXT
-                <ChevronRight className="h-5 w-5" />
-              </Button>
-            </motion.div>
           </div>
         </div>
       </div>
@@ -173,8 +172,6 @@ const ListeningPage = () => {
         </div>
       </div>
 
-      {/* Remove the old fixed position for help and delete buttons */}
-      
       {/* Instructions modal */}
       <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
 
