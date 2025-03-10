@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
-import RobotScene from "@/components/RobotScene";
 import SpeechBubble from "@/components/SpeechBubble";
 import { cn } from "@/lib/utils";
 
@@ -165,12 +164,38 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      {/* Updated Robot with speech bubble - positioned in bottom right with speech bubble to the left-bottom */}
+      {/* Replace RobotScene with the uploaded robot image */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
         <div className="mr-3 mb-4">
           <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
         </div>
-        <RobotScene variant={selectedLetter ? "happy" : "normal"} />
+        <motion.div 
+          className="relative z-50"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/lovable-uploads/d776dc4d-778e-4f77-8e97-b38a136823b1.png" 
+            alt="Robot Assistant" 
+            className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
+          />
+          
+          {/* Light effect behind the robot */}
+          <motion.div 
+            className="absolute inset-0 -z-10 bg-blue-400/20 rounded-full blur-lg"
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.6, 0.8, 0.6],
+            }}
+            transition={{ 
+              repeat: Infinity, 
+              duration: 2,
+              ease: "easeInOut" 
+            }}
+          />
+        </motion.div>
       </div>
     </GameLayout>
   );
