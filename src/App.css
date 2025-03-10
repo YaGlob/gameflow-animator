@@ -6,6 +6,7 @@
   padding: 0;
   text-align: center;
   box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .logo {
@@ -47,6 +48,7 @@
 /* Cross-browser compatibility fixes */
 * {
   box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 html, body {
@@ -56,6 +58,7 @@ html, body {
   height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* Fixes Chrome flex layout issues */
@@ -85,4 +88,9 @@ img {
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+}
+
+/* Font consistency class */
+.verdana-font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
 }

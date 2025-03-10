@@ -67,8 +67,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-        verdana: ["Verdana", "sans-serif"], // Added Verdana for dyslexia-friendly text
+        sans: ["Verdana", "Geneva", "Tahoma", ...fontFamily.sans],
+        verdana: ["Verdana", "Geneva", "Tahoma", "sans-serif"], // Reinforced Verdana definition
       },
       keyframes: {
         "accordion-down": {
