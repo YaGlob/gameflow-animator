@@ -79,21 +79,19 @@ const GameScreen = () => {
                     className={`relative w-full h-full flex items-center justify-center cursor-pointer 
                                 ${launchingAlphabets ? 'animate-pulse' : ''}`}
                   >
-                    {/* Swapped positions - Rocket is now on the left */}
-                    <div className="flex flex-row items-center justify-center">
-                      {/* Rocket Animation on the left */}
+                    <div className="flex flex-col items-center justify-center transform translate-y-[-30px]">
                       <DotLottieReact
                         ref={lottieRef}
                         src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
                         loop={!launchingAlphabets}
                         autoplay
-                        className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 mr-4
-                                  ${launchingAlphabets ? 'scale-110' : 'hover:scale-105'}`}
+                        className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
+                                  ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                       />
 
-                      {/* Alphabets container on the right */}
+                      {/* Updated oval-shaped Alphabets container */}
                       <motion.div
-                        className="px-6 py-4 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
+                        className="mt-4 px-6 py-4 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
@@ -133,8 +131,8 @@ const GameScreen = () => {
             </div>
             
             <div className="flex flex-col justify-evenly h-full">
-              <RocketButton text="LISTENING" to="/listening" delay={0.3} direction="right" />
-              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.5} direction="right" />
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
             </div>
           </motion.div>
         </div>
