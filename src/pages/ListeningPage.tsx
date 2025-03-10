@@ -119,8 +119,6 @@ const ListeningPage = () => {
           whileTap={{ scale: 0.95 }}
           onClick={handleSubmit}
           disabled={gameCompleted || typedWord.trim() === ""}
-          animate={{ x: isSubmitShaking ? [-5, 5, -5, 5, 0] : 0 }}
-          transition={{ duration: 0.4 }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
