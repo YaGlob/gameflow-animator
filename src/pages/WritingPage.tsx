@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -34,14 +33,8 @@ const WritingPage = () => {
 
   return (
     <GameLayout>
-      <div className="w-full mx-auto flex flex-col items-center justify-center">
-        {/* Main content container */}
-        <motion.div 
-          className="relative bg-[#395d6e] rounded-lg p-6 w-full shadow-lg border-2 border-blue-300/30"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
           {/* Score display */}
           <div className="absolute top-0 left-0 right-0 flex justify-center" style={{ transform: 'translateY(-50%)' }}>
             <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded shadow-lg">
@@ -80,34 +73,34 @@ const WritingPage = () => {
               ?
             </motion.button>
           </div>
-        </motion.div>
-
-        {/* Robot with speech bubble */}
-        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <motion.div 
-            className="w-32 h-32 sm:w-40 sm:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <img 
-              src="/images/robot-writing.png" 
-              alt="Robot Assistant" 
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
-          <div className="ml-3 mb-8">
-            <SpeechBubble 
-              text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
-              delay={0.2}
-            />
-          </div>
         </div>
-
-        {/* Instructions modal */}
-        <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
       </div>
+
+      {/* Robot with speech bubble */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-writing.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+        <div className="ml-3 mb-8">
+          <SpeechBubble 
+            text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
+            delay={0.2}
+          />
+        </div>
+      </div>
+
+      {/* Instructions modal */}
+      <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
     </GameLayout>
   );
 };

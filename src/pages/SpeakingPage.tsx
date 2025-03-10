@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -34,17 +33,10 @@ const SpeakingPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full mx-auto">
-        {/* Instructions modal */}
-        <InstructionsModal 
-          isOpen={showInstructions} 
-          onClose={() => setShowInstructions(false)} 
-        />
-        
-        {/* Main game container */}
-        <div className="relative bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
           {/* Main content */}
-          <div className="w-full flex flex-col items-center justify-center gap-6">
+          <div className="w-full h-full flex flex-col items-center justify-center gap-6">
             {/* Text display area */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -101,25 +93,31 @@ const SpeakingPage = () => {
             </motion.div>
           </div>
         </div>
-        
-        {/* Robot with speech bubble */}
-        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <motion.div 
-            className="w-32 h-32 sm:w-40 sm:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <img 
-              src="/images/robot-speaking.png" 
-              alt="Robot Assistant" 
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
-          <div className="ml-3 mb-8">
-            <SpeechBubble text={pixelSpeech} delay={0.2} />
-          </div>
+      </div>
+      
+      {/* Instructions modal */}
+      <InstructionsModal 
+        isOpen={showInstructions} 
+        onClose={() => setShowInstructions(false)} 
+      />
+      
+      {/* Robot with speech bubble */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-speaking.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+        <div className="ml-3 mb-8">
+          <SpeechBubble text={pixelSpeech} delay={0.2} />
         </div>
       </div>
     </GameLayout>

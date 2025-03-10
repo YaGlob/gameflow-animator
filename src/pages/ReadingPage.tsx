@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -25,31 +24,21 @@ const ReadingPage = () => {
     robotVariant
   } = useReadingGame();
 
-  // Custom image replacement for the selected image
   const getCustomImage = (imageSrc: string) => {
-    // Replace the specific image with our uploaded girl and cat image
     if (imageSrc.includes("placeholder") || imageSrc.includes("cat")) {
       return "/lovable-uploads/a43472ee-74e2-4469-8f36-a510e9ebd66c.png";
     }
     return imageSrc;
   };
 
-  // Toggle help instructions
   const toggleInstructions = () => {
     setShowInstructions(prev => !prev);
   };
 
   return (
     <GameLayout>
-      <div className="relative w-full mx-auto flex flex-col items-center justify-between">
-        {/* Main content container */}
-        <motion.div 
-          className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 w-full shadow-lg border-2 border-blue-300/30"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Reading content */}
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 shadow-lg border-2 border-blue-300/30">
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
@@ -60,7 +49,6 @@ const ReadingPage = () => {
             />
           )}
 
-          {/* Question container */}
           {currentStory && (
             <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {currentStory.pages[currentPage].questions.map((question, index) => (
@@ -75,7 +63,6 @@ const ReadingPage = () => {
             </div>
           )}
 
-          {/* Navigation controls */}
           <div className="w-full flex justify-between mt-8">
             <div className="flex items-center gap-3">
               <motion.button
@@ -101,34 +88,32 @@ const ReadingPage = () => {
             
             <div></div>
           </div>
-        </motion.div>
-
-        {/* Robot with speech bubble */}
-        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <motion.div 
-            className="w-32 h-32 sm:w-40 sm:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <img 
-              src="/images/robot-custom.png" 
-              alt="Robot Assistant" 
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
-          <div className="ml-3 mb-8">
-            <SpeechBubble 
-              text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
-              delay={0.2}
-            />
-          </div>
         </div>
-
-        {/* Instructions modal */}
-        <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
       </div>
+
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-custom.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+        <div className="ml-3 mb-8">
+          <SpeechBubble 
+            text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
+            delay={0.2}
+          />
+        </div>
+      </div>
+
+      <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
     </GameLayout>
   );
 };

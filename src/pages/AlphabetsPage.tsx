@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -92,9 +93,9 @@ const AlphabetsPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4" style={{ margin: '50px' }}>
-        <div className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 w-full z-10 mobile-content-container">
-          <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 md:gap-5 w-full">
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 w-full">
+          <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-3 sm:gap-4 md:gap-5 w-full h-full">
             {alphabet.map((letter, index) => (
               <LetterTile key={letter.uppercase} letter={letter} index={index} />
             ))}

@@ -34,9 +34,8 @@ const ListeningPage = () => {
 
   return (
     <GameLayout>
-      <div className="relative w-[calc(100vw-120px)] max-w-6xl mx-auto flex flex-col items-center justify-between min-h-[calc(100vh-120px)]">
-        {/* Main game container - expanded to use more screen space with 60px padding on all sides */}
-        <div className="relative w-full bg-[#395d6e] rounded-lg p-8 min-h-[500px] shadow-lg border-2 border-blue-300/30">
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
           {/* Keyboard */}
           <KeyboardLayout onKeyPress={handleKeyPress} />
           
@@ -60,36 +59,36 @@ const ListeningPage = () => {
             isTypedWordEmpty={typedWord.trim() === ""}
           />
         </div>
-
-        {/* Custom robot image positioned in bottom right with speech bubble on left */}
-        <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
-          <motion.div 
-            className="w-32 h-32 sm:w-40 sm:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <img 
-              src="/images/robot-listening.png" 
-              alt="Robot Assistant" 
-              className="w-full h-full object-contain"
-            />
-          </motion.div>
-          <div className="ml-3 mb-8">
-            <SpeechBubble 
-              text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
-              delay={0.2} 
-            />
-          </div>
-        </div>
-
-        {/* Instructions modal */}
-        <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
-
-        {/* Confetti styles */}
-        <ConfettiEffect />
       </div>
+
+      {/* Custom robot image positioned in bottom right with speech bubble on left */}
+      <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-listening.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
+        <div className="ml-3 mb-8">
+          <SpeechBubble 
+            text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+            delay={0.2} 
+          />
+        </div>
+      </div>
+
+      {/* Instructions modal */}
+      <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
+
+      {/* Confetti styles */}
+      <ConfettiEffect />
     </GameLayout>
   );
 };
