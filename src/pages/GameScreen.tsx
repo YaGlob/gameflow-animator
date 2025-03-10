@@ -50,19 +50,20 @@ const GameScreen = () => {
         
         <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10">
           <motion.div 
-            className="w-full h-full grid grid-cols-3 gap-6 sm:gap-8"
+            className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col justify-evenly space-y-6">
+            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12">
               <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
               <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
+              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
             </div>
             
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center flex-col">
               <motion.div
-                className="relative w-full h-[500px] perspective-1000"
+                className="relative w-full h-72 sm:h-80 md:h-96"
                 initial={{ opacity: 0, y: 100 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
@@ -72,34 +73,22 @@ const GameScreen = () => {
                   stiffness: 50
                 }}
               >
-                <Link 
-                  to="/alphabets" 
-                  onClick={handleAlphabetsClick}
-                  className="block h-full"
-                >
-                  <div className={`relative w-full h-full flex flex-col items-center justify-center cursor-pointer transform-style-3d ${launchingAlphabets ? 'animate-pulse' : ''}`}>
+                <Link to="/alphabets" onClick={handleAlphabetsClick}>
+                  <div 
+                    className={`relative w-full h-full flex items-center justify-center cursor-pointer 
+                                ${launchingAlphabets ? 'animate-pulse' : ''}`}
+                  >
                     <DotLottieReact
                       ref={lottieRef}
                       src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
                       loop={!launchingAlphabets}
                       autoplay
-                      className={`w-32 h-32 sm:w-40 sm:h-40 transition-all duration-300 rotate-y-[-20deg] 
-                        ${launchingAlphabets ? 'scale-110 translate-y-[-30px]' : 'hover:scale-105'}`}
+                      className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
+                                ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                     />
-                    
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 1, duration: 0.5 }}
-                      className="mt-4"
-                    >
-                      <span className="verdana-font text-lg sm:text-2xl font-bold text-black bg-white/90 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md rotate-y-[-20deg] inline-block">
-                        ALPHABETS
-                      </span>
-                    </motion.div>
                   </div>
                 </Link>
-
+                
                 <AnimatePresence>
                   {launchingAlphabets && (
                     <motion.div 
@@ -116,12 +105,22 @@ const GameScreen = () => {
                   )}
                 </AnimatePresence>
               </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="mt-4"
+              >
+                <span className="text-lg sm:text-2xl font-bold text-black bg-white/90 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
+                  ALPHABETS
+                </span>
+              </motion.div>
             </div>
             
-            <div className="flex flex-col justify-evenly">
-              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="right" />
-              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
+            <div className="flex flex-col justify-evenly h-full">
               <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
             </div>
           </motion.div>
         </div>
