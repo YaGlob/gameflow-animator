@@ -51,6 +51,43 @@ const ListeningPage = () => {
           
           {/* Control buttons - removed from here */}
           
+          {/* Help and Delete buttons above NEXT button */}
+          <div className="absolute bottom-20 left-6 flex space-x-4">
+            <motion.button
+              className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={toggleInstructions}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </motion.button>
+            <motion.button
+              className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => handleKeyPress("delete")}
+              disabled={gameCompleted}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+            </motion.button>
+          </div>
+          
           {/* NEXT button in bottom left */}
           <div className="absolute bottom-6 left-6">
             <motion.div
@@ -120,7 +157,7 @@ const ListeningPage = () => {
           onClick={handleSubmit}
           disabled={gameCompleted || typedWord.trim() === ""}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 1, scale: 1, x: isSubmitShaking ? [-5, 5, -5, 5, 0] : 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
@@ -136,43 +173,8 @@ const ListeningPage = () => {
         </div>
       </div>
 
-      {/* Help and Delete buttons moved to lower left corner */}
-      <div className="fixed bottom-6 left-28 sm:left-40 z-40 flex space-x-4">
-        <motion.button
-          className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={toggleInstructions}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-        </motion.button>
-        <motion.button
-          className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => handleKeyPress("delete")}
-          disabled={gameCompleted}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 6h18"></path>
-            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-            <line x1="10" y1="11" x2="10" y2="17"></line>
-            <line x1="14" y1="11" x2="14" y2="17"></line>
-          </svg>
-        </motion.button>
-      </div>
-
+      {/* Remove the old fixed position for help and delete buttons */}
+      
       {/* Instructions modal */}
       <InstructionsModal isOpen={showInstructions} onClose={toggleInstructions} />
 
