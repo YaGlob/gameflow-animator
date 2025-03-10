@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -60,6 +59,8 @@ const GameScreen = () => {
               <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
               <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
               <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.8} direction="left" />
+              <RocketButton text="LISTENING" to="/listening" delay={1.0} direction="left" />
             </div>
             
             <div className="flex items-center justify-center flex-col">
@@ -130,10 +131,8 @@ const GameScreen = () => {
               </motion.div>
             </div>
             
-            <div className="flex flex-col justify-evenly h-full">
-              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
-              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
-            </div>
+            {/* Empty column to maintain grid layout */}
+            <div className="hidden sm:block"></div>
           </motion.div>
         </div>
       </div>
