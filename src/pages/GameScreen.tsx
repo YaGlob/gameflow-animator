@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -78,14 +79,53 @@ const GameScreen = () => {
                     className={`relative w-full h-full flex items-center justify-center cursor-pointer 
                                 ${launchingAlphabets ? 'animate-pulse' : ''}`}
                   >
-                    <DotLottieReact
-                      ref={lottieRef}
-                      src="https://lottie.host/d212e7a5-a203-419e-9f5b-cda06f326903/4jZK91W18f.lottie"
-                      loop={!launchingAlphabets}
-                      autoplay
-                      className={`w-56 h-56 sm:w-64 sm:h-64 transition-all duration-300 
-                                ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
-                    />
+                    <div className="relative">
+                      {/* Rocket body */}
+                      <div className="bg-white rounded-full w-24 h-[280px] flex flex-col items-center justify-center shadow-lg">
+                        {/* Rocket top - triangle */}
+                        <div className="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                          <div className="w-0 h-0 border-l-[30px] border-r-[30px] border-b-[40px] border-l-transparent border-r-transparent border-b-red-500"></div>
+                        </div>
+                        
+                        {/* Vertical text inside rocket */}
+                        <div className="flex flex-col items-center justify-center h-full pt-5">
+                          <div className="font-extrabold text-black text-3xl leading-tight tracking-wider">
+                            <div>A</div>
+                            <div>L</div>
+                            <div>P</div>
+                            <div>H</div>
+                            <div>A</div>
+                            <div>B</div>
+                            <div>E</div>
+                            <div>T</div>
+                            <div>S</div>
+                          </div>
+                        </div>
+                        
+                        {/* Rocket window */}
+                        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full border-4 border-gray-300 bg-blue-200 flex items-center justify-center">
+                          <div className="w-4 h-4 rounded-full bg-blue-500"></div>
+                        </div>
+                        
+                        {/* Rocket fins */}
+                        <div className="absolute left-[-15px] top-1/2 transform -translate-y-1/2 w-5 h-20 bg-red-500 rounded-l-lg"></div>
+                        <div className="absolute right-[-15px] top-1/2 transform -translate-y-1/2 w-5 h-20 bg-red-500 rounded-r-lg"></div>
+                      </div>
+                      
+                      {/* Fire animation at the bottom */}
+                      {launchingAlphabets && (
+                        <motion.div 
+                          className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2"
+                          initial={{ height: 0 }}
+                          animate={{ height: 60 }}
+                          transition={{ duration: 0.3, repeat: Infinity, repeatType: "reverse" }}
+                        >
+                          <div className="w-20 h-40 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-t from-yellow-500 via-orange-500 to-red-500 rounded-b-full"></div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
                 </Link>
                 
@@ -104,17 +144,6 @@ const GameScreen = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="mt-4"
-              >
-                <span className="text-lg sm:text-2xl font-bold text-black bg-white/90 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
-                  ALPHABETS
-                </span>
               </motion.div>
             </div>
             
