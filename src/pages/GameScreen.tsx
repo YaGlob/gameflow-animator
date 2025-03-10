@@ -38,30 +38,30 @@ const GameScreen = () => {
   
   return (
     <GameLayout backTo="/landing">
-      <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center px-4" style={{ margin: '50px' }}>
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6 sm:mb-8 mobile-header"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6"
         >
           Choose Your Adventure
         </motion.h1>
         
-        <div className="relative bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 min-h-[500px] shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mobile-content-container w-full">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10">
           <motion.div 
-            className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
+            className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12 h-full">
+            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12">
               <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
               <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
               <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
             </div>
             
-            <div className="flex items-center justify-center mt-4 sm:mt-0 flex-col">
+            <div className="flex items-center justify-center flex-col">
               <motion.div
                 className="relative w-full h-72 sm:h-80 md:h-96"
                 initial={{ opacity: 0, y: 100 }}
@@ -110,7 +110,7 @@ const GameScreen = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1, duration: 0.5 }}
-                className="mt-4 sm:mt-6 -translate-y-5"
+                className="mt-4"
               >
                 <span className="text-lg sm:text-2xl font-bold text-black bg-white/90 px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md">
                   ALPHABETS
@@ -119,13 +119,8 @@ const GameScreen = () => {
             </div>
             
             <div className="flex flex-col justify-evenly h-full">
-              <div className="mb-4">
-                <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
-              </div>
-              
-              <div className="mt-4 sm:mt-20"> 
-                <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
-              </div>
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
             </div>
           </motion.div>
         </div>
