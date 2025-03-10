@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -89,14 +88,13 @@ const GameScreen = () => {
                                   ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                       />
 
-                      {/* Vertical Alphabets Box - now positioned directly under the lottie */}
                       <motion.div
-                        className="mt-4 h-[240px] w-14 sm:w-16 bg-white/90 rounded-lg shadow-md flex flex-col items-center justify-center"
+                        className="mt-4 h-[280px] w-20 sm:w-24 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                       >
-                        <div className="font-extrabold text-black text-lg sm:text-xl tracking-wider flex flex-col items-center">
+                        <div className="font-extrabold text-black text-xl sm:text-2xl tracking-wider flex flex-col items-center space-y-2">
                           <div>A</div>
                           <div>L</div>
                           <div>P</div>
