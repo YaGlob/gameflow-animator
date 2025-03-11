@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -151,15 +152,15 @@ const LandingPage = () => {
         </div>
       </motion.button>
 
-      {/* Grid Background Image - restored from original */}
+      {/* Grid Background Image - REPLACED with new image */}
       <div className="absolute bottom-0 left-0 w-full h-[calc(50%-80px)] overflow-hidden z-10">
         {/* Gradient overlay for better visibility of elements above the grid */}
         <div className="absolute inset-0 bg-gradient-to-t from-transparent to-blue-950/90 z-20 pointer-events-none" />
         
-        {/* Grid image - original from previous implementation */}
+        {/* Grid image - replaced with new image */}
         <div className="w-full h-full">
           <img 
-            src="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" 
+            src="/lovable-uploads/9a6b5a08-55d5-4aa8-870e-be05924df1fa.png" 
             alt="Grid Background" 
             className="w-full h-full object-cover"
           />
