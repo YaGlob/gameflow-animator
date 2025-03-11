@@ -58,8 +58,9 @@ const ListeningPage = () => {
           
           {/* Help, Delete and Next buttons positioned at bottom left */}
           <div className="absolute bottom-6 left-6 flex space-x-4 z-10">
+            {/* Updated question mark button */}
             <motion.button
-              className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
+              className="flex items-center justify-center bg-cyan-300 text-black p-3 rounded-full shadow-lg border-2 border-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={toggleInstructions}

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -83,13 +84,14 @@ const SpeakingPage = () => {
                 NEXT
               </Button>
               
+              {/* Updated question mark button */}
               <motion.button
-                className="bg-blue-400 text-white font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+                className="bg-cyan-300 text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowInstructions(true)}
               >
-                ?
+                <HelpCircle className="h-6 w-6" />
               </motion.button>
             </motion.div>
           </div>

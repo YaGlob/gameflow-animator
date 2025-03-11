@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { HelpCircle } from "lucide-react";
 
 interface GameControlsProps {
   onNextLevel: () => void;
@@ -22,6 +23,7 @@ const GameControls = ({ onNextLevel, onToggleHelp }: GameControlsProps) => {
         NEXT
       </motion.button>
       
+      {/* Updated question mark button */}
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -29,10 +31,10 @@ const GameControls = ({ onNextLevel, onToggleHelp }: GameControlsProps) => {
         <Button 
           variant="outline" 
           size="icon" 
-          className="bg-blue-500/30 hover:bg-blue-500/50 border-blue-300 text-white w-12 h-12 rounded-full"
+          className="bg-cyan-300 hover:bg-cyan-400 text-black w-12 h-12 rounded-full border-2 border-white"
           onClick={onToggleHelp}
         >
-          ?
+          <HelpCircle className="h-6 w-6" />
         </Button>
       </motion.div>
     </div>

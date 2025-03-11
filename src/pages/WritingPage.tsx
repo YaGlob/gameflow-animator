@@ -8,6 +8,7 @@ import InstructionsModal from "@/components/writing-game/InstructionsModal";
 import { useWritingGame } from "@/hooks/use-writing-game";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { HelpCircle } from "lucide-react";
 
 const WritingPage = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState<boolean>(true);
@@ -67,13 +68,14 @@ const WritingPage = () => {
               NEXT
             </Button>
             
+            {/* Updated question mark button */}
             <motion.button
-              className="bg-blue-400 text-white font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+              className="bg-cyan-300 text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleInstructions}
             >
-              ?
+              <HelpCircle className="h-6 w-6" />
             </motion.button>
           </div>
         </div>

@@ -7,6 +7,7 @@ import QuestionContainer from "@/components/reading-game/QuestionContainer";
 import InstructionsModal from "@/components/reading-game/InstructionsModal";
 import { useReadingGame } from "@/hooks/use-reading-game";
 import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 
 const ReadingPage = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState<boolean>(true);
@@ -68,13 +69,14 @@ const ReadingPage = () => {
                 NEXT
               </motion.button>
               
+              {/* Updated question mark button */}
               <motion.button
-                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-lg shadow-lg"
+                className="bg-cyan-300 text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={toggleInstructions}
               >
-                ?
+                <HelpCircle className="h-6 w-6" />
               </motion.button>
             </div>
             
