@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
 import { Connection, Level } from "@/components/visual-aid/types";
 
-// Game levels
+// Game levels data - each level has items with matching words and images
 const levels: Level[] = [
   {
     items: [
@@ -23,27 +23,30 @@ const levels: Level[] = [
   },
 ];
 
+// Custom hook that contains all the logic for the visual aid game
 export const useVisualAidGame = () => {
-  const [currentLevel, setCurrentLevel] = useState(0);
-  const [activeConnection, setActiveConnection] = useState<Connection>({ wordId: null, imageId: null });
-  const [completedConnections, setCompletedConnections] = useState<number[]>([]);
-  const [robotSpeech, setRobotSpeech] = useState("WELCOME TO THE VISUAL AID ACTIVITY! MATCH THE WORDS WITH THEIR IMAGES BY CONNECTING THE DOTS!");
-  const [showHelp, setShowHelp] = useState(false);
+  // State variables to track the game's state
+  const [currentLevel, setCurrentLevel] = useState(0);                          // Current level index
+  const [activeConnection, setActiveConnection] = useState<Connection>({ wordId: null, imageId: null });  // Current connection being made
+  const [completedConnections, setCompletedConnections] = useState<number[]>([]);  // Successfully matched items
+  const [robotSpeech, setRobotSpeech] = useState("WELCOME TO THE VISUAL AID ACTIVITY! MATCH THE WORDS WITH THEIR IMAGES BY CONNECTING THE DOTS!");  // Robot's speech
+  const [showHelp, setShowHelp] = useState(false);                              // Whether to show help modal
   
-  // Refs for drawing lines
-  const lineRef = useRef<SVGSVGElement>(null);
-  const wordsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
+  // References for drawing connection lines
+  const lineRef = useRef<SVGSVGElement>(null);              // Reference to the SVG element
+  const wordsRef = useRef<(HTMLDivElement | null)[]>([]);   // References to word elements
+  const imagesRef = useRef<(HTMLDivElement | null)[]>([]);  // References to image elements
   
   // Reset game state when level changes
   useEffect(() => {
-    setActiveConnection({ wordId: null, imageId: null });
-    setCompletedConnections([]);
-    setRobotSpeech("MATCH THE WORDS WITH THEIR IMAGES BY CONNECTING THE DOTS!");
-  }, [currentLevel]);
+    setActiveConnection({ wordId: null, imageId: null });  // Clear active connection
+    setCompletedConnections([]);                          // Clear completed connections
+    setRobotSpeech("MATCH THE WORDS WITH THEIR IMAGES BY CONNECTING THE DOTS!");  // Reset robot speech
+  }, [currentLevel]);  // Run this effect whenever currentLevel changes
 
-  // Handle word dot click
+  // Handle word dot click - start or complete a connection
   const handleWordDotClick = (id: number) => {
+    // If this word is already connected, do nothing
     if (completedConnections.includes(id)) return;
     
     // If clicking on the same dot, deselect it
@@ -61,8 +64,9 @@ export const useVisualAidGame = () => {
     }
   };
 
-  // Handle image dot click
+  // Handle image dot click - start or complete a connection
   const handleImageDotClick = (id: number) => {
+    // If this image is already connected, do nothing
     if (completedConnections.includes(id)) return;
     
     // If clicking on the same dot, deselect it
@@ -80,26 +84,27 @@ export const useVisualAidGame = () => {
     }
   };
 
-  // Check if the connection is correct
+  // Check if the connection is correct (matching IDs)
   const checkConnection = (wordId: number, imageId: number) => {
+    // A match is when the word ID equals the image ID
     const isMatch = wordId === imageId;
     
     if (isMatch) {
-      // Correct match
+      // Correct match - add to completed connections
       setCompletedConnections([...completedConnections, wordId]);
-      setActiveConnection({ wordId: null, imageId: null });
+      setActiveConnection({ wordId: null, imageId: null });  // Clear active connection
       
-      // Congratulatory message
+      // Update robot speech with congratulatory message
       setRobotSpeech(`GREAT JOB! YOU'VE MATCHED "${levels[currentLevel].items.find(item => item.id === wordId)?.word}" CORRECTLY!`);
       
-      // Check if level is complete
+      // Check if level is complete (all items matched)
       if (completedConnections.length + 1 === levels[currentLevel].items.length) {
         setTimeout(() => {
           setRobotSpeech("FANTASTIC! YOU'VE COMPLETED THIS SET! CLICK NEXT FOR MORE CHALLENGES!");
         }, 1500);
       }
     } else {
-      // Incorrect match
+      // Incorrect match - update robot speech
       setRobotSpeech("OOPS! THAT'S NOT QUITE RIGHT. TRY AGAIN!");
       toast("Try another connection", {
         style: { background: "#ff6b6b", color: "white" }
@@ -112,9 +117,10 @@ export const useVisualAidGame = () => {
     }
   };
 
-  // Go to next level
+  // Go to next level or cycle back to first level
   const handleNextLevel = () => {
     if (currentLevel < levels.length - 1) {
+      // Go to next level if there is one
       setCurrentLevel(currentLevel + 1);
     } else {
       // Cycle back to the first level
@@ -123,7 +129,7 @@ export const useVisualAidGame = () => {
     }
   };
 
-  // Toggle help
+  // Toggle help modal and update robot speech
   const toggleHelp = () => {
     setShowHelp(!showHelp);
     if (!showHelp) {
@@ -137,22 +143,25 @@ export const useVisualAidGame = () => {
   const getCoordinates = (wordId: number | null, imageId: number | null) => {
     if (!wordId || !imageId) return null;
     
+    // Find the DOM elements for the word and image dots
     const wordDot = document.querySelector(`[data-word-dot="${wordId}"]`);
     const imageDot = document.querySelector(`[data-image-dot="${imageId}"]`);
     
     if (!wordDot || !imageDot) return null;
     
+    // Get their positions on the screen
     const wordRect = wordDot.getBoundingClientRect();
     const imageRect = imageDot.getBoundingClientRect();
     const svgRect = lineRef.current?.getBoundingClientRect();
     
     if (!svgRect) return null;
     
+    // Calculate the coordinates for the line connecting them
     return {
-      x1: wordRect.right - svgRect.left,
-      y1: wordRect.top + wordRect.height/2 - svgRect.top,
-      x2: imageRect.left - svgRect.left,
-      y2: imageRect.top + imageRect.height/2 - svgRect.top
+      x1: wordRect.right - svgRect.left,               // Start x-coordinate (right edge of word dot)
+      y1: wordRect.top + wordRect.height/2 - svgRect.top,  // Start y-coordinate (middle of word dot)
+      x2: imageRect.left - svgRect.left,               // End x-coordinate (left edge of image dot)
+      y2: imageRect.top + imageRect.height/2 - svgRect.top  // End y-coordinate (middle of image dot)
     };
   };
 
@@ -167,6 +176,7 @@ export const useVisualAidGame = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [activeConnection]);
 
+  // Return all the values and functions needed by the visual aid game component
   return {
     currentLevel,
     activeConnection,

@@ -11,19 +11,21 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Props that the GameControls component expects
 interface GameControlsProps {
-  isPlaying: boolean;
-  timeElapsed: string;
-  onTogglePlayPause: () => void;
-  onPlayAudio: () => void;
-  isAudioPlaying: boolean;
-  isRecording?: boolean;
-  recordingResult?: 'success' | 'error' | null;
-  transcript?: string;
-  onNext: () => void;
-  onHelp: () => void;
+  isPlaying: boolean;                                // Whether recording is active
+  timeElapsed: string;                               // Formatted timer display (MM:SS)
+  onTogglePlayPause: () => void;                     // Function to start/stop recording
+  onPlayAudio: () => void;                           // Function to play example audio
+  isAudioPlaying: boolean;                           // Whether audio is currently playing
+  isRecording?: boolean;                             // Whether microphone is recording
+  recordingResult?: 'success' | 'error' | null;      // Result of speech recognition
+  transcript?: string;                               // Recognized speech text
+  onNext: () => void;                                // Function to go to next exercise
+  onHelp: () => void;                                // Function to show help instructions
 }
 
+// Component that displays the controls for the speaking game
 const GameControls: FC<GameControlsProps> = ({
   isPlaying,
   timeElapsed,
@@ -38,13 +40,13 @@ const GameControls: FC<GameControlsProps> = ({
 }) => {
   return (
     <div className="w-full flex flex-col items-center gap-6 max-w-4xl mx-auto">
-      {/* Main controls */}
+      {/* Main controls - Play/Record, Timer, and Audio buttons */}
       <div className="flex items-center justify-center gap-6 w-full">
         {/* Play/Pause button with recording indicator */}
         <motion.div 
           whileTap={{ scale: 0.95 }}
           animate={isRecording ? {
-            scale: [1, 1.1, 1],
+            scale: [1, 1.1, 1],                      // Pulsing animation during recording
             transition: { repeat: Infinity, duration: 1 }
           } : {}}
         >
@@ -53,12 +55,12 @@ const GameControls: FC<GameControlsProps> = ({
             size="icon"
             className={`h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 rounded-full text-white ${
               recordingResult === 'success' 
-                ? 'bg-green-500 hover:bg-green-600' 
+                ? 'bg-green-500 hover:bg-green-600'   // Success - green
                 : recordingResult === 'error'
-                  ? 'bg-red-500 hover:bg-red-600'
+                  ? 'bg-red-500 hover:bg-red-600'     // Error - red
                   : isRecording
-                    ? 'bg-red-500 hover:bg-red-600'
-                    : 'bg-blue-500/70 hover:bg-blue-600/70'
+                    ? 'bg-red-500 hover:bg-red-600'   // Recording - red
+                    : 'bg-blue-500/70 hover:bg-blue-600/70'  // Not recording - blue
             }`}
           >
             {isPlaying ? (
@@ -80,18 +82,18 @@ const GameControls: FC<GameControlsProps> = ({
           {timeElapsed}
         </div>
         
-        {/* Audio button */}
+        {/* Audio button - plays example audio */}
         <motion.div 
           whileTap={{ scale: 0.95 }}
           animate={isAudioPlaying ? {
-            scale: [1, 1.1, 1],
+            scale: [1, 1.1, 1],                     // Pulsing animation during audio playback
             transition: { repeat: Infinity, duration: 1 }
           } : {}}
         >
           <Button 
             onClick={onPlayAudio} 
             size="icon"
-            disabled={isAudioPlaying}
+            disabled={isAudioPlaying}              // Disable while audio is playing
             className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 rounded-full bg-blue-500/70 hover:bg-blue-600/70 text-white"
           >
             <Volume2 className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12" />
@@ -99,7 +101,7 @@ const GameControls: FC<GameControlsProps> = ({
         </motion.div>
       </div>
 
-      {/* Transcript display */}
+      {/* Transcript display - shows recognized speech */}
       {transcript && (
         <div className="w-full max-w-2xl bg-white/10 p-4 rounded-lg mt-2 mx-auto">
           <h3 className="text-white text-sm font-semibold mb-1">Your Speech:</h3>

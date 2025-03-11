@@ -5,51 +5,62 @@ import { RobotVariant, Question } from "@/components/reading-game/types";
 import { findQuestionById, checkIfAnswerIsCorrect, showAnswerFeedback } from "@/components/reading-game/utils";
 import { toast } from "@/hooks/use-toast";
 
-// Custom hook for reading game logic
+// Custom hook that contains all the logic for the reading game
 export const useReadingGame = () => {
-  const [storyIndex, setStoryIndex] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
-  const [robotVariant, setRobotVariant] = useState<RobotVariant>("normal");
+  // State variables to track the game's state
+  const [storyIndex, setStoryIndex] = useState<number>(0);                   // Which story we're showing (from the list)
+  const [currentPage, setCurrentPage] = useState<number>(0);                 // Which page of the story we're on
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});  // User's answers (questionId -> answerId)
+  const [robotVariant, setRobotVariant] = useState<RobotVariant>("normal");  // Robot's expression (normal, happy, thinking)
 
+  // Get the current story data based on the storyIndex
   const currentStory = READING_CONTENT[storyIndex];
   
-  // Handle answer selection
+  // Handle when the user selects an answer to a question
   const handleAnswerSelect = (questionId: string, answerId: string) => {
+    // Update the selectedAnswers state with the new selection
     setSelectedAnswers(prev => ({
       ...prev,
       [questionId]: answerId
     }));
 
-    // Check if answer is correct
+    // Find the question in the current page's questions array
     const question = findQuestionById(currentStory.pages[currentPage].questions, questionId);
+    
+    // Check if the selected answer is correct
     const isCorrect = question?.correctAnswerId === answerId;
     
     if (isCorrect) {
-      // Correct answer
+      // If correct, show happy robot and positive feedback
       setRobotVariant("happy");
       showAnswerFeedback(true);
       
+      // Return to normal expression after 2 seconds
       setTimeout(() => {
         setRobotVariant("normal");
       }, 2000);
     } else {
-      // Incorrect answer
+      // If incorrect, show thinking robot and negative feedback
       setRobotVariant("thinking");
       showAnswerFeedback(false);
       
+      // Return to normal expression after 2 seconds
       setTimeout(() => {
         setRobotVariant("normal");
       }, 2000);
     }
   };
 
-  // Handle navigation to next page
+  // Handle navigation to the next page
   const handleNextPage = () => {
     if (currentPage < currentStory.pages.length - 1) {
+      // Move to the next page if there is one
       setCurrentPage(prev => prev + 1);
-      // Reset selected answers when moving to next page
+      
+      // Reset the selected answers for the new page
       setSelectedAnswers({});
+      
+      // Show a notification that we've moved to a new page
       toast({
         title: "Next page",
         description: "Let's read a new story!",
@@ -57,26 +68,29 @@ export const useReadingGame = () => {
     }
   };
 
-  // Handle navigation to previous page
+  // Handle navigation to the previous page
   const handlePreviousPage = () => {
     if (currentPage > 0) {
+      // Move to the previous page if there is one
       setCurrentPage(prev => prev - 1);
-      // Reset selected answers when moving to previous page
+      
+      // Reset the selected answers for the new page
       setSelectedAnswers({});
     }
   };
 
-  // Check if answer is correct
+  // Function to check if an answer is correct
   const checkAnswer = (questionId: string, answerId: string) => {
     return checkIfAnswerIsCorrect(currentStory.pages[currentPage].questions, questionId, answerId);
   };
 
-  // Check if there is a next page
+  // Check if there is a next page available
   const hasNextPage = currentPage < currentStory.pages.length - 1;
   
-  // Check if there is a previous page
+  // Check if there is a previous page available
   const hasPreviousPage = currentPage > 0;
 
+  // Return all the values and functions needed by the reading game component
   return {
     currentStory,
     currentPage,

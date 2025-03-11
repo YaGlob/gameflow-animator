@@ -2,20 +2,23 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+// Props that the ReadingContent component expects
 interface ReadingContentProps {
-  paragraphs: {
-    id: number;
-    text: string;
+  paragraphs: {                 // Array of paragraph objects
+    id: number;                 // Unique paragraph ID
+    text: string;               // Paragraph text
   }[];
-  images: {
-    id: number;
-    src: string;
-    alt: string;
+  images: {                     // Array of image objects
+    id: number;                 // Unique image ID
+    src: string;                // Image source URL
+    alt: string;                // Alt text for accessibility
   }[];
-  pageId: number; // Added pageId prop to determine which page we're on
+  pageId: number;               // Unique page ID to determine which story we're on
 }
 
+// Component that displays the reading content (paragraphs and images)
 const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => {
+  // State to track which paragraph is currently being spoken
   const [speakingId, setSpeakingId] = useState<number | null>(null);
   
   // Function to handle text-to-speech for a paragraph
@@ -33,7 +36,7 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
     const utterance = new SpeechSynthesisUtterance(text);
     
     // Set properties for better speech quality
-    utterance.rate = 0.9; // Slightly slower for better clarity
+    utterance.rate = 0.9;   // Slightly slower for better clarity
     utterance.pitch = 1;
     utterance.volume = 1;
     
@@ -64,15 +67,15 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
   // Determine which image to display based on page ID
   const getImageSrc = () => {
     if (pageId === 2) {
-      return "/lovable-uploads/b98e6455-de29-441d-9cc0-35d9f7c26bba.png";
+      return "/lovable-uploads/b98e6455-de29-441d-9cc0-35d9f7c26bba.png";  // Girl watering flowers
     } else {
-      return "/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png";
+      return "/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png";  // Girl with cat
     }
   };
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-5 gap-4">
-      {/* Text content - made it more compact with smaller margins */}
+      {/* Text content - paragraphs that can be clicked to hear them read aloud */}
       <div className="md:col-span-4 space-y-3">
         {paragraphs.map((paragraph) => (
           <motion.div
@@ -80,12 +83,13 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
             className={`text-white text-base leading-relaxed font-verdana cursor-pointer 
                       transition-all p-2 rounded-md
                       ${speakingId === paragraph.id ? 'bg-blue-500/30 shadow-md' : 'hover:bg-blue-500/10'}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: paragraph.id * 0.1 }}
+            initial={{ opacity: 0, y: 20 }}                       // Start invisible and below final position
+            animate={{ opacity: 1, y: 0 }}                        // Fade in and move to final position
+            transition={{ duration: 0.5, delay: paragraph.id * 0.1 }}  // Staggered animation based on ID
             onClick={() => handleSpeakText(paragraph.text, paragraph.id)}
           >
             <div className="flex items-center">
+              {/* Audio wave animation shown while speaking */}
               {speakingId === paragraph.id && (
                 <motion.div
                   className="mr-2 flex space-x-1"
@@ -115,7 +119,7 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
         ))}
       </div>
       
-      {/* Single image with adjusted size and position */}
+      {/* Single image on the right side */}
       <div className="md:col-span-1 flex flex-col justify-start items-center">
         <motion.div
           className="bg-white p-2 rounded-lg shadow-lg w-full h-auto max-h-[180px] flex items-center justify-center"
