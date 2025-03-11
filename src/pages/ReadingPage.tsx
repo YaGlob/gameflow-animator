@@ -38,6 +38,7 @@ const ReadingPage = () => {
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
               images={currentStory.pages[currentPage].images}
+              pageId={currentStory.pages[currentPage].id}
             />
           )}
 

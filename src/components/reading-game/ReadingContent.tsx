@@ -12,9 +12,10 @@ interface ReadingContentProps {
     src: string;
     alt: string;
   }[];
+  pageId: number; // Added pageId prop to determine which page we're on
 }
 
-const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
+const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => {
   const [speakingId, setSpeakingId] = useState<number | null>(null);
   
   // Function to handle text-to-speech for a paragraph
@@ -58,6 +59,15 @@ const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
     
     // Start speaking
     window.speechSynthesis.speak(utterance);
+  };
+
+  // Determine which image to display based on page ID
+  const getImageSrc = () => {
+    if (pageId === 2) {
+      return "/lovable-uploads/b98e6455-de29-441d-9cc0-35d9f7c26bba.png";
+    } else {
+      return "/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png";
+    }
   };
 
   return (
@@ -114,8 +124,8 @@ const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
           transition={{ duration: 0.5 }}
         >
           <img
-            src="/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png"
-            alt="Girl with cat and boy on bike"
+            src={getImageSrc()}
+            alt={pageId === 2 ? "Girl watering flowers and boy playing piano" : "Girl with cat and boy on bike"}
             className="max-w-full max-h-full rounded object-contain"
           />
         </motion.div>
