@@ -105,23 +105,20 @@ const ReadingContent = ({ paragraphs, images }: ReadingContentProps) => {
         ))}
       </div>
       
-      {/* Images */}
-      <div className="md:col-span-1 flex flex-col space-y-4">
-        {images.map((image) => (
-          <motion.div
-            key={image.id}
-            className="bg-white p-2 rounded-lg shadow-lg h-32 md:h-40 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: image.id * 0.2 }}
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="max-w-full max-h-full rounded object-contain"
-            />
-          </motion.div>
-        ))}
+      {/* Single image instead of multiple images */}
+      <div className="md:col-span-1 flex flex-col justify-center items-center">
+        <motion.div
+          className="bg-white p-2 rounded-lg shadow-lg w-full h-auto max-h-[300px] flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <img
+            src="/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png"
+            alt="Girl with cat and boy on bike"
+            className="max-w-full max-h-full rounded object-contain"
+          />
+        </motion.div>
       </div>
     </div>
   );

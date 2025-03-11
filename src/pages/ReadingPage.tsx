@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -24,13 +25,6 @@ const ReadingPage = () => {
     robotVariant
   } = useReadingGame();
 
-  const getCustomImage = (imageSrc: string) => {
-    if (imageSrc.includes("placeholder") || imageSrc.includes("cat")) {
-      return "/lovable-uploads/a43472ee-74e2-4469-8f36-a510e9ebd66c.png";
-    }
-    return imageSrc;
-  };
-
   const toggleInstructions = () => {
     setShowInstructions(prev => !prev);
   };
@@ -42,10 +36,7 @@ const ReadingPage = () => {
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
-              images={currentStory.pages[currentPage].images.map(img => ({
-                ...img,
-                src: getCustomImage(img.src)
-              }))}
+              images={currentStory.pages[currentPage].images}
             />
           )}
 
