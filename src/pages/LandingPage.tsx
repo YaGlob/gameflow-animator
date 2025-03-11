@@ -62,6 +62,26 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          {/* Left astronaut image */}
+          <motion.img
+            src="/lovable-uploads/6509b990-5a1e-4f39-b747-f60375bbc091.png"
+            alt="Astronaut"
+            className="absolute left-[-80px] top-[20px] md:left-[-120px] md:top-[40px] w-16 h-16 md:w-24 md:h-24 z-10"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          />
+          
+          {/* Right rocket image */}
+          <motion.img
+            src="/lovable-uploads/05dd8afb-df69-4a74-ab79-b0bd7c804f26.png"
+            alt="Rocket"
+            className="absolute right-[-60px] top-[20px] md:right-[-80px] md:top-[40px] w-12 h-12 md:w-16 md:h-16 z-10"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+          />
+          
           {/* Arc path for text - this is invisible but used for the text path */}
           <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
