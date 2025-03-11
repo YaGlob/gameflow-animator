@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -61,9 +62,9 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Astronaut image left to the game name */}
+          {/* Astronaut image left to the game name - ADJUSTED POSITION */}
           <motion.div 
-            className="absolute -left-14 sm:-left-24 md:-left-32 top-1/2 transform -translate-y-1/2 w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+            className="absolute -left-8 sm:-left-16 md:-left-20 top-1/2 transform -translate-y-1/2 w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
