@@ -6,9 +6,10 @@ interface WordDisplayProps {
   typedWord: string;
   gameCompleted: boolean;
   isCorrect: boolean;
+  onSubmit: () => void;
 }
 
-const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) => {
+const WordDisplay = ({ typedWord, gameCompleted, isCorrect, onSubmit }: WordDisplayProps) => {
   return (
     <div className="relative w-full">
       <div className="flex items-center justify-center">
@@ -28,17 +29,21 @@ const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) 
           {typedWord}
         </motion.div>
         
-        {/* Checkmark for correct answer - positioned right next to the input line */}
-        {gameCompleted && isCorrect && (
-          <motion.div 
-            className="ml-4"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", damping: 10 }}
-          >
-            <Check className="w-10 h-10 text-green-400" />
-          </motion.div>
-        )}
+        {/* Submit button with check mark - moved next to the input line */}
+        <motion.button
+          className={`ml-4 w-16 h-16 rounded-full flex items-center justify-center shadow-lg ${
+            gameCompleted ? 'bg-green-500' : 'bg-cyan-400'
+          }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onSubmit}
+          disabled={gameCompleted || typedWord.trim() === ""}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Check className="w-8 h-8 text-white" />
+        </motion.button>
       </div>
     </div>
   );

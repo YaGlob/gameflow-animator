@@ -50,7 +50,8 @@ const ListeningPage = () => {
               <WordDisplay 
                 typedWord={typedWord} 
                 gameCompleted={gameCompleted} 
-                isCorrect={isCorrect} 
+                isCorrect={isCorrect}
+                onSubmit={handleSubmit}
               />
             </div>
           </div>
@@ -149,24 +150,6 @@ const ListeningPage = () => {
             className="w-full h-full object-contain"
           />
         </motion.div>
-        
-        {/* Submit button with check mark */}
-        <motion.button
-          className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-lg ml-4 ${
-            gameCompleted ? 'bg-green-500' : 'bg-cyan-400'
-          }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleSubmit}
-          disabled={gameCompleted || typedWord.trim() === ""}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1, x: isSubmitShaking ? [-5, 5, -5, 5, 0] : 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="20 6 9 17 4 12"></polyline>
-          </svg>
-        </motion.button>
       </div>
 
       {/* Instructions modal */}
