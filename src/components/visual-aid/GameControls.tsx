@@ -2,13 +2,26 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
-// This interface defines what properties the GameControls component expects
+/**
+ * Props for the GameControls component
+ */
 interface GameControlsProps {
   onNextLevel: () => void;      // Function to call when user clicks "Next" button
   onToggleHelp: () => void;     // Function to call when user clicks help button
 }
 
-// GameControls component displays the Next button and Help button for the Visual Aid game
+/**
+ * GameControls Component
+ * 
+ * Displays the navigation buttons for the Visual Aid game:
+ * - Next button: Advances to the next level
+ * - Help button: Shows instructions for the game
+ * 
+ * Both buttons have animation effects for better user experience.
+ * 
+ * @param onNextLevel - Function to call when Next button is clicked
+ * @param onToggleHelp - Function to call when Help button is clicked
+ */
 const GameControls = ({ onNextLevel, onToggleHelp }: GameControlsProps) => {
   return (
     <div className="mt-8 flex items-center gap-3">

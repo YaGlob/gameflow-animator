@@ -11,7 +11,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Props that the GameControls component expects
+/**
+ * Props for the GameControls component
+ */
 interface GameControlsProps {
   isPlaying: boolean;                                // Whether recording is active
   timeElapsed: string;                               // Formatted timer display (MM:SS)
@@ -25,7 +27,28 @@ interface GameControlsProps {
   onHelp: () => void;                                // Function to show help instructions
 }
 
-// Component that displays the controls for the speaking game
+/**
+ * GameControls Component for Speaking Game
+ * 
+ * This component provides the main interactive controls for the speaking game:
+ * - Play/Record button: Starts/stops the speech recording
+ * - Timer: Shows how long the user has been speaking
+ * - Audio button: Plays an example pronunciation of the text
+ * 
+ * It also displays the transcript of the user's speech and provides
+ * visual feedback about the success or failure of the speech recognition.
+ * 
+ * @param isPlaying - Whether recording is active
+ * @param timeElapsed - Formatted timer display (MM:SS)
+ * @param onTogglePlayPause - Function to start/stop recording
+ * @param onPlayAudio - Function to play example audio
+ * @param isAudioPlaying - Whether audio is currently playing
+ * @param isRecording - Whether microphone is recording
+ * @param recordingResult - Result of speech recognition (success/error/null)
+ * @param transcript - Recognized speech text
+ * @param onNext - Function to go to next exercise
+ * @param onHelp - Function to show help instructions
+ */
 const GameControls: FC<GameControlsProps> = ({
   isPlaying,
   timeElapsed,
@@ -44,7 +67,7 @@ const GameControls: FC<GameControlsProps> = ({
       <div className="flex items-center justify-center gap-6 w-full">
         {/* Play/Pause button with recording indicator */}
         <motion.div 
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.95 }}  // Slight shrink when pressed
           animate={isRecording ? {
             scale: [1, 1.1, 1],                      // Pulsing animation during recording
             transition: { repeat: Infinity, duration: 1 }
@@ -63,6 +86,7 @@ const GameControls: FC<GameControlsProps> = ({
                     : 'bg-blue-500/70 hover:bg-blue-600/70'  // Not recording - blue
             }`}
           >
+            {/* Different icons based on current state */}
             {isPlaying ? (
               <Mic className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 animate-pulse" />
             ) : (
@@ -84,7 +108,7 @@ const GameControls: FC<GameControlsProps> = ({
         
         {/* Audio button - plays example audio */}
         <motion.div 
-          whileTap={{ scale: 0.95 }}
+          whileTap={{ scale: 0.95 }}  // Slight shrink when pressed
           animate={isAudioPlaying ? {
             scale: [1, 1.1, 1],                     // Pulsing animation during audio playback
             transition: { repeat: Infinity, duration: 1 }

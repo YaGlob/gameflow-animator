@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Answer, Question } from "./types";
 
-// Props that the QuestionContainer component expects
+/**
+ * Props for the QuestionContainer component
+ */
 interface QuestionContainerProps {
   question: Question;                              // The question data
   selectedAnswer?: string;                         // ID of the user's selected answer (if any)
@@ -11,7 +13,18 @@ interface QuestionContainerProps {
   isCorrect?: boolean;                             // Whether the selected answer is correct
 }
 
-// Component that displays a question and its possible answers
+/**
+ * QuestionContainer Component
+ * 
+ * Displays a reading comprehension question and its possible answers.
+ * Handles user interaction, shows visual feedback for correct/incorrect answers,
+ * and animates wrong answers with a shake effect.
+ * 
+ * @param question - The question data including text and answer options
+ * @param selectedAnswer - ID of the user's selected answer (if any)
+ * @param onAnswerSelect - Function to call when user selects an answer
+ * @param isCorrect - Whether the selected answer is correct
+ */
 const QuestionContainer = ({
   question,
   selectedAnswer,
@@ -21,7 +34,11 @@ const QuestionContainer = ({
   // State to track which answer is currently shaking (for wrong answers)
   const [isShaking, setIsShaking] = useState<string | null>(null);
 
-  // Handle click on an answer option
+  /**
+   * Handle click on an answer option
+   * 
+   * @param answerId - ID of the clicked answer
+   */
   const handleAnswerClick = (answerId: string) => {
     // Prevent changing answer after selection
     if (selectedAnswer) return;

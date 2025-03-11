@@ -1,24 +1,46 @@
+
 import { FC, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
+/**
+ * Props for the RocketButton component
+ */
 interface RocketButtonProps {
-  text: string;
-  to: string;
-  delay?: number;
-  direction?: "left" | "right";
+  text: string;                     // Text to display in the button
+  to: string;                       // Route to navigate to
+  delay?: number;                   // Animation delay
+  direction?: "left" | "right";     // Direction rocket points (left or right)
 }
 
+/**
+ * RocketButton Component
+ * 
+ * An animated button featuring a rocket and cloud trail that takes users to different
+ * sections of the game. When clicked, the rocket "launches" with a fire animation
+ * before navigating to the destination.
+ * 
+ * @param text - Text to display in the button
+ * @param to - Route to navigate to when clicked
+ * @param delay - Delay before animation starts (in seconds)
+ * @param direction - Direction the rocket points ("left" or "right")
+ */
 const RocketButton: FC<RocketButtonProps> = ({ 
   text, 
   to, 
   delay = 0, 
   direction = "left" 
 }) => {
+  // State to track when rocket is launching
   const [isLaunching, setIsLaunching] = useState(false);
+  
+  // Reference to the Lottie animation
   const lottieRef = useRef<any>(null);
 
+  /**
+   * Handle button click - starts the launch animation
+   */
   const handleClick = () => {
     setIsLaunching(true);
     
@@ -34,6 +56,7 @@ const RocketButton: FC<RocketButtonProps> = ({
   return (
     <motion.div
       className="relative group mb-10"
+      // Initial animation when button appears
       initial={{ opacity: 0, x: direction === "left" ? -50 : 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ 
@@ -49,6 +72,7 @@ const RocketButton: FC<RocketButtonProps> = ({
           {/* Lottie Rocket with animation - rotated 90 degrees */}
           <motion.div 
             className="relative z-10"
+            // Animation when launching
             animate={isLaunching ? { 
               x: direction === "left" ? -100 : 100,
               opacity: 0,
@@ -76,6 +100,7 @@ const RocketButton: FC<RocketButtonProps> = ({
                   transition={{ duration: 0.3 }}
                   style={{ transform: direction === "left" ? 'rotate(-90deg)' : 'rotate(90deg)' }}
                 >
+                  {/* SVG fire effect */}
                   <svg width="50" height="40" viewBox="0 0 40 30">
                     <path
                       d="M0,15 Q10,5 20,15 Q30,25 40,15 Q30,5 20,15 Q10,25 0,15"
@@ -101,6 +126,7 @@ const RocketButton: FC<RocketButtonProps> = ({
                         ? "ml-2 pl-14 pr-10" 
                         : "mr-2 pr-14 pl-10"} 
                       py-5 h-24 shadow-md`}
+            // Animation for cloud trail
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: 220, opacity: 0.9 }}
             transition={{ duration: 0.3, delay: delay + 0.2 }}
@@ -108,6 +134,7 @@ const RocketButton: FC<RocketButtonProps> = ({
               clipPath: "ellipse(50% 50% at 50% 50%)"
             }}
           >
+            {/* Cloud pulsing effect */}
             <motion.div
               className="absolute inset-0 opacity-50"
               animate={{
@@ -125,6 +152,7 @@ const RocketButton: FC<RocketButtonProps> = ({
                 clipPath: "ellipse(55% 55% at 50% 50%)"
               }}
             />
+            {/* Button text */}
             <span className="text-black font-extrabold text-2xl md:text-3xl tracking-wider relative z-10">
               {text}
             </span>

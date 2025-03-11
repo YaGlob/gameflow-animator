@@ -2,7 +2,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-// Props that the ReadingContent component expects
+/**
+ * Props for the ReadingContent component
+ */
 interface ReadingContentProps {
   paragraphs: {                 // Array of paragraph objects
     id: number;                 // Unique paragraph ID
@@ -16,12 +18,27 @@ interface ReadingContentProps {
   pageId: number;               // Unique page ID to determine which story we're on
 }
 
-// Component that displays the reading content (paragraphs and images)
+/**
+ * ReadingContent Component
+ * 
+ * Displays the reading passage with paragraphs and images.
+ * Each paragraph can be clicked to hear it read aloud using text-to-speech.
+ * Visual indication shows which paragraph is currently being spoken.
+ * 
+ * @param paragraphs - Array of paragraph objects to display
+ * @param images - Array of image objects to display
+ * @param pageId - Unique page ID to determine which story we're on
+ */
 const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => {
   // State to track which paragraph is currently being spoken
   const [speakingId, setSpeakingId] = useState<number | null>(null);
   
-  // Function to handle text-to-speech for a paragraph
+  /**
+   * Function to handle text-to-speech for a paragraph
+   * 
+   * @param text - The text to be spoken
+   * @param paragraphId - ID of the paragraph being spoken
+   */
   const handleSpeakText = (text: string, paragraphId: number) => {
     // Cancel any ongoing speech
     window.speechSynthesis.cancel();
@@ -64,7 +81,10 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
     window.speechSynthesis.speak(utterance);
   };
 
-  // Determine which image to display based on page ID
+  /**
+   * Determine which image to display based on page ID
+   * This provides different illustrations for different pages of the story
+   */
   const getImageSrc = () => {
     if (pageId === 2) {
       return "/lovable-uploads/b98e6455-de29-441d-9cc0-35d9f7c26bba.png";  // Girl watering flowers

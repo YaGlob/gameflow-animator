@@ -1,12 +1,24 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * Props for the KeyboardLayout component
+ */
 interface KeyboardLayoutProps {
-  onKeyPress: (key: string) => void;
+  onKeyPress: (key: string) => void;  // Function to call when a key is pressed
 }
 
+/**
+ * KeyboardLayout Component
+ * 
+ * Creates a virtual keyboard for typing activities in the game.
+ * The keyboard has letters arranged in 3 rows, with animated keys
+ * that respond to user interaction with visual feedback.
+ * 
+ * @param onKeyPress - Function to call when a key is pressed
+ */
 const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
-  // Define keyboard layout
+  // Define keyboard layout - letters arranged in 3 rows
   const rows = [
     ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'],
     ['j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r'],
@@ -19,7 +31,7 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.03,
+        staggerChildren: 0.03,  // Makes keys appear one after another
       },
     },
   };
@@ -30,26 +42,27 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
       opacity: 1,
       scale: 1,
       transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 15,
+        type: "spring",         // Springy animation
+        stiffness: 300,         // More responsive spring
+        damping: 15,            // Less bouncy
       },
     },
     hover: {
-      scale: 1.1,
-      boxShadow: "0 0 10px rgba(79, 209, 255, 0.8)",
+      scale: 1.1,               // Grow when hovered
+      boxShadow: "0 0 10px rgba(79, 209, 255, 0.8)",  // Glow effect
       transition: {
         duration: 0.2,
       },
     },
     tap: {
-      scale: 0.95,
-      boxShadow: "0 0 5px rgba(79, 209, 255, 0.5)",
+      scale: 0.95,              // Shrink when pressed
+      boxShadow: "0 0 5px rgba(79, 209, 255, 0.5)",   // Reduced glow
     },
   };
 
   return (
     <div className="w-full max-w-6xl mx-auto">
+      {/* Map through each row of keys */}
       {rows.map((row, rowIndex) => (
         <motion.div
           key={`row-${rowIndex}`}
@@ -58,6 +71,7 @@ const KeyboardLayout = ({ onKeyPress }: KeyboardLayoutProps) => {
           initial="hidden"
           animate="visible"
         >
+          {/* Map through each key in the current row */}
           {row.map((key) => (
             <motion.button
               key={key}

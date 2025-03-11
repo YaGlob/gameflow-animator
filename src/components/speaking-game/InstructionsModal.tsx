@@ -11,11 +11,24 @@ import {
 import { Button } from "@/components/ui/button";
 import { Mic, Volume2, Timer, Play, Pause } from "lucide-react";
 
+/**
+ * Props for the InstructionsModal component
+ */
 interface InstructionsModalProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean;     // Whether the modal is currently visible
+  onClose: () => void; // Function to call when closing the modal
 }
 
+/**
+ * InstructionsModal Component
+ * 
+ * This modal explains how to play the Speaking Activity.
+ * It provides clear instructions with icons to help users
+ * understand how to use each feature of the game.
+ * 
+ * @param isOpen - Boolean to control visibility of the modal
+ * @param onClose - Function to call when the modal is closed
+ */
 const InstructionsModal: FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -27,21 +40,25 @@ const InstructionsModal: FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
         </DialogHeader>
         
         <DialogDescription className="text-white text-base space-y-4">
+          {/* Instruction 1: Speaking */}
           <div className="flex items-center gap-3 mt-4">
             <Mic className="h-8 w-8 text-cyan-300 flex-shrink-0" />
             <p>Read the text in the box aloud to practice your speaking skills.</p>
           </div>
           
+          {/* Instruction 2: Audio Help */}
           <div className="flex items-center gap-3">
             <Volume2 className="h-8 w-8 text-cyan-300 flex-shrink-0" />
             <p>Press the speaker button if you need help with pronunciation. Listen carefully and try to mimic the words.</p>
           </div>
           
+          {/* Instruction 3: Timer */}
           <div className="flex items-center gap-3">
             <Timer className="h-8 w-8 text-cyan-300 flex-shrink-0" />
             <p>The timer helps you track how long you practice. Try to read smoothly and clearly.</p>
           </div>
           
+          {/* Instruction 4: Play/Pause */}
           <div className="flex items-center gap-3">
             <div className="flex gap-2 flex-shrink-0">
               <Play className="h-8 w-8 text-cyan-300" />
