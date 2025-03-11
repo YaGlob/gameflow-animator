@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -33,26 +34,26 @@ const SpeakingPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-4 sm:p-6">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-4 sm:p-6 shadow-lg border-2 border-blue-300/30 flex flex-col justify-between h-full">
           {/* Main content */}
-          <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+          <div className="w-full h-full flex flex-col items-center justify-center">
             {/* Text display area */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="w-full"
+              className="w-full mb-6 sm:mb-8"
             >
               <TextDisplay text={currentExercise.text} />
             </motion.div>
             
-            {/* Game controls */}
+            {/* Game controls - expanded size */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-full"
+              className="w-full flex-grow flex items-center justify-center"
             >
               <GameControls 
                 isPlaying={isPlaying}
@@ -68,28 +69,29 @@ const SpeakingPage = () => {
               />
             </motion.div>
             
-            {/* Next button and Help button */}
+            {/* Next button and Help button - moved to bottom left */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="flex items-center gap-3 self-start mt-4"
+              className="w-full flex justify-start items-center mt-4 sm:mt-6 gap-2"
             >
               <Button 
                 onClick={goToNextExercise}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl uppercase"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl font-bold"
+                disabled={!recordingResult}
               >
                 NEXT
               </Button>
               
-              <Button
+              <motion.button
+                className="bg-blue-400 text-white font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setShowInstructions(true)}
-                variant="outline"
-                size="icon"
-                className="bg-blue-500/30 hover:bg-blue-500/50 border-none rounded-full text-white h-12 w-12"
               >
-                <HelpCircle className="h-6 w-6" />
-              </Button>
+                ?
+              </motion.button>
             </motion.div>
           </div>
         </div>
