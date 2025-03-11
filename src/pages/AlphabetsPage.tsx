@@ -164,13 +164,13 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      {/* Replace RobotScene with the uploaded robot image */}
+      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
         <div className="mr-3 mb-4">
           <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-right" />
         </div>
         <motion.div 
-          className="relative z-50"
+          className="w-32 h-32 sm:w-40 sm:h-40 relative z-50"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -179,7 +179,7 @@ const AlphabetsPage = () => {
           <img 
             src="/lovable-uploads/d776dc4d-778e-4f77-8e97-b38a136823b1.png" 
             alt="Robot Assistant" 
-            className="w-36 h-36 sm:w-44 sm:h-44 object-contain"
+            className="w-full h-full object-contain"
           />
           
           {/* Light effect behind the robot */}

@@ -131,6 +131,7 @@ const GameScreen = () => {
         </div>
       </div>
       
+      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-4 z-50 flex items-end">
         {showSpeechBubble && (
           <div className="mr-2">
@@ -138,7 +139,7 @@ const GameScreen = () => {
           </div>
         )}
         <motion.div 
-          className="w-28 h-28 sm:w-32 sm:h-32"
+          className="w-32 h-32 sm:w-40 sm:h-40"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}

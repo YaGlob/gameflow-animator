@@ -135,7 +135,7 @@ const ListeningPage = () => {
           />
         </div>
         
-        {/* Robot */}
+        {/* Robot - Updated to match standard size */}
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
           initial={{ opacity: 0, scale: 0.8 }}

@@ -79,7 +79,7 @@ const WritingPage = () => {
         </div>
       </div>
 
-      {/* Robot with speech bubble */}
+      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
