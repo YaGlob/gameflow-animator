@@ -9,7 +9,7 @@ interface TextDisplayProps {
 
 const TextDisplay: FC<TextDisplayProps> = ({ targetText, cursorPosition, incorrectChars }) => {
   return (
-    <div className="bg-[#395d6e] p-4 sm:p-6 rounded-md w-full relative text-white text-base sm:text-lg md:text-xl leading-relaxed mobile-text">
+    <div className="bg-[#395d6e] p-4 sm:p-6 rounded-md w-full relative text-white text-lg sm:text-xl md:text-2xl lg:text-3xl leading-relaxed">
       {targetText.split('').map((char, index) => {
         // Determine styling for current character
         const isCurrent = index === cursorPosition;

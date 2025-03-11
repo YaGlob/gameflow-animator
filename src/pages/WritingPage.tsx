@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -33,8 +34,8 @@ const WritingPage = () => {
 
   return (
     <GameLayout>
-      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
+      <div className="w-full h-[calc(100vh-60px)] flex flex-col p-4 sm:p-6">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-4 sm:p-6 shadow-lg border-2 border-blue-300/30 flex flex-col justify-between h-full">
           {/* Score display */}
           <div className="absolute top-0 left-0 right-0 flex justify-center" style={{ transform: 'translateY(-50%)' }}>
             <div className="bg-cyan-300 px-6 py-2 text-black font-bold text-xl rounded shadow-lg">
@@ -43,7 +44,7 @@ const WritingPage = () => {
           </div>
           
           {/* Text display */}
-          <div className="w-full mb-6 mt-4">
+          <div className="w-full mb-4 sm:mb-6 mt-6 sm:mt-8">
             <TextDisplay 
               targetText={currentExercise.text}
               cursorPosition={cursorPosition}
@@ -51,11 +52,13 @@ const WritingPage = () => {
             />
           </div>
 
-          {/* Keyboard */}
-          <KeyboardLayout onKeyPress={handleKeyPress} />
+          {/* Keyboard - now with expanded size */}
+          <div className="flex-grow flex items-center justify-center">
+            <KeyboardLayout onKeyPress={handleKeyPress} />
+          </div>
           
           {/* Controls */}
-          <div className="w-full flex justify-start items-center mt-6 gap-2">
+          <div className="w-full flex justify-start items-center mt-4 sm:mt-6 gap-2">
             <Button
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2 text-xl font-bold"
               onClick={handleNextExercise}
