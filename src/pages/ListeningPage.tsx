@@ -102,38 +102,37 @@ const ListeningPage = () => {
 
       {/* Fixed positioning for robot and controls */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
-        {/* Speech bubble with speaker button positioned to the left of the robot */}
-        <div className="flex items-end mr-4">
-          <div>
-            <SpeechBubble 
-              text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
-              delay={0.2} 
-              position="bottom-left"
-            />
-            
-            {/* Speaker button inside speech bubble */}
-            <motion.button
-              className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg mt-4 ml-auto mr-4"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={playWordAudio}
-              disabled={isSpeakerDisabled}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+        {/* SWAPPED: Speaker button positioned above the robot */}
+        <div className="flex flex-col items-end mr-4">
+          {/* Speaker button now on top */}
+          <motion.button
+            className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg mb-4"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={playWordAudio}
+            disabled={isSpeakerDisabled}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <motion.div
+              animate={isSpeakerDisabled ? {} : { scale: [1, 1.1, 1] }}
+              transition={{ repeat: isSpeakerDisabled ? 0 : Infinity, duration: 1.5 }}
             >
-              <motion.div
-                animate={isSpeakerDisabled ? {} : { scale: [1, 1.1, 1] }}
-                transition={{ repeat: isSpeakerDisabled ? 0 : Infinity, duration: 1.5 }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-                </svg>
-              </motion.div>
-            </motion.button>
-          </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+            </motion.div>
+          </motion.button>
+          
+          {/* Speech bubble now at the bottom */}
+          <SpeechBubble 
+            text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+            delay={0.2} 
+            position="bottom-left"
+          />
         </div>
         
         {/* Robot */}
