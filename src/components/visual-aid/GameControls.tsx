@@ -22,7 +22,7 @@ const GameControls = ({ onNextLevel, onToggleHelp }: GameControlsProps) => {
         NEXT
       </motion.button>
       
-      {/* Updated question mark button */}
+      {/* Updated question mark button with white background */}
       <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -30,7 +30,7 @@ const GameControls = ({ onNextLevel, onToggleHelp }: GameControlsProps) => {
         <Button 
           variant="outline" 
           size="icon" 
-          className="bg-cyan-300 hover:bg-cyan-400 text-black w-12 h-12 rounded-full border-2 border-white flex items-center justify-center"
+          className="bg-white hover:bg-gray-100 text-black w-12 h-12 rounded-md border-2 border-gray-300 flex items-center justify-center shadow-md"
           onClick={onToggleHelp}
         >
           <span className="text-2xl font-bold">?</span>

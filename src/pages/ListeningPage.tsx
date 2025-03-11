@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -57,9 +58,9 @@ const ListeningPage = () => {
           
           {/* Help, Delete and Next buttons positioned at bottom left */}
           <div className="absolute bottom-6 left-6 flex space-x-4 z-10">
-            {/* Updated question mark button */}
+            {/* Updated question mark button with white background */}
             <motion.button
-              className="flex items-center justify-center bg-cyan-300 text-black w-12 h-12 p-0 rounded-full shadow-lg border-2 border-white"
+              className="flex items-center justify-center bg-white text-black w-12 h-12 p-0 rounded-md shadow-md border-2 border-gray-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={toggleInstructions}
@@ -135,7 +136,7 @@ const ListeningPage = () => {
           />
         </div>
         
-        {/* Robot - Updated to match standard size */}
+        {/* Robot */}
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
           initial={{ opacity: 0, scale: 0.8 }}
