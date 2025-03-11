@@ -55,7 +55,7 @@ const ListeningPage = () => {
             </div>
           </div>
           
-          {/* Help and Delete buttons positioned at bottom left */}
+          {/* Help, Delete and Next buttons positioned at bottom left */}
           <div className="absolute bottom-6 left-6 flex space-x-4 z-10">
             <motion.button
               className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"
@@ -81,7 +81,7 @@ const ListeningPage = () => {
               <Trash2 className="h-6 w-6" />
             </motion.button>
             
-            {/* NEXT button moved to bottom left */}
+            {/* NEXT button at bottom left */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -101,46 +101,54 @@ const ListeningPage = () => {
 
       {/* Fixed positioning for robot and controls */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
-        {/* Robot with speaker button above it */}
-        <div className="relative">
-          {/* Speaker button positioned above robot's head */}
-          <motion.button
-            className="absolute -top-16 left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={playWordAudio}
-            disabled={isSpeakerDisabled}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <motion.div
-              animate={isSpeakerDisabled ? {} : { scale: [1, 1.1, 1] }}
-              transition={{ repeat: isSpeakerDisabled ? 0 : Infinity, duration: 1.5 }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-              </svg>
-            </motion.div>
-          </motion.button>
-          
-          {/* Robot */}
-          <motion.div 
-            className="w-32 h-32 sm:w-40 sm:h-40"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -5 }}
-          >
-            <img 
-              src="/images/robot-listening.png" 
-              alt="Robot Assistant" 
-              className="w-full h-full object-contain"
+        {/* Speech bubble with speaker button positioned to the left of the robot */}
+        <div className="flex items-end mr-4">
+          <div>
+            <SpeechBubble 
+              text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+              delay={0.2} 
+              position="bottom-left"
             />
-          </motion.div>
+            
+            {/* Speaker button inside speech bubble */}
+            <motion.button
+              className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center shadow-lg mt-4 ml-auto mr-4"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={playWordAudio}
+              disabled={isSpeakerDisabled}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <motion.div
+                animate={isSpeakerDisabled ? {} : { scale: [1, 1.1, 1] }}
+                transition={{ repeat: isSpeakerDisabled ? 0 : Infinity, duration: 1.5 }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>
+              </motion.div>
+            </motion.button>
+          </div>
         </div>
+        
+        {/* Robot */}
+        <motion.div 
+          className="w-32 h-32 sm:w-40 sm:h-40"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
+        >
+          <img 
+            src="/images/robot-listening.png" 
+            alt="Robot Assistant" 
+            className="w-full h-full object-contain"
+          />
+        </motion.div>
         
         {/* Submit button with check mark */}
         <motion.button
@@ -159,15 +167,6 @@ const ListeningPage = () => {
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </motion.button>
-        
-        {/* Speech bubble with improved positioning */}
-        <div className="ml-3">
-          <SpeechBubble 
-            text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
-            delay={0.2} 
-            position="bottom-right"
-          />
-        </div>
       </div>
 
       {/* Instructions modal */}

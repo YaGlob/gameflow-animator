@@ -28,7 +28,7 @@ const WordDisplay = ({ typedWord, gameCompleted, isCorrect }: WordDisplayProps) 
           {typedWord}
         </motion.div>
         
-        {/* Checkmark for correct answer - now positioned to the right of the input line */}
+        {/* Checkmark for correct answer - positioned right next to the input line */}
         {gameCompleted && isCorrect && (
           <motion.div 
             className="ml-4"
