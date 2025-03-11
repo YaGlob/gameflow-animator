@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -121,7 +120,7 @@ const SpeakingPage = () => {
           <SpeechBubble 
             text={pixelSpeech} 
             delay={0.2} 
-            position="bottom-right"
+            position="bottom-left"
           />
         </div>
       </div>

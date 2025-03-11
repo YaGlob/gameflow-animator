@@ -40,20 +40,20 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Changed: Now points to the right
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -left-1 top-1/2 -translate-y-1/2" // Points to the left (toward robot when robot is on left)
         };
       case "bottom-right":
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -left-1 top-1/2 -translate-y-1/2" // Changed: Now points to the left
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Points to the right (toward robot when robot is on right)
         };
       case "top-right":
       default:
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-0 top-1/2 translate-x-1/2" // Right pointing tail
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Right pointing tail
         };
     }
   };

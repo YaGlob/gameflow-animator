@@ -68,7 +68,7 @@ const VisualAidPage = () => {
           <SpeechBubble 
             text={robotSpeech} 
             delay={0.2} 
-            position="bottom-right"
+            position="bottom-left"
           />
         </div>
       </div>
