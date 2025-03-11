@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -77,7 +76,7 @@ const WritingPage = () => {
         </div>
       </div>
 
-      {/* Robot with speech bubble - robot is on the RIGHT, so speech bubble should point RIGHT */}
+      {/* Robot with speech bubble */}
       <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
