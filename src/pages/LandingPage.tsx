@@ -47,19 +47,6 @@ const LandingPage = () => {
         <LottieAstronaut />
       </div>
 
-      <motion.div 
-        className="absolute -right-8 sm:-right-16 md:-right-20 top-1/2 transform -translate-y-[calc(50%+35px)] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        <img 
-          src="/lovable-uploads/07f29c02-56f3-4736-90e4-733c2614987c.png" 
-          alt="Rocket" 
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
-
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
         <motion.div 
           className="mb-8 md:mb-16 relative"
@@ -76,6 +63,19 @@ const LandingPage = () => {
             <img 
               src="/lovable-uploads/16a42520-7787-4f2a-822c-6663a3067777.png" 
               alt="Astronaut" 
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+          
+          <motion.div 
+            className="absolute -right-8 sm:-right-16 md:-right-20 top-1/2 transform -translate-y-[calc(50%+35px)] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <img 
+              src="/lovable-uploads/07f29c02-56f3-4736-90e4-733c2614987c.png" 
+              alt="Rocket" 
               className="w-full h-full object-contain"
             />
           </motion.div>
