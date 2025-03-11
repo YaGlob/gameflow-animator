@@ -62,47 +62,6 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* Left astronaut image */}
-          <motion.img
-            src="/lovable-uploads/6509b990-5a1e-4f39-b747-f60375bbc091.png"
-            alt="Astronaut"
-            className="absolute left-[-80px] top-[20px] md:left-[-120px] md:top-[40px] w-16 h-16 md:w-24 md:h-24 z-10"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          />
-          
-          {/* Right rocket image */}
-          <motion.img
-            src="/lovable-uploads/05dd8afb-df69-4a74-ab79-b0bd7c804f26.png"
-            alt="Rocket"
-            className="absolute right-[-60px] top-[20px] md:right-[-80px] md:top-[40px] w-12 h-12 md:w-16 md:h-16 z-10"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          />
-          
-          {/* Curved background image behind the title */}
-          <motion.div 
-            className="absolute w-[300px] h-[140px] md:w-[500px] md:h-[200px] top-[-20px] left-1/2 transform -translate-x-1/2 z-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <svg width="100%" height="100%" viewBox="0 0 500 200" style={{ overflow: 'visible' }}>
-              <defs>
-                <path id="curvedPath" d="M 20,100 Q 240,30 460,100" fill="none" />
-              </defs>
-              <image href="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" width="600" height="160" x="-50" y="-30">
-                <animateMotion
-                  dur="0.1s"
-                  fill="freeze"
-                  path="M 0,0 Q 0,0 0,0"
-                />
-              </image>
-            </svg>
-          </motion.div>
-          
           {/* Arc path for text - this is invisible but used for the text path */}
           <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
