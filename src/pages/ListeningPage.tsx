@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -9,7 +8,7 @@ import InstructionsModal from "@/components/listening-game/InstructionsModal";
 import ConfettiEffect from "@/components/listening-game/ConfettiEffect";
 import { useListeningGame } from "@/hooks/use-listening-game";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, HelpCircle, Trash2 } from "lucide-react";
+import { ChevronRight, Trash2 } from "lucide-react";
 
 const ListeningPage = () => {
   const [showSpeechBubble, setShowSpeechBubble] = useState<boolean>(true);
@@ -60,7 +59,7 @@ const ListeningPage = () => {
           <div className="absolute bottom-6 left-6 flex space-x-4 z-10">
             {/* Updated question mark button */}
             <motion.button
-              className="flex items-center justify-center bg-cyan-300 text-black p-3 rounded-full shadow-lg border-2 border-white"
+              className="flex items-center justify-center bg-cyan-300 text-black w-12 h-12 p-0 rounded-full shadow-lg border-2 border-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={toggleInstructions}
@@ -68,7 +67,7 @@ const ListeningPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <HelpCircle className="h-6 w-6" />
+              <span className="text-2xl font-bold">?</span>
             </motion.button>
             <motion.button
               className="flex items-center justify-center bg-blue-500/30 hover:bg-blue-500/50 text-white p-3 rounded-md backdrop-blur-sm transition-colors"

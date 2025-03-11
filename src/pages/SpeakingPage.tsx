@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -8,7 +7,6 @@ import GameControls from "@/components/speaking-game/GameControls";
 import InstructionsModal from "@/components/speaking-game/InstructionsModal";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { HelpCircle } from "lucide-react";
 
 const SpeakingPage = () => {
   const [showInstructions, setShowInstructions] = useState(false);
@@ -86,12 +84,12 @@ const SpeakingPage = () => {
               
               {/* Updated question mark button */}
               <motion.button
-                className="bg-cyan-300 text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
+                className="bg-cyan-300 text-black font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowInstructions(true)}
               >
-                <HelpCircle className="h-6 w-6" />
+                ?
               </motion.button>
             </motion.div>
           </div>

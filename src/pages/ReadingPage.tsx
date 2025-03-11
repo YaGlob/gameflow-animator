@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -69,14 +68,13 @@ const ReadingPage = () => {
                 NEXT
               </motion.button>
               
-              {/* Updated question mark button */}
               <motion.button
-                className="bg-cyan-300 text-black font-bold text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
+                className="bg-cyan-300 text-black font-bold text-2xl w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={toggleInstructions}
               >
-                <HelpCircle className="h-6 w-6" />
+                ?
               </motion.button>
             </div>
             
@@ -85,7 +83,6 @@ const ReadingPage = () => {
         </div>
       </div>
 
-      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
