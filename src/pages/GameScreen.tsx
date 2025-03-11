@@ -40,16 +40,9 @@ const GameScreen = () => {
   return (
     <GameLayout backTo="/landing">
       <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white mb-6"
-        >
-          Choose Your Adventure
-        </motion.h1>
+        {/* Removed the heading "Choose Your Adventure" */}
         
-        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10">
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mt-2">
           <motion.div 
             className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
             initial={{ opacity: 0 }}
