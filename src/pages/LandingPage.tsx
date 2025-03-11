@@ -82,6 +82,27 @@ const LandingPage = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
           />
           
+          {/* Curved background image behind the title */}
+          <motion.div 
+            className="absolute w-[300px] h-[140px] md:w-[500px] md:h-[200px] top-[-20px] left-1/2 transform -translate-x-1/2 z-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.6 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <svg width="100%" height="100%" viewBox="0 0 500 200" style={{ overflow: 'visible' }}>
+              <defs>
+                <path id="curvedPath" d="M 20,100 Q 240,30 460,100" fill="none" />
+              </defs>
+              <image href="/lovable-uploads/d79ae9be-52d7-4050-adea-200082847091.png" width="600" height="160" x="-50" y="-30">
+                <animateMotion
+                  dur="0.1s"
+                  fill="freeze"
+                  path="M 0,0 Q 0,0 0,0"
+                />
+              </image>
+            </svg>
+          </motion.div>
+          
           {/* Arc path for text - this is invisible but used for the text path */}
           <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
