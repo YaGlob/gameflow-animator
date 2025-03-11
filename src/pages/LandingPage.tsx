@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -48,23 +47,17 @@ const LandingPage = () => {
         <LottieAstronaut />
       </div>
 
-      {/* Mirror position of the astronaut image - new rocket image */}
       <motion.div 
-        className="absolute top-[101px] right-4 md:top-[157px] md:right-20 w-32 h-32 md:w-48 md:h-48"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        className="absolute -right-8 sm:-right-16 md:-right-20 top-1/2 transform -translate-y-[calc(50%+35px)] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <div className="transform origin-center">
-          <motion.img 
-            src="/lovable-uploads/07f29c02-56f3-4736-90e4-733c2614987c.png"
-            alt="Rocket"
-            className="w-full h-full object-contain"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-        </div>
+        <img 
+          src="/lovable-uploads/07f29c02-56f3-4736-90e4-733c2614987c.png" 
+          alt="Rocket" 
+          className="w-full h-full object-contain"
+        />
       </motion.div>
 
       <div className="relative z-20 flex flex-col items-center justify-center h-screen p-4">
