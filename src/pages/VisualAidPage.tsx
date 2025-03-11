@@ -65,7 +65,11 @@ const VisualAidPage = () => {
           />
         </motion.div>
         <div className="ml-3 mb-8">
-          <SpeechBubble text={robotSpeech} delay={0.2} />
+          <SpeechBubble 
+            text={robotSpeech} 
+            delay={0.2} 
+            position="bottom-right"
+          />
         </div>
       </div>
     </GameLayout>

@@ -102,6 +102,7 @@ const ReadingPage = () => {
           <SpeechBubble 
             text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
             delay={0.2}
+            position="bottom-right"
           />
         </div>
       </div>

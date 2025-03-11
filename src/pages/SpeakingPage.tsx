@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useSpeakingGame } from "@/hooks/use-speaking-game";
 import GameLayout from "@/components/GameLayout";
@@ -117,7 +118,11 @@ const SpeakingPage = () => {
           />
         </motion.div>
         <div className="ml-3 mb-8">
-          <SpeechBubble text={pixelSpeech} delay={0.2} />
+          <SpeechBubble 
+            text={pixelSpeech} 
+            delay={0.2} 
+            position="bottom-right"
+          />
         </div>
       </div>
     </GameLayout>

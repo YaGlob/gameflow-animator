@@ -11,7 +11,7 @@ interface SpeechBubbleProps {
 const SpeechBubble: FC<SpeechBubbleProps> = ({
   text,
   delay = 0,
-  position = "bottom-left"
+  position = "bottom-right"
 }) => {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,13 +40,13 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 right-8 bottom-0 translate-y-1/2" // Bottom right pointing tail
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Changed: Now points to the right
         };
       case "bottom-right":
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 left-8 bottom-0 translate-y-1/2" // Bottom left pointing tail
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -left-1 top-1/2 -translate-y-1/2" // Changed: Now points to the left
         };
       case "top-right":
       default:

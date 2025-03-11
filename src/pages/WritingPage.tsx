@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -95,6 +96,7 @@ const WritingPage = () => {
           <SpeechBubble 
             text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
             delay={0.2}
+            position="bottom-right"
           />
         </div>
       </div>
