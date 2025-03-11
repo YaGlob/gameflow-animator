@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -62,6 +61,20 @@ const LandingPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
+          {/* Astronaut image left to the game name */}
+          <motion.div 
+            className="absolute -left-14 sm:-left-24 md:-left-32 top-1/2 transform -translate-y-1/2 w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <img 
+              src="/lovable-uploads/16a42520-7787-4f2a-822c-6663a3067777.png" 
+              alt="Astronaut" 
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+          
           {/* Arc path for text - this is invisible but used for the text path */}
           <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
             <defs>
