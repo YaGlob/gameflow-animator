@@ -32,7 +32,8 @@ const ReadingPage = () => {
   return (
     <GameLayout>
       <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 shadow-lg border-2 border-blue-300/30">
+        {/* Adjusted the container to match AlphabetsPage - reduced padding and added max-h-[calc(100vh-220px)] */}
+        <div className="relative flex-1 bg-[#395d6e] rounded-lg p-4 sm:p-6 shadow-lg border-2 border-blue-300/30 overflow-y-auto max-h-[calc(100vh-220px)]">
           {currentStory && (
             <ReadingContent 
               paragraphs={currentStory.pages[currentPage].paragraphs}
@@ -41,7 +42,7 @@ const ReadingPage = () => {
           )}
 
           {currentStory && (
-            <div className="w-full mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="w-full mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
               {currentStory.pages[currentPage].questions.map((question, index) => (
                 <QuestionContainer
                   key={index}
@@ -54,10 +55,10 @@ const ReadingPage = () => {
             </div>
           )}
 
-          <div className="w-full flex justify-between mt-8">
+          <div className="w-full flex justify-between mt-6">
             <div className="flex items-center gap-3">
               <motion.button
-                className="bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-md font-bold text-lg shadow-lg"
+                className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-2 rounded-md font-bold text-lg shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleNextPage}
@@ -68,7 +69,7 @@ const ReadingPage = () => {
               </motion.button>
               
               <motion.button
-                className="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full font-bold text-lg shadow-lg"
+                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-full font-bold text-lg shadow-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={toggleInstructions}
