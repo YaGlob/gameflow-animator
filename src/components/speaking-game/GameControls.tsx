@@ -37,7 +37,7 @@ const GameControls: FC<GameControlsProps> = ({
   onHelp,
 }) => {
   return (
-    <div className="w-full flex flex-col items-center gap-6">
+    <div className="w-full flex flex-col items-center gap-6 max-w-4xl mx-auto">
       {/* Main controls */}
       <div className="flex items-center justify-center gap-6 w-full">
         {/* Play/Pause button with recording indicator */}
@@ -101,7 +101,7 @@ const GameControls: FC<GameControlsProps> = ({
 
       {/* Transcript display */}
       {transcript && (
-        <div className="w-full max-w-2xl bg-white/10 p-4 rounded-lg mt-2">
+        <div className="w-full max-w-2xl bg-white/10 p-4 rounded-lg mt-2 mx-auto">
           <h3 className="text-white text-sm font-semibold mb-1">Your Speech:</h3>
           <p className="text-white/90 text-sm md:text-base">{transcript}</p>
         </div>

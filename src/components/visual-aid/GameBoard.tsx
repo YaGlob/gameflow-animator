@@ -46,7 +46,7 @@ const GameBoard = ({
         getCoordinates={getCoordinates}
       />
 
-      <div className="flex justify-between items-center">
+      <div className="flex justify-center items-center gap-16 max-w-4xl mx-auto px-4">
         {/* Words column */}
         <div className="w-2/5 space-y-8 z-20">
           {items.map((item, index) => (

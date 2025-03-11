@@ -25,12 +25,12 @@ const VisualAidPage = () => {
 
   return (
     <GameLayout backTo="/game">
-      <div className="w-full mx-auto relative">
+      <div className="w-full max-w-5xl mx-auto relative flex flex-col items-center justify-center">
         {/* Help modal */}
         <HelpModal isOpen={showHelp} onClose={toggleHelp} />
 
         {/* Game area */}
-        <div className="relative bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30">
+        <div className="relative bg-[#395d6e] rounded-lg p-6 shadow-lg border-2 border-blue-300/30 w-full">
           <GameBoard 
             items={levels[currentLevel].items}
             activeConnection={activeConnection}
