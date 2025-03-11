@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import GameLayout from "@/components/GameLayout";
 import SpeechBubble from "@/components/SpeechBubble";
@@ -32,7 +31,6 @@ const ReadingPage = () => {
   return (
     <GameLayout>
       <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        {/* Adjusted the container to match AlphabetsPage - reduced padding and added max-h-[calc(100vh-220px)] */}
         <div className="relative flex-1 bg-[#395d6e] rounded-lg p-4 sm:p-6 shadow-lg border-2 border-blue-300/30 overflow-y-auto max-h-[calc(100vh-220px)]">
           {currentStory && (
             <ReadingContent 
@@ -102,7 +100,7 @@ const ReadingPage = () => {
           <SpeechBubble 
             text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
             delay={0.2}
-            position="bottom-left"
+            position="bottom-right"
           />
         </div>
       </div>

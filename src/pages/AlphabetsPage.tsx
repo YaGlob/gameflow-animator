@@ -167,7 +167,7 @@ const AlphabetsPage = () => {
       {/* Replace RobotScene with the uploaded robot image */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
         <div className="mr-3 mb-4">
-          <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-left" />
+          <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-right" />
         </div>
         <motion.div 
           className="relative z-50"
