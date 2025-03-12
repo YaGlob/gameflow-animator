@@ -50,9 +50,9 @@ const GameScreen = () => {
           >
             {/* Left column - Reading, Writing, Speaking */}
             <div className="flex flex-col justify-evenly h-full flex-1">
-              <RocketButton text="READING" to="/reading" delay={0.2} direction="right" />
-              <RocketButton text="WRITING" to="/writing" delay={0.4} direction="right" />
-              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="right" />
+              <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
+              <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
+              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
             </div>
             
             {/* Center column - Alphabets */}
