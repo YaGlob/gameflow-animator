@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -140,7 +139,7 @@ const ListeningPage = () => {
           <SpeechBubble 
             text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
             delay={0.2} 
-            position="bottom-left"
+            position="bottom-right"
           />
         </div>
         

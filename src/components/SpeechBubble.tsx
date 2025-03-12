@@ -1,4 +1,3 @@
-
 import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -16,7 +15,6 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Typewriter effect
   useEffect(() => {
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
@@ -27,33 +25,31 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
     }
   }, [currentIndex, text]);
 
-  // Reset and restart animation when text changes
   useEffect(() => {
     setDisplayText("");
     setCurrentIndex(0);
   }, [text]);
 
-  // Determine bubble tail direction and styling based on position
   const getBubbleStyles = () => {
     switch (position) {
       case "bottom-left":
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -left-1 top-1/2 -translate-y-1/2" // Points to the left (toward robot when robot is on left)
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Points to the right (toward robot)
         };
       case "bottom-right":
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Points to the right (toward robot when robot is on right)
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Points to the right (toward robot)
         };
       case "top-right":
       default:
         return {
           containerClass: "relative max-w-xs",
           bubbleClass: "bg-white p-3 rounded-xl shadow-lg relative",
-          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Right pointing tail
+          tailClass: "absolute w-3 h-3 bg-white transform rotate-45 -right-1 top-1/2 -translate-y-1/2" // Points to the right (toward robot)
         };
     }
   };
@@ -81,7 +77,6 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
           {displayText}
         </p>
         
-        {/* Blue outline effect */}
         <motion.div 
           className="absolute inset-0 -z-10 rounded-xl" 
           animate={{
@@ -94,7 +89,6 @@ const SpeechBubble: FC<SpeechBubbleProps> = ({
           }} 
         />
         
-        {/* Speech bubble tail - direction depends on position prop */}
         <div className={bubbleStyles.tailClass}></div>
       </div>
     </motion.div>
