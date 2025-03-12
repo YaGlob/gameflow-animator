@@ -9,8 +9,9 @@ const TitleSection = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
+      {/* Left side astronaut - reduced size and positioned closer to text */}
       <motion.div 
-        className="absolute -left-8 sm:-left-16 md:-left-20 top-1/2 transform -translate-y-[calc(50%+35px)] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+        className="absolute -left-4 sm:-left-8 md:-left-12 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -22,8 +23,9 @@ const TitleSection = () => {
         />
       </motion.div>
       
+      {/* Right side rocket - adjusted to match astronaut positioning */}
       <motion.div 
-        className="absolute -right-8 sm:-right-16 md:-right-20 top-1/2 transform -translate-y-[calc(50%+35px)] w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-32 z-10"
+        className="absolute -right-4 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -35,6 +37,7 @@ const TitleSection = () => {
         />
       </motion.div>
       
+      {/* SVG title text - kept the same */}
       <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
         <defs>
           <path id="textArc" d="M 20,100 Q 240,30 460,100" fill="none" />
@@ -88,6 +91,7 @@ const TitleSection = () => {
         </text>
       </svg>
       
+      {/* Background glow effect - kept the same */}
       <div className="absolute inset-0 w-full h-full opacity-70">
         <div className="absolute inset-0 bg-blue-500 blur-xl animate-pulse-glow opacity-30"></div>
         <div className="absolute inset-0 bg-cyan-400 blur-lg animate-pulse-glow opacity-30" style={{animationDelay: "0.5s"}}></div>
