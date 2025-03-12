@@ -40,22 +40,23 @@ const GameScreen = () => {
   return (
     <GameLayout backTo="/landing">
       <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
-        {/* Removed the heading "Choose Your Adventure" */}
-        
+        {/* Main content area with blue background */}
         <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mt-2">
           <motion.div 
-            className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
+            className="w-full h-full flex flex-row justify-center items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12">
-              <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
-              <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
-              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
+            {/* Left column - Reading, Writing, Speaking */}
+            <div className="flex flex-col justify-evenly h-full flex-1">
+              <RocketButton text="READING" to="/reading" delay={0.2} direction="right" />
+              <RocketButton text="WRITING" to="/writing" delay={0.4} direction="right" />
+              <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="right" />
             </div>
             
-            <div className="flex items-center justify-center flex-col">
+            {/* Center column - Alphabets */}
+            <div className="flex flex-col items-center justify-center h-full mx-4 sm:mx-8">
               <motion.div
                 className="relative w-full h-72 sm:h-80 md:h-96"
                 initial={{ opacity: 0, y: 100 }}
@@ -82,12 +83,13 @@ const GameScreen = () => {
                                   ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                       />
 
-                      {/* Updated oval-shaped Alphabets container */}
+                      {/* Vertical Alphabets pill */}
                       <motion.div
                         className="mt-4 px-6 py-4 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
+                        style={{ borderRadius: "40px" }}
                       >
                         <div className="font-extrabold text-black text-base sm:text-lg tracking-wider flex flex-col items-center space-y-1">
                           <div>A</div>
@@ -123,9 +125,10 @@ const GameScreen = () => {
               </motion.div>
             </div>
             
-            <div className="flex flex-col justify-evenly h-full">
-              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
-              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
+            {/* Right column - Visual Aid and Listening */}
+            <div className="flex flex-col justify-evenly h-full flex-1">
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="left" />
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="left" />
             </div>
           </motion.div>
         </div>
