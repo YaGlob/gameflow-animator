@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import GameLayout from "@/components/GameLayout";
 import RocketButton from "@/components/RocketButton";
@@ -39,6 +40,8 @@ const GameScreen = () => {
   return (
     <GameLayout backTo="/landing">
       <div className="w-full h-[calc(100vh-60px)] flex flex-col p-[30px]">
+        {/* Removed the heading "Choose Your Adventure" */}
+        
         <div className="relative flex-1 bg-[#395d6e] rounded-lg p-6 sm:p-8 md:p-10 shadow-lg border-2 border-blue-300/30 flex flex-col items-center z-10 mt-2">
           <motion.div 
             className="w-full h-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8"
@@ -46,12 +49,10 @@ const GameScreen = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-8">
+            <div className="flex flex-col justify-evenly space-y-6 sm:space-y-12">
               <RocketButton text="READING" to="/reading" delay={0.2} direction="left" />
               <RocketButton text="WRITING" to="/writing" delay={0.4} direction="left" />
               <RocketButton text="SPEAKING" to="/speaking" delay={0.6} direction="left" />
-              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="left" />
-              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="left" />
             </div>
             
             <div className="flex items-center justify-center flex-col">
@@ -81,6 +82,7 @@ const GameScreen = () => {
                                   ${launchingAlphabets ? 'scale-110 translate-y-[-30px] sm:translate-y-[-50px]' : 'hover:scale-105'}`}
                       />
 
+                      {/* Updated oval-shaped Alphabets container */}
                       <motion.div
                         className="mt-4 px-6 py-4 bg-white/90 rounded-full shadow-lg flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 20 }}
@@ -121,12 +123,15 @@ const GameScreen = () => {
               </motion.div>
             </div>
             
-            <div className="hidden sm:block">
+            <div className="flex flex-col justify-evenly h-full">
+              <RocketButton text="VISUAL AID" to="/visual-aid" delay={0.3} direction="right" />
+              <RocketButton text="LISTENING" to="/listening" delay={0.5} direction="right" />
             </div>
           </motion.div>
         </div>
       </div>
       
+      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-4 z-50 flex items-end">
         {showSpeechBubble && (
           <div className="mr-2">
