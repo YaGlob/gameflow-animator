@@ -9,7 +9,8 @@ const TitleSection = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Left side astronaut - moved 10px left from current position */}
+      {/* Left side astronaut - hidden */}
+      {/* 
       <motion.div 
         className="absolute -left-10 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: -50 }}
@@ -22,8 +23,10 @@ const TitleSection = () => {
           className="w-full h-full object-contain"
         />
       </motion.div>
+      */}
       
-      {/* Right side rocket - kept the same */}
+      {/* Right side rocket - hidden */}
+      {/* 
       <motion.div 
         className="absolute -right-4 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: 50 }}
@@ -36,6 +39,7 @@ const TitleSection = () => {
           className="w-full h-full object-contain"
         />
       </motion.div>
+      */}
       
       {/* SVG title text - kept the same */}
       <svg className="w-[280px] h-[80px] md:w-[480px] md:h-[150px]" viewBox="0 0 480 150" style={{ overflow: 'visible' }}>
