@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const CornerDecorations = () => {
   return (
     <>
-      <div className="absolute top-0 left-0 z-30 w-32 h-32 md:w-48 md:h-48">
+      <div className="absolute -left-10 top-0 z-30 w-32 h-32 md:w-48 md:h-48">
         <motion.img 
           src="/lovable-uploads/312be9c1-6dc4-4ed8-9ec0-4205fa0b3791.png"
           alt="Abstract line art"
