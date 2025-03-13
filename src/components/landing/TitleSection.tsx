@@ -9,9 +9,9 @@ const TitleSection = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Left side astronaut - reduced size and positioned closer to text */}
+      {/* Left side astronaut - moved to leftmost position (0px) */}
       <motion.div 
-        className="absolute -left-4 sm:-left-8 md:-left-12 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
+        className="absolute -left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -23,7 +23,7 @@ const TitleSection = () => {
         />
       </motion.div>
       
-      {/* Right side rocket - adjusted to match astronaut positioning */}
+      {/* Right side rocket - kept the same */}
       <motion.div 
         className="absolute -right-4 sm:-right-8 md:-right-12 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"
         initial={{ opacity: 0, x: 50 }}
