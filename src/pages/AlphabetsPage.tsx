@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -14,7 +13,7 @@ type LetterInfo = {
 const AlphabetsPage = () => {
   const [selectedLetter, setSelectedLetter] = useState<LetterInfo | null>(null);
   const [robotSpeech, setRobotSpeech] = useState<string>(
-    "THERE ARE 26 LETTERS IN THE ALPHABET! HERE THEY ARE! CLICK ON ANY LETTER TO UNVEIL THE MAGIC THAT AWAITS!"
+    "Our alphabet has 26 fascinating letters! Take a moment to explore them all. Click any letter that catches your interest to discover wonderful words it creates!"
   );
   const [showLetterDetail, setShowLetterDetail] = useState(false);
 
@@ -50,12 +49,12 @@ const AlphabetsPage = () => {
   const handleLetterClick = (letter: LetterInfo) => {
     setSelectedLetter(letter);
     setShowLetterDetail(true);
-    setRobotSpeech(`EXCELLENT CHOICE! "${letter.uppercase}" IS FOR ${letter.examples?.[0]}, ${letter.examples?.[1]}, AND ${letter.examples?.[2]}!`);
+    setRobotSpeech(`Wonderful choice! The letter "${letter.uppercase}" helps us spell ${letter.examples?.[0]}, ${letter.examples?.[1]}, and even ${letter.examples?.[2]}!`);
   };
 
   const closeLetterDetail = () => {
     setShowLetterDetail(false);
-    setRobotSpeech("GREAT JOB! WHICH LETTER WOULD YOU LIKE TO LEARN NEXT?");
+    setRobotSpeech("You're doing great! Which letter would you like to explore next?");
   };
 
   const LetterTile = ({ letter, index }: { letter: LetterInfo; index: number }) => {
@@ -164,7 +163,6 @@ const AlphabetsPage = () => {
         </motion.div>
       )}
 
-      {/* Robot with speech bubble - Updated to match standard size */}
       <div className="fixed bottom-4 right-8 z-40 flex items-end">
         <div className="mr-3 mb-4">
           <SpeechBubble text={robotSpeech} delay={0.2} position="bottom-right" />
@@ -182,7 +180,6 @@ const AlphabetsPage = () => {
             className="w-full h-full object-contain"
           />
           
-          {/* Light effect behind the robot */}
           <motion.div 
             className="absolute inset-0 -z-10 bg-blue-400/20 rounded-full blur-lg"
             animate={{ 

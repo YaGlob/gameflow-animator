@@ -26,13 +26,13 @@ const InstructionsModal = ({ isOpen, onClose }: InstructionsModalProps) => {
           >
             <h2 className="text-2xl font-bold text-white mb-4">How to Play</h2>
             <ol className="list-decimal list-inside text-white space-y-2">
-              <li>Read the text passages carefully.</li>
-              <li>Look at the images that accompany the text.</li>
-              <li>Answer the multiple-choice questions by clicking on an option.</li>
-              <li>If your answer is correct, it will turn green.</li>
-              <li>If your answer is wrong, it will shake and turn red.</li>
-              <li>Press the Next button to move to the next set of texts and questions.</li>
-              <li>Press the Back button to review previous content.</li>
+              <li>Take time to understand each text passage.</li>
+              <li>Examine the accompanying images for context clues.</li>
+              <li>Select your answer for each question by clicking an option.</li>
+              <li>Correct selections will be highlighted in green.</li>
+              <li>Incorrect answers will shake briefly and turn red.</li>
+              <li>Use the Next button when you're ready to continue.</li>
+              <li>The Back button lets you revisit previous content.</li>
             </ol>
             <div className="mt-6 flex justify-end">
               <motion.button

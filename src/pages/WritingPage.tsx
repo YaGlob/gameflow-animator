@@ -88,10 +88,10 @@ const WritingPage = () => {
       <div className="fixed bottom-4 right-8 z-40 flex flex-row-reverse items-end">
         <motion.div 
           className="w-32 h-32 sm:w-40 sm:h-40"
-          initial={{ opacity: 0, scale: 0.8 }}     // Start invisible and smaller
-          animate={{ opacity: 1, scale: 1 }}       // Fade in and grow to full size
-          transition={{ duration: 0.5 }}           // Animation takes 0.5 seconds
-          whileHover={{ y: -5 }}                   // Move up slightly when hovered
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ y: -5 }}
         >
           <img 
             src="/images/robot-writing.png" 
@@ -101,7 +101,7 @@ const WritingPage = () => {
         </motion.div>
         <div className="ml-3 mb-8">
           <SpeechBubble 
-            text="TYPE THE TEXT EXACTLY AS YOU SEE IT! IF YOU MAKE A MISTAKE, THE LETTER WILL TURN RED."
+            text="Try to type the text exactly as shown. Don't worry if you make a mistake - incorrect letters will appear in red to help you learn."
             delay={0.2}
             position="bottom-right"
           />

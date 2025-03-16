@@ -26,12 +26,12 @@ const InstructionsModal = ({ isOpen, onClose }: InstructionsModalProps) => {
           >
             <h2 className="text-2xl font-bold text-white mb-4">How to Play</h2>
             <ol className="list-decimal list-inside text-white space-y-2">
-              <li>Press the speaker button to hear a word.</li>
-              <li>Use the keyboard to type the word you hear.</li>
-              <li>Press the delete button if you make a mistake.</li>
-              <li>Press submit when you're ready to check your spelling.</li>
-              <li>You have 5 attempts to spell the word correctly.</li>
-              <li>Press next to move to a new word after completing.</li>
+              <li>Tap the speaker icon to hear a word pronounced clearly.</li>
+              <li>Use the virtual keyboard to type what you heard.</li>
+              <li>Made a mistake? The trash icon lets you delete characters.</li>
+              <li>Click submit when you're confident in your spelling.</li>
+              <li>You get five attempts to spell each word correctly.</li>
+              <li>After completing a word, press next to continue.</li>
             </ol>
             <div className="mt-6 flex justify-end">
               <motion.button

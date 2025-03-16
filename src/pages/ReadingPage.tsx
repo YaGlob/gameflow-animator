@@ -111,7 +111,7 @@ const ReadingPage = () => {
         </motion.div>
         <div className="ml-3 mb-8">
           <SpeechBubble 
-            text="READ THE TEXT CAREFULLY AND ANSWER THE QUESTIONS. IF YOUR ANSWER IS RIGHT, IT WILL TURN GREEN!"
+            text="Take your time reading each passage carefully. When you're ready, answer the questions. Correct answers will light up in green!"
             delay={0.2}
             position="bottom-right"
           />

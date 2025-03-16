@@ -32,11 +32,11 @@ const HelpModal = ({ isOpen, onClose }: HelpModalProps) => {
         </div>
         
         <div className="space-y-4 text-white">
-          <p>1. Look at the words on the left and images on the right.</p>
-          <p>2. Click on a dot next to a word, then click on a dot next to the matching image.</p>
-          <p>3. If correct, the connection will be saved!</p>
-          <p>4. Match all words with their images to complete the level.</p>
-          <p>5. Click NEXT to move to the next level.</p>
+          <p>1. Examine the words on the left side and images on the right.</p>
+          <p>2. Begin by selecting a dot next to any word, then find its matching image.</p>
+          <p>3. When correctly matched, a permanent connection line appears!</p>
+          <p>4. Complete the level by successfully connecting all pairs.</p>
+          <p>5. Progress to new challenges by clicking the Next button.</p>
           
           <motion.button
             whileHover={{ scale: 1.05 }}

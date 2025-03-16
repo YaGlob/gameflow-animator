@@ -32,7 +32,7 @@ const SpeakingPage = () => {
   } = useSpeakingGame();
 
   // Robot's speech bubble text
-  const pixelSpeech = "READ THE TEXT OUT LOUD! IF YOU NEED HELP, PRESS THE SPEAKER BUTTON TO HEAR THE WORDS. PRACTICE MAKES PERFECT!";
+  const pixelSpeech = "Try reading the text aloud with expression! If you need assistance, tap the speaker button to hear proper pronunciation. Regular practice leads to improvement!";
 
   return (
     <GameLayout backTo="/game">

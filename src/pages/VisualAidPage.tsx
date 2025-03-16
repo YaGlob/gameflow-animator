@@ -69,7 +69,7 @@ const VisualAidPage = () => {
         </motion.div>
         <div className="ml-3 mb-8">
           <SpeechBubble 
-            text={robotSpeech}   // Dynamic robot speech based on game state
+            text="Can you match each word with its picture? First click a dot beside a word, then click the dot beside its matching image!"
             delay={0.2} 
             position="bottom-right"
           />

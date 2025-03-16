@@ -7,18 +7,18 @@ export interface SpeakingExercise {
 export const SPEAKING_CONTENT: SpeakingExercise[] = [
   {
     id: 1,
-    text: "EMILY LOVES PLAYING WITH HER DOG, MAX. MAX IS VERY FLUFFY AND FRIENDLY. EMILY LIKES TO THROW A BALL FOR MAX TO CATCH. MAX RUNS FAST AND BRINGS THE BALL BACK TO EMILY. THEY PLAY TOGETHER EVERY DAY! EMILY AND MAX ARE BEST FRIENDS. THEY HAVE SO MUCH FUN PLAYING IN THE PARK!"
+    text: "Emily enjoys playing with her dog, Max. He's incredibly fluffy and always friendly to everyone. Each day, Emily throws a ball for Max to chase across the yard. Despite his size, Max runs quickly and faithfully brings the ball back to her hand. They spend hours together in this simple game! Emily considers Max her closest companion. The park near their house becomes their special place to bond."
   },
   {
     id: 2,
-    text: "SOPHIA LOVES READING HER FAVORITE BOOKS. HER BOOKS ARE FULL OF COLORFUL PICTURES AND FUN STORIES. SOPHIA LIKES TO READ ABOUT MAGICAL ADVENTURES. SHE IMAGINES HERSELF IN THE STORIES AND FEELS HAPPY AND INSPIRED! SOPHIA AND HER BOOKS ARE BEST FRIENDS. THEY HAVE SO MUCH FUN EXPLORING NEW WORLDS!"
+    text: "Sophia treasures her collection of books. Within their pages lie vivid illustrations and captivating stories that transport her elsewhere. Fantasy adventures particularly captivate her imagination. While reading, she often pictures herself as the main character, feeling every emotion described on the page! Books have become Sophia's trusted friends. Together, they journey through magical realms and distant planets."
   },
   {
     id: 3, 
-    text: "LUCAS ENJOYS BUILDING WITH BLOCKS. HE MAKES TALL TOWERS AND LITTLE HOUSES. LUCAS USES RED, BLUE, AND GREEN BLOCKS. HE CAN STACK THEM VERY HIGH WITHOUT THEM FALLING. LUCAS IS VERY CAREFUL AND PATIENT. HE WANTS TO BE AN ARCHITECT WHEN HE GROWS UP. BUILDING THINGS MAKES LUCAS VERY HAPPY!"
+    text: "Lucas spends his afternoons creating with blocks. His tiny hands craft impressive towers and intricate houses from his collection. The red, blue, and green pieces stack higher than anyone expects. Somehow, Lucas manages to keep them balanced with remarkable precision. Patience defines his approach to building. One day, he hopes to design real buildings as an architect. Nothing brings Lucas greater satisfaction than seeing his completed structures."
   },
   {
     id: 4,
-    text: "OLIVIA LIKES TO PAINT PICTURES. SHE USES MANY BRIGHT COLORS. OLIVIA PAINTS FLOWERS, RAINBOWS, AND BUTTERFLIES. HER MOM HANGS THE PAINTINGS ON THE FRIDGE. OLIVIA FEELS PROUD WHEN PEOPLE LIKE HER ART. SHE PRACTICES PAINTING EVERY DAY AND GETS BETTER AND BETTER!"
+    text: "Olivia expresses herself through painting. Her palette contains every shade imaginable. Delicate flowers, brilliant rainbows, and graceful butterflies emerge from her brushstrokes. Proudly, her mother displays these creations on their refrigerator door. Whenever visitors compliment her work, Olivia beams with quiet pride. Through daily practice, her technique gradually improves. Each painting reveals new skills she's developed."
   }
 ];

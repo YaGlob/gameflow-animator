@@ -1,3 +1,4 @@
+
 import { Story } from "@/components/reading-game/types";
 
 // Sample reading content
@@ -11,11 +12,11 @@ export const READING_CONTENT: Story[] = [
         paragraphs: [
           {
             id: 1,
-            text: "1. Lily loves her little cat, Whiskers. Whiskers is soft and cute. Lily likes to pet Whiskers and give her treats. They cuddle together every day! They have lots of fun playing with yarn!"
+            text: "1. Lily cherishes her small kitten named Whiskers. The soft fur feels like velvet beneath her fingers. Gently, Lily strokes Whiskers and offers special treats from her pocket. Each evening finds them curled together on the sofa! Their favorite game involves a simple ball of colorful yarn."
           },
           {
             id: 2,
-            text: "2. Ron loves his big bike. His bike is red. Ron likes to ride his bike in the park. He feels happy when the wind blows through his hair. He loves riding with his friends!"
+            text: "2. Ron treasures his shiny bicycle. The brilliant red paint catches sunlight as he rides. Weekends find Ron pedaling through winding park paths with determination. Nothing compares to the sensation of breeze rushing through his hair during these adventures. Neighborhood friends often join him for afternoon cycling excursions!"
           }
         ],
         images: [
@@ -33,18 +34,18 @@ export const READING_CONTENT: Story[] = [
         questions: [
           {
             id: "q1_1",
-            text: "Q) Pick a difference between both texts.",
+            text: "Q) What distinguishes these two passages from each other?",
             answers: [
-              { id: "q1_1_a", text: "a) The characters are of different genders." },
-              { id: "q1_1_b", text: "b) There is no difference." },
-              { id: "q1_1_c", text: "c) The characters do not show love." },
-              { id: "q1_1_d", text: "d) The characters have the same hair color." }
+              { id: "q1_1_a", text: "a) The main characters aren't the same gender." },
+              { id: "q1_1_b", text: "b) There aren't any meaningful differences." },
+              { id: "q1_1_c", text: "c) Neither character shows affection for anything." },
+              { id: "q1_1_d", text: "d) Both characters have identical hair coloring." }
             ],
             correctAnswerId: "q1_1_a"
           },
           {
             id: "q1_2",
-            text: "Q) What colour is Ron's bike?",
+            text: "Q) Which color describes Ron's bicycle?",
             answers: [
               { id: "q1_2_a", text: "a) Grey" },
               { id: "q1_2_b", text: "b) Black" },
@@ -55,12 +56,12 @@ export const READING_CONTENT: Story[] = [
           },
           {
             id: "q1_3",
-            text: "Q) Who is Whiskers?",
+            text: "Q) How would you describe Whiskers?",
             answers: [
-              { id: "q1_3_a", text: "a) Lily's cat" },
-              { id: "q1_3_b", text: "b) Lily's dog" },
-              { id: "q1_3_c", text: "c) Lily's friend" },
-              { id: "q1_3_d", text: "d) Lily's dad" }
+              { id: "q1_3_a", text: "a) Lily's feline companion" },
+              { id: "q1_3_b", text: "b) Lily's canine friend" },
+              { id: "q1_3_c", text: "c) Lily's human friend" },
+              { id: "q1_3_d", text: "d) Lily's father" }
             ],
             correctAnswerId: "q1_3_a"
           }
@@ -71,11 +72,11 @@ export const READING_CONTENT: Story[] = [
         paragraphs: [
           {
             id: 1,
-            text: "1. Julia loves her little garden. Her garden is colorful and bright. Julia likes to water flowers and give them sunshine. They bloom together every day! They have lots of fun growing with love!"
+            text: "1. Julia nurtures her small garden with devotion. Vibrant blossoms create a tapestry of colors throughout the seasons. Carefully, Julia waters each plant and ensures they receive ample sunshine. Her patience rewards her with daily blooms throughout spring and summer! Genuine love transforms her simple patch of earth into something extraordinary."
           },
           {
             id: 2,
-            text: "2. Lucas loves his big piano. His piano is black. Lucas plays his piano in the studio. He feels happy when the music sounds beautiful. He loves playing with his family!"
+            text: "2. Lucas passionately plays his elegant piano. The polished black surface gleams under soft lighting. Afternoons find Lucas practicing in the studio until dinner time. Pure joy radiates from him when melodies flow perfectly from his fingertips. Family members gather around to appreciate his growing musical talents!"
           }
         ],
         images: [
@@ -93,34 +94,34 @@ export const READING_CONTENT: Story[] = [
         questions: [
           {
             id: "q2_1",
-            text: "Q) Pick a similarity between both texts.",
+            text: "Q) What common element connects these passages?",
             answers: [
-              { id: "q2_1_a", text: "a) Both have a hobby" },
-              { id: "q2_1_b", text: "b) Both don't have a hobby" },
-              { id: "q2_1_c", text: "c) Both like sports" },
-              { id: "q2_1_d", text: "d) Both like playing the piano." }
+              { id: "q2_1_a", text: "a) Both characters have passionate interests" },
+              { id: "q2_1_b", text: "b) Neither character pursues any hobbies" },
+              { id: "q2_1_c", text: "c) Both individuals primarily enjoy athletics" },
+              { id: "q2_1_d", text: "d) Piano playing appears in both narratives" }
             ],
             correctAnswerId: "q2_1_a"
           },
           {
             id: "q2_2",
-            text: "Q) Julia's garden is...",
+            text: "Q) How would you describe Julia's garden?",
             answers: [
-              { id: "q2_2_a", text: "a) Dull and black" },
-              { id: "q2_2_b", text: "b) Colorful and bright" },
-              { id: "q2_2_c", text: "c) No idea" },
-              { id: "q2_2_d", text: "d) Pink and green" }
+              { id: "q2_2_a", text: "a) Monotone and uninteresting" },
+              { id: "q2_2_b", text: "b) Vibrant and diverse" },
+              { id: "q2_2_c", text: "c) Impossible to determine" },
+              { id: "q2_2_d", text: "d) Exclusively pink and green" }
             ],
             correctAnswerId: "q2_2_b"
           },
           {
             id: "q2_3",
-            text: "Q) Where does Lucas play piano?",
+            text: "Q) Where does Lucas typically play his instrument?",
             answers: [
-              { id: "q2_3_a", text: "a) Home" },
-              { id: "q2_3_b", text: "b) Studio" },
-              { id: "q2_3_c", text: "c) Garden" },
-              { id: "q2_3_d", text: "d) Restaurant" }
+              { id: "q2_3_a", text: "a) Within his residence" },
+              { id: "q2_3_b", text: "b) In a dedicated music space" },
+              { id: "q2_3_c", text: "c) Among garden plantings" },
+              { id: "q2_3_d", text: "d) At a dining establishment" }
             ],
             correctAnswerId: "q2_3_b"
           }

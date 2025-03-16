@@ -20,7 +20,7 @@ const GameScreen = () => {
     return () => clearTimeout(timeout);
   }, []);
   
-  const pixelSpeech = "HI! I AM PIXEL! I WILL BE YOUR GUIDE THROUGHOUT THE GAME, MY FRIEND. LET'S PICK AN ACTIVITY AND BEGIN OUR JOURNEY!";
+  const pixelSpeech = "Hello there! I'm Pixel, your friendly guide throughout this adventure. Let's select an activity and begin our learning journey together!";
   
   const handleAlphabetsClick = () => {
     setLaunchingAlphabets(true);

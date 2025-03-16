@@ -35,7 +35,7 @@ const InstructionsModal: FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
       <DialogContent className="bg-[#1a3242] text-white border-cyan-400/30">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-center text-cyan-300">
-            How to Play: Speaking Activity
+            Speaking Activity Guide
           </DialogTitle>
         </DialogHeader>
         
@@ -43,19 +43,19 @@ const InstructionsModal: FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
           {/* Instruction 1: Speaking */}
           <div className="flex items-center gap-3 mt-4">
             <Mic className="h-8 w-8 text-cyan-300 flex-shrink-0" />
-            <p>Read the text in the box aloud to practice your speaking skills.</p>
+            <p>Practice your pronunciation by reading the displayed text aloud with confidence.</p>
           </div>
           
           {/* Instruction 2: Audio Help */}
           <div className="flex items-center gap-3">
             <Volume2 className="h-8 w-8 text-cyan-300 flex-shrink-0" />
-            <p>Press the speaker button if you need help with pronunciation. Listen carefully and try to mimic the words.</p>
+            <p>Need help with pronunciation? The speaker button provides an audio example you can imitate.</p>
           </div>
           
           {/* Instruction 3: Timer */}
           <div className="flex items-center gap-3">
             <Timer className="h-8 w-8 text-cyan-300 flex-shrink-0" />
-            <p>The timer helps you track how long you practice. Try to read smoothly and clearly.</p>
+            <p>The timer helps you track your practice duration. Focus on clarity rather than speed.</p>
           </div>
           
           {/* Instruction 4: Play/Pause */}
@@ -64,7 +64,7 @@ const InstructionsModal: FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
               <Play className="h-8 w-8 text-cyan-300" />
               <Pause className="h-8 w-8 text-cyan-300" />
             </div>
-            <p>Use the play/pause button to control the timer while you practice.</p>
+            <p>Control your practice session with the play and pause buttons whenever needed.</p>
           </div>
         </DialogDescription>
         

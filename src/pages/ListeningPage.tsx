@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -137,7 +138,7 @@ const ListeningPage = () => {
           
           {/* Speech bubble with instructions */}
           <SpeechBubble 
-            text="WELCOME TO THE LISTENING GAME! I'LL SAY A WORD AND YOU NEED TO SPELL IT CORRECTLY. PRESS THE SPEAKER BUTTON TO HEAR THE WORD AGAIN."
+            text="Welcome to our listening challenge! I'll pronounce a word for you to spell correctly. Need to hear it again? Just tap the speaker icon above."
             delay={0.2} 
             position="bottom-right"
           />

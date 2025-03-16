@@ -1,9 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Index = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    // Auto-redirect to landing page after a delay
+    const timer = setTimeout(() => {
+      navigate('/landing');
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, [navigate]);
+  
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Main background image */}
+      {/* Background image with space theme */}
       <div 
         className="absolute inset-0 z-[1]"
         style={{ 
@@ -14,13 +28,21 @@ const Index = () => {
         }}
       />
       
-      {/* Content */}
-      <div className="relative z-10">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-          <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-        </div>
-      </div>
+      {/* Loading text with animation */}
+      <motion.div 
+        className="relative z-10 text-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <h1 className="text-4xl font-bold text-white">Preparing your adventure...</h1>
+          <p className="text-xl text-blue-200 mt-2">Get ready to explore and learn!</p>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
