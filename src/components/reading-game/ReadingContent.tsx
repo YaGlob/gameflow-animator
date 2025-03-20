@@ -24,10 +24,6 @@ interface ReadingContentProps {
  * Displays the reading passage with paragraphs and images.
  * Each paragraph can be clicked to hear it read aloud using text-to-speech.
  * Visual indication shows which paragraph is currently being spoken.
- * 
- * @param paragraphs - Array of paragraph objects to display
- * @param images - Array of image objects to display
- * @param pageId - Unique page ID to determine which story we're on
  */
 const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => {
   // State to track which paragraph is currently being spoken
@@ -35,9 +31,6 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
   
   /**
    * Function to handle text-to-speech for a paragraph
-   * 
-   * @param text - The text to be spoken
-   * @param paragraphId - ID of the paragraph being spoken
    */
   const handleSpeakText = (text: string, paragraphId: number) => {
     // Cancel any ongoing speech
@@ -83,13 +76,12 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
 
   /**
    * Determine which image to display based on page ID
-   * This provides different illustrations for different pages of the story
    */
   const getImageSrc = () => {
     if (pageId === 2) {
-      return "/lovable-uploads/b98e6455-de29-441d-9cc0-35d9f7c26bba.png";  // Girl watering flowers
+      return "/images/reading/girl-watering-flowers.png";  // Girl watering flowers
     } else {
-      return "/lovable-uploads/b36dd1ef-45ac-430d-abab-a2f7d940e502.png";  // Girl with cat
+      return "/images/reading/girl-with-cat.png";  // Girl with cat
     }
   };
 
@@ -103,9 +95,9 @@ const ReadingContent = ({ paragraphs, images, pageId }: ReadingContentProps) => 
             className={`text-white text-base leading-relaxed font-verdana cursor-pointer 
                       transition-all p-2 rounded-md
                       ${speakingId === paragraph.id ? 'bg-blue-500/30 shadow-md' : 'hover:bg-blue-500/10'}`}
-            initial={{ opacity: 0, y: 20 }}                       // Start invisible and below final position
-            animate={{ opacity: 1, y: 0 }}                        // Fade in and move to final position
-            transition={{ duration: 0.5, delay: paragraph.id * 0.1 }}  // Staggered animation based on ID
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: paragraph.id * 0.1 }}
             onClick={() => handleSpeakText(paragraph.text, paragraph.id)}
           >
             <div className="flex items-center">

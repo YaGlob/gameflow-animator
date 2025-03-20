@@ -9,7 +9,7 @@ const BottomDecoration = () => {
         
         <div className="w-full h-full">
           <img 
-            src="/lovable-uploads/9a6b5a08-55d5-4aa8-870e-be05924df1fa.png" 
+            src="/images/grid-background.png" 
             alt="Grid Background" 
             className="w-full h-full object-cover"
           />
@@ -18,7 +18,7 @@ const BottomDecoration = () => {
 
       <div className="absolute bottom-0 left-0 w-full z-20">
         <motion.img 
-          src="/lovable-uploads/84d8b662-3d50-4987-b5bb-d912afa6292c.png" 
+          src="/images/education-robot.png" 
           alt="Education with Robot" 
           className="w-full object-contain"
           initial={{ y: 100, opacity: 0 }}
