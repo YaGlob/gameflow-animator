@@ -149,7 +149,7 @@ const GameScreen = () => {
           whileHover={{ y: -5 }}
         >
           <img 
-            src="/images/robot-custom.png" 
+            src="/lovable-uploads/4058707c-86ea-4886-9ecf-68732f5990b6.png" 
             alt="Pixel Robot" 
             className="w-full h-full object-contain"
           />

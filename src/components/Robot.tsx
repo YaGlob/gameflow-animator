@@ -34,12 +34,12 @@ const Robot: FC<RobotProps> = ({ className = "", variant = "normal", onClick }) 
   const getRobotImage = () => {
     switch (currentVariant) {
       case "thinking":
-        return "/images/robot-thinking.png";
+        return "/lovable-uploads/dab3d977-577e-4c65-bfba-057c5b478b32.png";
       case "happy":
-        return "/images/robot-happy.png";
+        return "/lovable-uploads/020498bf-762c-4f12-b186-390b2a7c21f6.png";
       case "normal":
       default:
-        return "/images/robot-normal.png";
+        return "/lovable-uploads/a1044efd-454f-470d-a486-4ea82a28e402.png";
     }
   };
 

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
 import GameLayout from "@/components/GameLayout";
@@ -176,7 +175,7 @@ const AlphabetsPage = () => {
           whileHover={{ y: -5 }}
         >
           <img 
-            src="/images/robot-alphabets.png" 
+            src="/lovable-uploads/d776dc4d-778e-4f77-8e97-b38a136823b1.png" 
             alt="Robot Assistant" 
             className="w-full h-full object-contain"
           />
